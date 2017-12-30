@@ -1,3 +1,31 @@
 .client-login-form{
   margin:10px
 }
+
+.flash-message-success{
+  background:#66cc99;
+  font-size:20px;
+  color:#fff;
+  text-align:center;
+  width:80%;
+  margin:0 auto;
+  height:50px;
+  line-height:50px;
+  border-radius:10px;
+}
+
+span{
+  margin-right:15px;
+}
+
+.flash-message-failure{
+  background:#ff3333;
+  font-size:20px;
+  color:#fff;
+  text-align:center;
+  width:80%;
+  margin:0 auto;
+  height:50px;
+  line-height:50px;
+  border-radius:10px;
+}

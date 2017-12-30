@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import UserRegister from '../../containers/UserContainer'
+import UserRegister from '../../containers/ClientRegisterContainer'
 
 export default class HomePage extends Component{
   render(){

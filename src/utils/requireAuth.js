@@ -17,11 +17,12 @@ export default function(ComposedComponent){
     }
   }
 
-  function mapStateToProps(state){
-    return{
-      isAuthenticated:state.user.isAuthenticated
-    }
-  }
+  // function mapStateToProps(state){
+  //   return{
+  //     isAuthenticated:state.client.isAuthenticated
+  //   }
+  // }
 
-  return connect(mapStateToProps)(Authenticate);
+  // return connect(mapStateToProps)(Authenticate);
+  return Authenticate;
 }

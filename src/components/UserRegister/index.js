@@ -26,6 +26,19 @@ export default class UserRegister extends Component{
     client["client"] = this.state
     return(
       <div>
+        {
+          Object.keys(this.props.flashMessage).length === 0?
+            null
+          :
+          <div id="flash-message-error">
+            {
+              this.props.flashMessage.map((item, i)=>
+                <p key={i} className="flash-message-error"><span>&#10005;</span>{item}</p>
+              )
+            }
+          </div>
+
+        }
         <form onSubmit={(e)=>{e.preventDefault() ;this.props.createClient(client)}}>
         <div className="user-form">
           <label>Username</label>

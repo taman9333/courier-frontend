@@ -50,14 +50,14 @@ export function createClient(client){
 export function createClientSuccess(response){
   return{
     type:CREATE_CLIENT_SUCCESS,
-    data:response.payload.data.client
+    data:response.payload.data
   }
 }
 
 export function createClientFailure(error){
   return{
     type:CREATE_CLIENT_FAILURE,
-    error
+    error:error.payload.response.data.errors
   }
 }
 
@@ -87,7 +87,7 @@ export function loginClientSuccess(response){
 export function loginClientFailure(error){
   return{
     type:LOGIN_CLIENT_FAILURE,
-    error
+    error:error.payload.response.data
   }
 }
 
