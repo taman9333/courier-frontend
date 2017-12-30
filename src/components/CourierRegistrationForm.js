@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import './style.css'
 
-export default class CourierRegisterationForm extends Component{
+export default class CourierRegistrationForm extends Component{
     constructor(){
       super()
       this.state = {
@@ -24,7 +24,7 @@ export default class CourierRegisterationForm extends Component{
       courier["courier"] = this.state
       return(
         <div>
-          <form onSubmit={(e)=>{e.preventDefault() ;this.props.newCourier(courier)}}>
+          <form onSubmit={(e)=>{e.preventDefault() ;this.props.addCourier(courier)}}>
           <div className="courier-form">
             <label>Username</label>
             <input type="text" name="username" onChange={this._handleChange} />

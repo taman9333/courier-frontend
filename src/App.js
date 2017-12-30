@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import { Route } from 'react-router-dom';
-// import CourierRegisteration from './pages/CourierRegisterations';
-import CourierLogin from './components/CourierLoginForm';
+import CourierRegistration from './pages/CourierRegistrations';
+import CourierLogin from './containers/CourierLoginsContainer';
 
 class App extends Component {
   render() {
@@ -14,8 +14,8 @@ class App extends Component {
           <h1 className="HAT">Welcome to HAT</h1>
         </header>
         <div className="App-container">
-          {/* <Route path="/" exact component={CourierRegisteration} /> */}
-          <Route path="/" exact component={CourierLogin} />
+          <Route path="/courier/register" exact component={CourierRegistration} />
+          <Route path="/courier/login" exact component={CourierLogin} />
           {/* <Route path="/client/login" component={ClientLogin} /> */}
         </div>
       </div>

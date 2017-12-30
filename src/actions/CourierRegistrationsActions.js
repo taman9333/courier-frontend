@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { courierRegisterationsApi } from '../apiConfig';
+import { courierRegistrationsApi } from '../apiConfig';
 
 export const ADD_COURIER_LOADING = 'ADD_COURIER_LOADING';
 export const ADD_COURIER = 'ADD_COURIER';
@@ -13,10 +13,7 @@ export const addCourierLoading = () => {
 }
 
 export const addCourier = (courier) => {
-    const payload = Axios.post(courierRegisterationsApi, {
-        courier,
-        adding: false
-    });
+    const payload = Axios.post(courierRegistrationsApi, courier);
     return {
         type: ADD_COURIER,
         payload

@@ -1,6 +1,6 @@
 import {
-	ADD_COURIER_LOADING, ADD_COURIER, ADD_COURIER_SUCCESS, ADD_COURIER_FAILURE
-} from '../actions/CourierRegisterationsActions';
+	ADD_COURIER_LOADING, ADD_COURIER_SUCCESS, ADD_COURIER_FAILURE
+} from '../actions/CourierRegistrationsActions';
 
 const INITIAL_STATE = {
 	courier: {
@@ -19,10 +19,8 @@ export default function(currentState = INITIAL_STATE, action) {
 	switch (action.type) {
 		case ADD_COURIER_LOADING:
 			return {...currentState, adding: true};
-		case ADD_COURIER:
-			return {...currentState, courier: action.courier};
 		case ADD_COURIER_SUCCESS:
-			return {...currentState, adding: false, items: [...currentState.items, action.courier]};
+			return {...currentState, adding: false, courier: action.courier};
 		case ADD_COURIER_FAILURE:
 			return {...currentState, adding: false, errorAdding: action.error};
 		default:

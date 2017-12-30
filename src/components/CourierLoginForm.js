@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import './style.css'
 import { Link} from 'react-router-dom';
-// import{ login } from '../actions/AuthActions.js';
+// import{ courierLogin } from '../actions/CourierLoginsActions.js';
 
 export default class CourierLoginForm extends Component{
     constructor(){
@@ -22,7 +22,7 @@ export default class CourierLoginForm extends Component{
       courier["courier"] = this.state
       return(
         <div>
-          <form onSubmit={(e)=>{e.preventDefault() ;this.props.newCourierSession(courier)}}>
+          <form onSubmit={(e)=>{e.preventDefault(); this.props.courierLogin(courier)}}>
           <div className="courier-form">
             <label>Email</label>
             <input type="email" name="email" onChange={this._handleChange} />
