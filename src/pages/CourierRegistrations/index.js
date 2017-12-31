@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 // import { Route } from 'react-router-dom';
-import CourierRegistrations from '../../containers/CourierRegistrationsContainer';
+import Form from '../../components/CourierRegistrationForm';
 
 
-export default class CourierRegistrationPage extends Component {
+export default class CourierRegistrationsPage extends Component {
     render (){
         return (
             <div>
                 <h2>Register as a Courier</h2>
-                <CourierRegistrations />
-                {/* <Route path="/courier/register" component={CourierRegistrations} /> */}
+                <Form />
             </div>
         )
     }

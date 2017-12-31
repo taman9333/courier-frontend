@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import './style.css'
 import { Link} from 'react-router-dom';
-// import{ courierLogin } from '../actions/CourierLoginsActions.js';
 
 export default class CourierLoginForm extends Component{
     constructor(){

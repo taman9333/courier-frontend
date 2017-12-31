@@ -19,6 +19,7 @@ export default function(currentState = INITIAL_STATE, action) {
 	switch (action.type) {
 		case ADD_COURIER_LOADING:
 			return {...currentState, adding: true};
+			// break;
 		case ADD_COURIER_SUCCESS:
 			return {...currentState, adding: false, courier: action.courier};
 		case ADD_COURIER_FAILURE:
@@ -29,4 +30,5 @@ export default function(currentState = INITIAL_STATE, action) {
 }
 
 
-        
+
+  

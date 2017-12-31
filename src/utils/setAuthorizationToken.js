@@ -1,9 +1,14 @@
 import Axios from 'axios';
 
-export default function setAuthorizationToken(token ) {
+export default function setAuthorizationToken(token) {
     if (token) {
-        axios.defaults.headers.common['Authorization'] = 'Bearer ${token}';
+        // Axios.defaults.headers.common['Authorization'] = 'Bearer ${token}';
+        Axios.defaults.headers.common['jwtToken'] = `${token}`;
     } else {
         delete Axios.defaults.headers.common['Authorization'];
     }
 }
+
+
+
+

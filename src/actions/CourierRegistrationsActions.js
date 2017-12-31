@@ -20,10 +20,11 @@ export const addCourier = (courier) => {
     }
 }
 
-export const addCourierSuccess = (courier) => {
+export const addCourierSuccess = (response) => {
     return {
         type: ADD_COURIER_SUCCESS,
-        courier
+        // courier
+        courier:response.payload.data.courier
     }
 }
 export const addCourierFailure = (error) => {

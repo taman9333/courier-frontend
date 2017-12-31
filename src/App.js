@@ -3,7 +3,9 @@ import logo from './logo.png';
 import './App.css';
 import { Route } from 'react-router-dom';
 import CourierRegistration from './pages/CourierRegistrations';
-import CourierLogin from './containers/CourierLoginsContainer';
+// import ForgotPassword from './pages/ForgotPassword';
+import CourierLogin from './pages/CourierLogins';
+// import requireAuth from './utils/requireAuth'
 
 class App extends Component {
   render() {
@@ -16,8 +18,10 @@ class App extends Component {
         <div className="App-container">
           <Route path="/courier/register" exact component={CourierRegistration} />
           <Route path="/courier/login" exact component={CourierLogin} />
-          {/* <Route path="/client/login" component={ClientLogin} /> */}
+          {/* <Route path='/courier/login' component={requireAuth(CourierLogin)}/> */}
+          {/* <Route path="/forgotpassword" exact component={ForgotPassword} /> */}
         </div>
+        <footer><p>&copy; 2018 HAT.com</p></footer>
       </div>
     );
   }
