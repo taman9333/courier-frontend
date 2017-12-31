@@ -1,0 +1,13 @@
+.flash-message-error{
+  display:inline-block;
+  color:#fff;
+}
+
+.flash-message-error-container{
+  background:#ff3333;
+  margin:10px;
+}
+
+#create-pickup{
+  display:none
+}

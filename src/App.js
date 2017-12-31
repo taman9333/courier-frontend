@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import HomePage from './pages/HomePage'
 import {Link, Route} from 'react-router-dom';
-import UserLogin from './containers/ClientLoginContainer'
-import ClientProfile from './containers/ClientProfileContainer'
-import requireAuth from './utils/requireAuth'
-import CreateOrder from './components/CreateOrder'
+import UserLogin from './containers/ClientLoginContainer';
+import ClientProfile from './containers/ClientProfileContainer';
+import requireAuth from './utils/requireAuth';
+import CreateOrder from './containers/CreateOrderContainer';
+import OrderDetails from './containers/OrderDetailsContainer';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
         <Route path='/clientprofile' component={requireAuth(ClientProfile)}/>
         <Route path='/register' component={HomePage}/>
         <Route path='/client/:id/createorder' exact component={requireAuth(CreateOrder)}/>
+        <Route path='/orderdetails' exact component={requireAuth(OrderDetails)}/>
     </div>
     );
   }
