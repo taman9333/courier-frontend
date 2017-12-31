@@ -1,26 +1,28 @@
+// import Axios from 'axios';
+// import { courierProfileApi } from '../apiConfig';
 
 export const SHOW_COURIER = 'SHOW_COURIER'
-export const UPDATE_COURIER = 'UPDATE_COURIER'
+// export const UPDATE_COURIER = 'UPDATE_COURIER'
 export const COURIER_LOGOUT = 'COURIER_LOGOUT'
-export const RESET_PASSWORD = 'RESET_PASSWORD'
+// export const RESET_PASSWORD = 'RESET_PASSWORD'
 
 
-export const showCourier = (courier) => {
+export const showCourier = (response) => {
     return{
         type:SHOW_COURIER,
-        courier
+        courier:response.data.courier
     }
 }
 
-export const updateCourier = (data) => {
-    return{
-        type:UPDATE_COURIER,
-        username: data.username,
-        email: data.email,
-        phone: data.phone,
-        img:data.img
-    }
-}
+// export const updateCourier = (data) => {
+//     return{
+//         type:UPDATE_COURIER,
+//         username: data.username,
+//         email: data.email,
+//         phone: data.phone,
+//         img:data.img
+//     }
+// }
 
 
   
@@ -31,11 +33,11 @@ export function courierLogout(){
 }
   
   
-export function resetPassword(data){
-    return{
-        type:RESET_PASSWORD,
-        old_password: data.old_password,
-        new_password: data.new_password,
-        new_password_confirmation: data.new_password_confirmation
-    }
-}
+// export function resetPassword(data){
+//     return{
+//         type:RESET_PASSWORD,
+//         old_password: data.old_password,
+//         new_password: data.new_password,
+//         new_password_confirmation: data.new_password_confirmation
+//     }
+// }

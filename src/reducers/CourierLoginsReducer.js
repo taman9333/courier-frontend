@@ -1,15 +1,12 @@
 import {
-	COURIER_LOGIN_LOADING, COURIER_LOGIN_SUCCESS, COURIER_LOGIN_FAILURE, SEND_RESET_PASSWORD_LINK
+	COURIER_LOGIN_LOADING, COURIER_LOGIN_SUCCESS, COURIER_LOGIN_FAILURE
+	// , SEND_RESET_PASSWORD_LINK
 } from '../actions/CourierLoginActions';
 
 const INITIAL_STATE = {
-	courier: {
-		email: '',
-		password: ''
-	},
+	courier: {},
 	logging: false,
-	errorLogging: null,
-	isAuthenticated:false
+	loginFlashMessage:{}
 }
 
 export default function(currentState = INITIAL_STATE, action) {
@@ -19,13 +16,15 @@ export default function(currentState = INITIAL_STATE, action) {
 			// break;
 		case COURIER_LOGIN_SUCCESS:
 			return {...currentState, logging: false, courier: action.courier};
+			// break;
 			// return {...currentState, loading:false, client:action.data.client, isAuthenticated:true}
 		case COURIER_LOGIN_FAILURE:
-			return {...currentState, logging: false, errorLogging: action.error};
-		case SEND_RESET_PASSWORD_LINK:
-			return {};
+			return {...currentState, logging: false, loginFlashMessage: action.error};
+			// break;
+		// case SEND_RESET_PASSWORD_LINK:
+		// 	return {};
+		// 	break;
 		default:
 			return currentState;
 	}
 }
-

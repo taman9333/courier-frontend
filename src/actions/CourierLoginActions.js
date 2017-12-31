@@ -5,7 +5,7 @@ export const COURIER_LOGIN_LOADING = 'COURIER_LOGIN_LOADING';
 export const COURIER_LOGIN = 'COURIER_LOGIN';
 export const COURIER_LOGIN_SUCCESS = 'COURIER_LOGIN_SUCCESS';
 export const COURIER_LOGIN_FAILURE = 'COURIER_LOGIN_FAILURE';
-export const SEND_RESET_PASSWORD_LINK = 'SEND_RESET_PASSWORD_LINK';
+// export const SEND_RESET_PASSWORD_LINK = 'SEND_RESET_PASSWORD_LINK';
 
 export const courierLoginLoading = () => {
     return {
@@ -35,10 +35,10 @@ export const courierLoginFailure = (error) => {
     }
 }
 
-export const sendResetPasswordLink = (email) => {
-    return {
-        type: SEND_RESET_PASSWORD_LINK,
-        email
-    }
-}
+// export const sendResetPasswordLink = (email) => {
+//     return {
+//         type: SEND_RESET_PASSWORD_LINK,
+//         email
+//     }
+// }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import './style.css'
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default class CourierProfile extends Component{
@@ -8,7 +8,7 @@ export default class CourierProfile extends Component{
     const courier = this.state.courier
     return(
       <div>
-        <img/>
+        <img alt="" src=""/>
         {/* rating */}
         <p>
           ${courier.username}

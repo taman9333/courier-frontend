@@ -24,7 +24,7 @@ export const addCourierSuccess = (response) => {
     return {
         type: ADD_COURIER_SUCCESS,
         // courier
-        courier:response.payload.data.courier
+        message:response.payload.data.message
     }
 }
 export const addCourierFailure = (error) => {

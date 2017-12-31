@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => {
                         setAuthorizationToken(token);
                         history.push('/clientprofile')
                     }else{
-                        dispatch(courierLoginFailure(response.payload.message));
+                        dispatch(courierLoginFailure(response.payload.error));
                     }
                 })
             // }, 2000)

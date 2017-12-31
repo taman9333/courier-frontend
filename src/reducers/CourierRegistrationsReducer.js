@@ -3,16 +3,8 @@ import {
 } from '../actions/CourierRegistrationsActions';
 
 const INITIAL_STATE = {
-	courier: {
-		username: '',
-		email: '',
-		password: '',
-		passowrd_confirmation: '',
-		phone: '',
-		img: ''
-	},
 	adding: false,
-	errorAdding: null
+	registerFlashMessage:{}
 }
 
 export default function(currentState = INITIAL_STATE, action) {
@@ -21,14 +13,14 @@ export default function(currentState = INITIAL_STATE, action) {
 			return {...currentState, adding: true};
 			// break;
 		case ADD_COURIER_SUCCESS:
-			return {...currentState, adding: false, courier: action.courier};
+			return {...currentState, adding: false, registerFlashMessage:action.message};
+			// break;
 		case ADD_COURIER_FAILURE:
-			return {...currentState, adding: false, errorAdding: action.error};
+			return {...currentState, adding: false, registerFlashMessage:action.error};
+			// break;
 		default:
 			return currentState;
 	}
 }
-
-
 
   

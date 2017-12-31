@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import './style.css'
-import { Route } from 'react-router-dom';
-import CourierNotifications from '../containers/CourierNotificationsContainer';
+// import { Route } from 'react-router-dom';
+// import CourierNotifications from '../containers/CourierNotificationsContainer';
 
 export default class CourierHeader extends Component{
   render(){
@@ -9,9 +9,9 @@ export default class CourierHeader extends Component{
     return(
       <div>
         <form onSubmit={(e)=>{e.preventDefault(); this.props.courierLogout()}}>
-        <img />
+        <img alt="" src=""/>
         <p>Welcome ${courier.username}</p>
-        <CourierNotifications />
+        {/* <CourierNotifications /> */}
         <button>Log out</button>
         </form>
       </div>
