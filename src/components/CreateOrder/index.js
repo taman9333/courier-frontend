@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import './style.css';
+import Axios from 'axios';
+import {getClientAddressesApi} from '../../apiConfig';
 
 export default class CreateOrder extends Component{
   constructor(props){
@@ -26,7 +28,10 @@ export default class CreateOrder extends Component{
         area:"",
         saved:false,
         client_id:Number(this.props.location.pathname.split("/")[2])
-      }
+      },
+      addresses:[],
+      pickup_address_id:0,
+      drop_off_address_id:0
     },
     this._handleChange = this._handleChange.bind(this)
     this._handleDimensions = this._handleDimensions.bind(this)
@@ -35,6 +40,7 @@ export default class CreateOrder extends Component{
     this._handleOrder = this._handleOrder.bind(this)
     this._handleDropoffSaved = this._handleDropoffSaved.bind(this)
     this._newAddressHandle = this._newAddressHandle.bind(this)
+    this._getAddressHandle = this._getAddressHandle.bind(this)
   }
 
   _handleChange(e){
@@ -71,16 +77,10 @@ export default class CreateOrder extends Component{
     this.setState({...this.state, drop_off_address_attributes:{...this.state.drop_off_address_attributes, saved:e.target.value}})
   }
 
-  _handleOrder(e){
-    e.preventDefault();
-    const id = Number(this.props.location.pathname.split("/")[2])
-    var order = {};
-    order["order"] = this.state
-    this.props.createOrder(id, order)
-  }
-
-  _newAddressHandle(e){
-    var x =document.getElementById("create-pickup")
+  _newAddressHandle(x, y){
+    // var y = document.getElementById("pickup-drop-menu");
+    y.style.display="none"
+    // var x =document.getElementById("create-pickup")
     if (x.style.display === "block") {
       x.style.display = "none"
     }else{
@@ -88,7 +88,48 @@ export default class CreateOrder extends Component{
     }
   }
 
+  _getAddressHandle(x, y){
+    // var y = document.getElementById("create-pickup");
+    y.style.display="none"
+    // var x = document.getElementById("pickup-drop-menu");
+    if (x.style.display === "block") {
+      x.style.display = "none"
+    }else{
+      x.style.display = "block"
+    }
+  }
+
+  _handleOrder(e){
+    e.preventDefault();
+    const id = Number(this.props.location.pathname.split("/")[2])
+    let order = this.state
+    let {pickup_address_attributes, drop_off_address_attributes, drop_off_address_id, pickup_address_id, addresses, ...cloneOrder} = order
+    if (this.state.pickup_address_id === 0) {
+      cloneOrder["pickup_address_attributes"] = this.state.pickup_address_attributes
+    }else{
+      cloneOrder["pickup_address_id"] = this.state.pickup_address_id
+    }
+    if (this.state.drop_off_address_id === 0) {
+      cloneOrder["drop_off_address_attributes"] = this.state.drop_off_address_attributes
+    }else{
+      cloneOrder["drop_off_address_id"] = this.state.drop_off_address_id
+    }
+    let finalOrder = {}
+    finalOrder["order"] = cloneOrder
+    this.props.createOrder(id, finalOrder)
+  }
+
+  componentWillMount(){
+    Axios.get(getClientAddressesApi).then((response)=>{
+      this.setState({...this.state, addresses:response.data.addresses})
+    })
+  }
+
   render(){
+    if (Object.keys(this.state.addresses).length === 0) {
+      return <div>Loading</div>
+    }else{
+
     return(
       <div>
         {
@@ -104,18 +145,17 @@ export default class CreateOrder extends Component{
           </div>
         }
         <form onSubmit={this._handleOrder}>
-        <div>
-
-          <label htmlFor="category">Category</label>
-          <select id="category" name="category" onChange={this._handleChange}>
-            <option></option>
-            <option value="electronics">electronics</option>
-            <option value="food">food</option>
-            <option value="beauty">beauty</option>
-            <option value="clothing">clothing</option>
-            <option value="automotive">automotive</option>
-            <option value="outdoors">outdoors</option>
-          </select>
+          <div>
+            <label htmlFor="category">Category</label>
+            <select id="category" name="category" onChange={this._handleChange}>
+              <option></option>
+              <option value="electronics">electronics</option>
+              <option value="food">food</option>
+              <option value="beauty">beauty</option>
+              <option value="clothing">clothing</option>
+              <option value="automotive">automotive</option>
+              <option value="outdoors">outdoors</option>
+            </select>
           </div>
           <div >
             <label htmlFor="weight">Weight in Kg.</label>
@@ -140,8 +180,17 @@ export default class CreateOrder extends Component{
             <input id="billing_address" type="radio" name="billing_address" value="2" onChange={this._handleChange} required/>
           </div>
           <h3>Pickup Address</h3>
-          <button type="button" onClick={this._newAddressHandle}>Enter new address</button>
-          <button>choose from saved address</button>
+          <button type="button" onClick={()=>{this._newAddressHandle(document.getElementById("create-pickup"), document.getElementById("pickup-drop-menu"))}}>Enter new address</button>
+          <button type="button" onClick={()=>{this._getAddressHandle(document.getElementById("pickup-drop-menu"), document.getElementById("create-pickup"))}}>choose from saved address</button>
+          <div id="pickup-drop-menu">
+            <select name="pickup_address_id" onChange={this._handleChange}>
+              {
+                this.state.addresses.map(function(item){
+                  return <option key={item.id} value={item.id}>{item.building_number} - {item.street} - {item.area}</option>
+                })
+              }
+            </select>
+          </div>
           <div id="create-pickup">
             <div>
               <label htmlFor="apartment_number">Apartment number</label>
@@ -185,13 +234,24 @@ export default class CreateOrder extends Component{
             <div >
               <p>Do you want to save this address</p>
               <label htmlFor="pickup-saved-true">Yes</label>
-              <input id="pickup-saved-true" type="radio" name="saved" value="true" onChange={this._handlePickup} required/>
+              <input id="pickup-saved-true" type="radio" name="saved" value="true" onChange={this._handlePickup} />
               <label htmlFor="pickup-saved-false">No</label>
-              <input id="pickup-saved-false" type="radio" name="saved" value="false" onChange={this._handlePickup} required/>
+              <input id="pickup-saved-false" type="radio" name="saved" value="false" onChange={this._handlePickup} />
             </div>
           </div>
-          <div>
-            <h3>dropoff Address</h3>
+          <h3>dropoff Address</h3>
+          <button type="button" onClick={()=>{this._newAddressHandle(document.getElementById("create-dropoff"), document.getElementById("dropoff-drop-menu"))}}>Enter new address</button>
+          <button type="button" onClick={()=>{this._getAddressHandle(document.getElementById("dropoff-drop-menu"), document.getElementById("create-dropoff"))}}>choose from saved address</button>
+          <div id="dropoff-drop-menu">
+            <select name="drop_off_address_id" onChange={this._handleChange}>
+              {
+                this.state.addresses.map(function(item){
+                  return <option key={item.id} value={item.id}>{item.building_number} - {item.street} - {item.area}</option>
+                })
+              }
+            </select>
+          </div>
+          <div id="create-dropoff">
             <div>
               <label htmlFor="apartment_number">Apartment number</label>
               <input id="apartment_number" type="number" name="apartment_number" onChange={this._handleDropoff}/>
@@ -205,7 +265,7 @@ export default class CreateOrder extends Component{
               <input id="street" type="text" name="street" onChange={this._handleDropoff}/>
             </div>
             <div>
-            <label htmlFor="dropoff-area">Area</label>
+              <label htmlFor="dropoff-area">Area</label>
               <select id="dropoff-area" name="area" onChange={this._handleDropoff}>
                 <option></option>
                 <option value="abbasiya">Abbasiya</option>
@@ -234,18 +294,18 @@ export default class CreateOrder extends Component{
             <div >
               <p>Do you want to save this address</p>
               <label htmlFor="dropoff-saved-true">Yes</label>
-              <input id="dropoff-saved-true" type="radio" name="dropoff-saved" value="true" onChange={this._handleDropoffSaved} required/>
+              <input id="dropoff-saved-true" type="radio" name="dropoff-saved" value="true" onChange={this._handleDropoffSaved} />
               <label htmlFor="dropoff-saved-false">No</label>
-              <input id="dropoff-saved-false" type="radio" name="dropoff-saved" value="false" onChange={this._handleDropoffSaved} required/>
+              <input id="dropoff-saved-false" type="radio" name="dropoff-saved" value="false" onChange={this._handleDropoffSaved} />
             </div>
           </div>
 
-          <button>Submit</button>
+          <p>
+            <button>Submit</button>
+          </p>
         </form>
       </div>
     )
   }
+  }
 }
-
-
-//<p>{Number(this.props.location.pathname.split("/")[2])}</p>

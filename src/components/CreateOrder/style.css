@@ -9,5 +9,17 @@
 }
 
 #create-pickup{
-  display:none
+  display:none;
+}
+
+#pickup-drop-menu{
+  display:none;
+}
+
+#dropoff-drop-menu{
+  display:none;
+}
+
+#create-dropoff{
+  display:none;
 }
