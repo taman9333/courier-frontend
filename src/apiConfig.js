@@ -1,17 +1,19 @@
 export const rootApi = `http://localhost:3000`;
 
 export const courierApi = `${rootApi}/courier`;
+// `http://localhost:3000/clients/${id}`
 
 // // Courier_Profile
-export const courierProfileApi = `${courierApi}/profile`;
+export const courierProfileApi = `${rootApi}/courier/profile`;
 
 // Courier_Registrations
-export const courierRegistrationsApi = `${courierApi}/register`;
+export const courierRegistrationsApi = `${rootApi}/courier/register`;
 
 // Courier_Sessions
-export const courierSessionsApi = `${courierApi}/login`;
+export const courierSessionsApi = `${rootApi}/courier/login`;
 
 
 // patch 'update_profile', to: 'profile#update'
 
-
+// open_auctions
+export const openAuctionsApi = `${rootApi}/courier/open_auction`;

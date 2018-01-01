@@ -24,12 +24,12 @@ export const addCourierSuccess = (response) => {
     return {
         type: ADD_COURIER_SUCCESS,
         // courier
-        message:response.payload.data.message
+        message:response.payload.data
     }
 }
 export const addCourierFailure = (error) => {
     return {
         type: ADD_COURIER_FAILURE,
-        error
+        error:error.payload.response.data.errors
     }
 }

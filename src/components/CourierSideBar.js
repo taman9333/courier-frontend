@@ -8,7 +8,7 @@ export default class CourierSideBar extends Component{
         <div>
           <nav>
             <ul>
-            <li><Link to="/courier/notifications">Notifications</Link></li>
+              <li><Link to="/courier/notifications">Notifications</Link></li>
               <li><Link to="/courier/profile">View Profile</Link></li>
               <li><Link to="/courier/reviews">Reviews</Link></li>
               <li><Link to="/courier/openauctions">Open Auctions</Link></li>

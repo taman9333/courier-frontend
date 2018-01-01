@@ -17,8 +17,9 @@ export default class CourierLoginForm extends Component{
     }
   
     render(){
-      const courier = {}
-      courier["courier"] = this.state
+      // const courier = {}
+      // courier["courier"] = this.state
+      const courier = this.state
       return(
         <div>
           <form onSubmit={(e)=>{e.preventDefault(); this.props.courierLogin(courier)}}>

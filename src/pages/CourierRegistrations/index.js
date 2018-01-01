@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Route } from 'react-router-dom';
-import Form from '../../components/CourierRegistrationForm';
+import Form from '../../containers/CourierRegistrationContainer';
 
 
 export default class CourierRegistrationsPage extends Component {

@@ -1,16 +1,16 @@
 // import Axios from 'axios';
 // import { courierProfileApi } from '../apiConfig';
 
-export const SHOW_COURIER = 'SHOW_COURIER'
+export const SHOW_COURIER_SUCCESS = 'SHOW_COURIER_SUCCESS'
 // export const UPDATE_COURIER = 'UPDATE_COURIER'
 export const COURIER_LOGOUT = 'COURIER_LOGOUT'
 // export const RESET_PASSWORD = 'RESET_PASSWORD'
 
 
-export const showCourier = (response) => {
+export const showCourierSuccess = (response) => {
     return{
-        type:SHOW_COURIER,
-        courier:response.data.courier
+        type:SHOW_COURIER_SUCCESS,
+        courier:response.payload.data.courier
     }
 }
 

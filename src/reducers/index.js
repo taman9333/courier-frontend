@@ -1,12 +1,15 @@
 import {combineReducers} from 'redux';
 import CourierRegistrations from './CourierRegistrationsReducer';
 import CourierLogins from './CourierLoginsReducer';
-import Courier from './CourierReducer';
+import CourierProfile from './CourierProfileReducer';
+import CourierHeader from './CourierHeaderReducer';
+
 
 const rootReducer = combineReducers({
     CourierRegistrations,
     CourierLogins,
-    Courier
+    CourierProfile,
+    CourierHeader
 })
 
 export default rootReducer;

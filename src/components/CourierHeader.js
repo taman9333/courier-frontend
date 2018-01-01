@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
+import history from '../history';
 // import './style.css'
 // import { Route } from 'react-router-dom';
 // import CourierNotifications from '../containers/CourierNotificationsContainer';
 
 export default class CourierHeader extends Component{
+  
+  componentWillMount(){
+    if(localStorage.getItem('jwtToken') !== null && Object.keys(this.props.courier).length === 0){
+      this.props.showCourier(this.props.courier.id)
+    }
+  }
+
+  _logout(e){
+    e.preventDefault();
+    this.props.courierLogout();
+    history.push('/')
+  }
+
   render(){
-    const courier = this.state.courier;
+    // const courier = this.state;
     return(
       <div>
-        <form onSubmit={(e)=>{e.preventDefault(); this.props.courierLogout()}}>
+        <form onSubmit={(e)=>{e.preventDefault(); this.props.courierLogout(this.props.courier.id)}}>
         <img alt="" src=""/>
-        <p>Welcome ${courier.username}</p>
+        <p>Welcome {this.props.courier.username}</p>
         {/* <CourierNotifications /> */}
-        <button>Log out</button>
-        </form>
+        <button onClick={this._logout.bind(this)}>Log out</button>
+        </form> 
       </div>
     )
   }
