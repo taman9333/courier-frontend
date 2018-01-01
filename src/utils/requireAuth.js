@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 import history from '../history'
 
 export default function(ComposedComponent){
@@ -19,12 +19,3 @@ export default function(ComposedComponent){
 
   return Authenticate;
 }
-
-
-  // function mapStateToProps(state){
-  //   return{
-  //     isAuthenticated:state.client.isAuthenticated
-  //   }
-  // }
-
-  // return connect(mapStateToProps)(Authenticate);

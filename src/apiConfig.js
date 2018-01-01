@@ -1,3 +1,4 @@
+
 export const rootApi = `http://localhost:3000`;
 
 export const courierApi = `${rootApi}/courier`;
@@ -17,3 +18,20 @@ export const courierSessionsApi = `${rootApi}/courier/login`;
 
 // open_auctions
 export const openAuctionsApi = `${rootApi}/courier/open_auction`;
+
+
+// clients
+
+export const newClientApi = `${rootApi}/clients_registrations`
+
+export const loginClientApi = `${rootApi}/client/sessions`
+
+
+//orders
+
+export const createOrderApi = (id)=>{return`${rootApi}/clients/orders`}
+
+// get client addresses
+
+export const getClientAddressesApi = `${rootApi}/client/addresses`
+
