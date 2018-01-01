@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './style.css'
+import history from '../../history'
 
 export default class UserRegister extends Component{
   constructor(){
@@ -19,6 +20,12 @@ export default class UserRegister extends Component{
     this.setState({...this.state, [e.target.name]:e.target.value})
   }
 
+
+  componentWillMount(){
+    if (localStorage.getItem('jwtToken') !== null) {
+      history.push('/')
+    }
+  }
 
 
   render(){

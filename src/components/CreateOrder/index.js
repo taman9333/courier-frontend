@@ -7,7 +7,7 @@ export default class CreateOrder extends Component{
   constructor(props){
     super(props);
     this.state={
-      client_id:Number(this.props.location.pathname.split("/")[2]),
+      client_id:0,
       category:"",
       weight:0,
       dimensions:"",
@@ -19,7 +19,7 @@ export default class CreateOrder extends Component{
         street:"",
         area:"",
         saved:false,
-        client_id:Number(this.props.location.pathname.split("/")[2])
+        client_id:0
       },
       drop_off_address_attributes:{
         apartment_number:0,
@@ -27,11 +27,12 @@ export default class CreateOrder extends Component{
         street:"",
         area:"",
         saved:false,
-        client_id:Number(this.props.location.pathname.split("/")[2])
+        client_id:0
       },
       addresses:[],
       pickup_address_id:0,
-      drop_off_address_id:0
+      drop_off_address_id:0,
+      bid_deadline:""
     },
     this._handleChange = this._handleChange.bind(this)
     this._handleDimensions = this._handleDimensions.bind(this)
@@ -121,15 +122,11 @@ export default class CreateOrder extends Component{
 
   componentWillMount(){
     Axios.get(getClientAddressesApi).then((response)=>{
-      this.setState({...this.state, addresses:response.data.addresses})
+      this.setState({...this.state, addresses:response.data.addresses, client_id:response.data.client_id, })
     })
   }
 
   render(){
-    if (Object.keys(this.state.addresses).length === 0) {
-      return <div>Loading</div>
-    }else{
-
     return(
       <div>
         {
@@ -179,6 +176,10 @@ export default class CreateOrder extends Component{
             <label htmlFor="dropoff">drop off</label>
             <input id="billing_address" type="radio" name="billing_address" value="2" onChange={this._handleChange} required/>
           </div>
+          <div id="bid_deadline">
+            <label>bid deadline</label>
+            <input type="date" name="bid_deadline" onChange = {this._handleChange}/>
+          </div>
           <h3>Pickup Address</h3>
           <button type="button" onClick={()=>{this._newAddressHandle(document.getElementById("create-pickup"), document.getElementById("pickup-drop-menu"))}}>Enter new address</button>
           <button type="button" onClick={()=>{this._getAddressHandle(document.getElementById("pickup-drop-menu"), document.getElementById("create-pickup"))}}>choose from saved address</button>
@@ -186,7 +187,7 @@ export default class CreateOrder extends Component{
             <select name="pickup_address_id" onChange={this._handleChange}>
               {
                 this.state.addresses.map(function(item){
-                  return <option key={item.id} value={item.id}>{item.building_number} - {item.street} - {item.area}</option>
+                  return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>
                 })
               }
             </select>
@@ -246,7 +247,7 @@ export default class CreateOrder extends Component{
             <select name="drop_off_address_id" onChange={this._handleChange}>
               {
                 this.state.addresses.map(function(item){
-                  return <option key={item.id} value={item.id}>{item.building_number} - {item.street} - {item.area}</option>
+                  return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>
                 })
               }
             </select>
@@ -306,6 +307,5 @@ export default class CreateOrder extends Component{
         </form>
       </div>
     )
-  }
   }
 }

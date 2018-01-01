@@ -7,7 +7,7 @@ export default class ClientProfile extends Component{
 
   componentWillMount(){
     if(localStorage.getItem('jwtToken') !== null && Object.keys(this.props.client).length === 0){
-      this.props.showClient(this.props.client.id)
+      this.props.showClient()
     }
   }
 
@@ -24,7 +24,7 @@ export default class ClientProfile extends Component{
         <p>Email: {this.props.client.email}</p>
         <p>Phone: {this.props.client.phone}</p>
         <button onClick={this._logout.bind(this)}>Logout</button>
-        <Link to={{pathname:`/client/${this.props.client.id}/createorder`, query:this.props.client}}>Create Order</Link>
+        <Link to={{pathname:`/client/createorder`, query:this.props.client}}>Create Order</Link>
       </div>
     )
   }

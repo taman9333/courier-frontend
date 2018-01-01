@@ -14,8 +14,8 @@ const mapStateToProps = function(state){
 
 const mapDispatchToProps = function(dispatch){
   return{
-    showClient:function(id){
-      Axios.get(`http://localhost:3000/clients/${id}`).then(function(response){
+    showClient:function(){
+      Axios.get(`http://localhost:3000/clients`).then(function(response){
         dispatch(showClientSuccess(response))
       })
       .catch(function(error){
