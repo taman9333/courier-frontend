@@ -13,7 +13,7 @@ const INITIAL_STATE = {
 export default function(currentState = INITIAL_STATE, action) {
 	switch (action.type) {
 		case SHOW_COURIER_SUCCESS:
-			return {...currentState, courier:action.data.courier};
+			return {...currentState, courier:action.courier};
 			// break;
 		// case UPDATE_COURIER:
 		// 	return {...currentState, courier: {...this.state.courier, username:action.username, email:action.email, phone:action.phone, img:action.img }};		

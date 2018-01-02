@@ -24,7 +24,7 @@ const mapDispatchToProps = function(dispatch){
           localStorage.setItem('jwtToken', token);
           dispatch(loginClientSuccess(response))
           setAuthorizationToken(token);
-          history.push('/clientprofile')
+          history.push('/client/profile')
         }else{
           dispatch(loginClientFailure(response))
         }

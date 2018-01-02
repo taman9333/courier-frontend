@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Header from '../components/CourierHeader.js';
-import { showCourierSuccess , courierLogout } from '../actions/CourierActions.js';
+import { showCourierSuccess, showCourier, courierLogout } from '../actions/CourierActions.js';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 // import history from '../history'
 import Axios from 'axios'
@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         showCourier: (id) => {
-            Axios.get(courierProfileApi).then(response => {
+            dispatch(showCourier()).then(response => {
                 dispatch(showCourierSuccess(response))
             })
             .catch(error => {

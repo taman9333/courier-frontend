@@ -15,7 +15,7 @@ export default class CourierHeader extends Component{
   _logout(e){
     e.preventDefault();
     this.props.courierLogout();
-    history.push('/')
+    history.push('/login/courier')
   }
 
   render(){

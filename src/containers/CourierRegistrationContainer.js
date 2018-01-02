@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Form from '../components/CourierRegistrationForm.js';
 import { addCourierLoading, addCourier, addCourierSuccess, addCourierFailure } from '../actions/CourierRegistrationsActions.js';
+import history from '../history'
 
 const mapStateToProps = (state) => {
     return {
@@ -15,17 +16,17 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addCourier: (courier) => {
             dispatch(addCourierLoading());
-            setTimeout(() => {
-                dispatch(addCourier(courier)).then(response => {
-                    if(response.payload.status < 400){
-                        // dispatch(addCourierSuccess(response.payload.courier));
-                        dispatch(addCourierSuccess(response));
-                    }else{
-                        // dispatch(addCourierFailure(response.payload.message));
-                        dispatch(addCourierFailure(response));
-                    }
-                })
-            }, 2000)
+            dispatch(addCourier(courier)).then(response => { 
+                if(response.payload.status < 400){
+                    // dispatch(addCourierSuccess(response.payload.courier));
+                    dispatch(addCourierSuccess(response));
+                    history.push('/login/courier')
+                }else{
+                    // dispatch(addCourierFailure(response.payload.message));
+                    dispatch(addCourierFailure(response));
+                }
+            })
+            
         }
     }
 }

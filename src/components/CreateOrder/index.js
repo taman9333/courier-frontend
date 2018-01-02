@@ -184,7 +184,9 @@ export default class CreateOrder extends Component{
           <button type="button" onClick={()=>{this._newAddressHandle(document.getElementById("create-pickup"), document.getElementById("pickup-drop-menu"))}}>Enter new address</button>
           <button type="button" onClick={()=>{this._getAddressHandle(document.getElementById("pickup-drop-menu"), document.getElementById("create-pickup"))}}>choose from saved address</button>
           <div id="pickup-drop-menu">
+            
             <select name="pickup_address_id" onChange={this._handleChange}>
+              <option></option>
               {
                 this.state.addresses.map(function(item){
                   return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>
@@ -245,6 +247,7 @@ export default class CreateOrder extends Component{
           <button type="button" onClick={()=>{this._getAddressHandle(document.getElementById("dropoff-drop-menu"), document.getElementById("create-dropoff"))}}>choose from saved address</button>
           <div id="dropoff-drop-menu">
             <select name="drop_off_address_id" onChange={this._handleChange}>
+              <option></option>
               {
                 this.state.addresses.map(function(item){
                   return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>

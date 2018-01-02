@@ -1,11 +1,28 @@
-// import Axios from 'axios';
-// import { courierProfileApi } from '../apiConfig';
+import Axios from 'axios';
+import { courierProfileApi } from '../apiConfig';
 
 export const SHOW_COURIER_SUCCESS = 'SHOW_COURIER_SUCCESS'
 // export const UPDATE_COURIER = 'UPDATE_COURIER'
 export const COURIER_LOGOUT = 'COURIER_LOGOUT'
 // export const RESET_PASSWORD = 'RESET_PASSWORD'
 
+export const SHOW_COURIER = 'SHOW_COURIER'
+
+
+// export function showCourier(){
+//     const payload = Axios.get(courierProfileApi);
+//     return{
+//         type:SHOW_COURIER,
+//         payload
+//     }
+// }
+export const showCourier = () => {
+    const payload = Axios.get(courierProfileApi);
+    return{
+        type:SHOW_COURIER,
+        payload
+    }
+}
 
 export const showCourierSuccess = (response) => {
     return{
@@ -23,6 +40,7 @@ export const showCourierSuccess = (response) => {
 //         img:data.img
 //     }
 // }
+
 
 
   

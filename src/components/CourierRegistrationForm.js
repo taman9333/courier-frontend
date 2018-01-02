@@ -20,18 +20,17 @@ export default class CourierRegistrationForm extends Component{
   }
 
   render(){
-    // const courier = {}
-    // courier["courier"] = this.state
-    const courier = this.state
+    const courier = {}
+    courier["courier"] = this.state
     return(
       <div>
         {
-          Object.keys(this.props.flashMessage).length === 0?
+          this.props.registerFlashMessage.constructor.name !== 'Array'?
             null
           :
           <div id="flash-message-error">
             {
-              this.props.flashMessage.map((item, i)=>
+              this.props.registerFlashMessage.map((item, i)=>
                 <p key={i} className="flash-message-error"><span>&#10005;</span>{item}</p>
               )
             }

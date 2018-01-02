@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 
 
 export default class CourierProfile extends Component{
-  componentWillMount(){
-    if(localStorage.getItem('jwtToken') !== null && Object.keys(this.props.courier).length === 0){
-      this.props.showCourier(this.props.courier.id)
-    }
-  }
+  // componentWillMount(){
+  //   if(localStorage.getItem('jwtToken') !== null && Object.keys(this.props.courier).length === 0){
+  //     this.props.showCourier(this.props.courier.id)
+  //   }
+  // }
   render(){
+    
     // const courier = this.state.courier
     return(
       <div>
