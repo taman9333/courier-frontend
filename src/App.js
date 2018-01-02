@@ -6,11 +6,14 @@ import ClientProfile from './containers/ClientProfileContainer';
 import requireAuth from './utils/requireAuth';
 import CreateOrder from './containers/CreateOrderContainer';
 import OrderDetails from './containers/OrderDetailsContainer';
+import LoadingBar from 'react-redux-loading-bar'
+import './App.css'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <LoadingBar className="loading"/>
         {
           localStorage.getItem('jwtToken') === null?
           <Link to="/register">Register</Link>

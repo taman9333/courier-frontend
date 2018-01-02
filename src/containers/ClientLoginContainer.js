@@ -10,7 +10,8 @@ const mapStateToProps = function(state){
   return{
     loading:state.client.loading,
     error:state.client.error,
-    flashMessage:state.client.loginFlashMessage
+    // flashMessage:state.client.loginFlashMessage
+    flashMessage:state.flashMessage.flashMessage
   }
 }
 

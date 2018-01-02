@@ -34,16 +34,16 @@ export default class UserRegister extends Component{
     return(
       <div>
         {
-          Object.keys(this.props.flashMessage).length === 0?
-            null
-          :
-          <div id="flash-message-error">
-            {
-              this.props.flashMessage.map((item, i)=>
-                <p key={i} className="flash-message-error"><span>&#10005;</span>{item}</p>
-              )
-            }
-          </div>
+          this.props.flashMessage.constructor.name === 'Array'?
+            <div id="flash-message-error">
+              {
+                this.props.flashMessage.map((item, i)=>
+                  <p key={i} className="flash-message-error"><span>&#10005;</span>{item}</p>
+                )
+              }
+            </div>
+          :null
+
 
         }
         <form onSubmit={(e)=>{e.preventDefault() ;this.props.createClient(client)}}>

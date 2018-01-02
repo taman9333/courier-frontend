@@ -101,8 +101,9 @@ export default class CreateOrder extends Component{
   }
 
   _handleOrder(e){
+
     e.preventDefault();
-    const id = Number(this.props.location.pathname.split("/")[2])
+    // const id = Number(this.props.location.pathname.split("/")[2])
     let order = this.state
     let {pickup_address_attributes, drop_off_address_attributes, drop_off_address_id, pickup_address_id, addresses, ...cloneOrder} = order
     if (this.state.pickup_address_id === 0) {
@@ -115,14 +116,15 @@ export default class CreateOrder extends Component{
     }else{
       cloneOrder["drop_off_address_id"] = this.state.drop_off_address_id
     }
-    let finalOrder = {}
+    const finalOrder = {}
     finalOrder["order"] = cloneOrder
-    this.props.createOrder(id, finalOrder)
+    this.props.createOrder(finalOrder)
   }
 
   componentWillMount(){
     Axios.get(getClientAddressesApi).then((response)=>{
-      this.setState({...this.state, addresses:response.data.addresses, client_id:response.data.client_id, })
+      const id = response.data.client_id
+      this.setState({...this.state, addresses:response.data.addresses, client_id:id, pickup_address_attributes:{...this.state.pickup_address_attributes, client_id:id}, drop_off_address_attributes:{...this.state.drop_off_address_attributes, client_id:id}})
     })
   }
 
@@ -130,7 +132,7 @@ export default class CreateOrder extends Component{
     return(
       <div>
         {
-          Object.keys(this.props.flashMessage).length === 0?
+          this.props.flashMessage.constructor.name !== 'Array'?
           null
           :
           <div className="flash-message-error-container">
@@ -184,13 +186,18 @@ export default class CreateOrder extends Component{
           <button type="button" onClick={()=>{this._newAddressHandle(document.getElementById("create-pickup"), document.getElementById("pickup-drop-menu"))}}>Enter new address</button>
           <button type="button" onClick={()=>{this._getAddressHandle(document.getElementById("pickup-drop-menu"), document.getElementById("create-pickup"))}}>choose from saved address</button>
           <div id="pickup-drop-menu">
-            <select name="pickup_address_id" onChange={this._handleChange}>
+            { this.state.addresses.length === 0?
+            <p>You don't have any saved addresses</p>
+            :<select name="pickup_address_id" onChange={this._handleChange}>
+              <option></option>
               {
                 this.state.addresses.map(function(item){
                   return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>
                 })
               }
+
             </select>
+            }
           </div>
           <div id="create-pickup">
             <div>
@@ -244,13 +251,17 @@ export default class CreateOrder extends Component{
           <button type="button" onClick={()=>{this._newAddressHandle(document.getElementById("create-dropoff"), document.getElementById("dropoff-drop-menu"))}}>Enter new address</button>
           <button type="button" onClick={()=>{this._getAddressHandle(document.getElementById("dropoff-drop-menu"), document.getElementById("create-dropoff"))}}>choose from saved address</button>
           <div id="dropoff-drop-menu">
-            <select name="drop_off_address_id" onChange={this._handleChange}>
+            { this.state.addresses.length === 0?
+            <p>You don't have any saved addresses</p>
+            :<select name="drop_off_address_id" onChange={this._handleChange}>
+              <option></option>
               {
                 this.state.addresses.map(function(item){
                   return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>
                 })
               }
             </select>
+          }
           </div>
           <div id="create-dropoff">
             <div>

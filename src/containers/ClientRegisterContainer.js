@@ -2,13 +2,14 @@ import {connect} from 'react-redux'
 import UserRegister from '../components/UserRegister'
 import {createClientLoading, createClient, createClientSuccess, createClientFailure} from '../actions/client'
 import history from '../history'
-
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 const mapStateToProps = function(state){
   return{
     client:state.client.client,
     loading:state.client.loading,
     error:state.client.error,
-    flashMessage:state.client.registerFlashMessage
+    // flashMessage:state.client.registerFlashMessage
+    flashMessage:state.flashMessage.flashMessage
   }
 }
 
@@ -16,14 +17,19 @@ const mapDispatchToProps = function(dispatch){
   return{
     createClient:function(client){
       dispatch(createClientLoading());
-      dispatch(createClient(client)).then(function(response){
-        if(response.payload.status <400){
-          history.push('/')
-          dispatch(createClientSuccess(response))
-        }else{
-          dispatch(createClientFailure(response))
-        }
-      })
+      dispatch(showLoading())
+      setTimeout(function(){
+        dispatch(createClient(client)).then(function(response){
+          dispatch(hideLoading())
+          if(response.payload.status <400){
+            history.push('/')
+            dispatch(createClientSuccess(response))
+          }else{
+            dispatch(createClientFailure(response))
+          }
+        })
+      },5000)
+
       // .catch(function(error){
       //   dispatch(createClientFailure(error))
       // })

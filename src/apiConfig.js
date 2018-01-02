@@ -9,7 +9,7 @@ export const loginClientApi = `${rootApi}/client/sessions`
 
 //orders
 
-export const createOrderApi = (id)=>{return`${rootApi}/clients/orders`}
+export const createOrderApi = `${rootApi}/clients/orders`
 
 // get client addresses
 

@@ -3,7 +3,8 @@ import OrderDetails from '../components/OrderDetails'
 
 const mapStateToProps = function(state){
   return{
-    flashMessage:state.order.orderFlashMessage
+    // flashMessage:state.order.orderFlashMessage
+    flashMessage:state.flashMessage.flashMessage
   }
 }
 

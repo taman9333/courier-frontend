@@ -5,19 +5,20 @@ import history  from '../history'
 
 const mapStateToProps = function(state){
   return{
-    flashMessage:state.order.orderFlashMessage,
-    loading:state.order.loading
+    // flashMessage:state.order.orderFlashMessage,
+    flashMessage:state.flashMessage.flashMessage,
+    loading:state.flashMessage.loading
   }
 }
 
 const mapDispatchToProps = function(dispatch){
   return{
-    createOrder:function(id, client){
+    createOrder:function(client){
       dispatch(createOrderLoading());
-      dispatch(createOrder(id, client)).then(function(response){
+      dispatch(createOrder(client)).then(function(response){
         if(response.payload.status < 400){
-          history.push('/orderdetails')
           dispatch(createOrderSuccess(response))
+          history.push('/orderdetails')
         }else{
           dispatch(createOrderFailure(response))
         }
