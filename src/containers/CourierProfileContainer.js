@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import Profile from '../components/CourierProfile.js';
 import { showCourierSuccess } from '../actions/CourierActions.js';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
-// import { courierProfileApi } from '../apiConfig';
 import { courierProfileApi } from '../apiConfig';
 // import history from '../history'
 import Axios from 'axios'

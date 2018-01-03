@@ -17,9 +17,10 @@ export const courierSessionsApi = `${courierApi}/login`;
 // patch 'update_profile', to: 'profile#update'
 
 // open_auctions
-export const openAuctionsApi = `${courierApi}/open_auction`;
+export const filteredOpenAuctionsApi = `${rootApi}/filtered_open_auctoins`;
+// maybe we should edit this to get the index from orders controller instead of auctions
 
-
+export const  auctionApi = `${rootApi}/auctoin`;
 // clients
 
 export const newClientApi = `${rootApi}/clients_registrations`

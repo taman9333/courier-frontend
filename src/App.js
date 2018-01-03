@@ -36,12 +36,8 @@ class App extends Component {
           <Link to="/register/client">Register</Link>
           : null
         }
-        <Link to="/">Home</Link>
-        {
-          localStorage.getItem('jwtToken') !== null?
-              <Link to='/courier/profile'>Your profile</Link>
-            :  null
-        }
+        {/* <Link to="/">Home</Link> */}
+        
         <Route path='/' exact component={UserLogin}/>
         <Route path='/client/profile' component={requireAuth(ClientProfile)}/>
         <Route path='/register/client' component={HomePage}/>
