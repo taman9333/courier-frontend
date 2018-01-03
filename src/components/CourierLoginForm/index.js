@@ -35,7 +35,7 @@ export default class CourierLoginForm extends Component{
           </form>
           <Link to="/courier/register">Don't have an account? Register</Link>
           <Link to="/courier/forgotpassword">Forgot Password</Link>
-          <Link to="/client/login">Client?</Link>
+          <Link to="/">Client?</Link>
 
         </div>
       )
