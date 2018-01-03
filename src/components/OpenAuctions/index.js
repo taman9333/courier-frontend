@@ -3,8 +3,8 @@ import Axios from 'axios';
 // import './style.css'
 import { Link } from 'react-router-dom';
 // import { getOpenAuctions } from '../actions/AuctionsActions';
-import FilteredOpenAuctions from '../components/FilteredOpenAuctions'
-import {filteredOpenAuctionsApi} from '../apiConfig';
+import FilteredOpenAuctions from '../../components/FilteredOpenAuctions'
+import {filteredOpenAuctionsApi} from '../../apiConfig';
 
 export default class OpenAuctions extends Component{
 	constructor(props){

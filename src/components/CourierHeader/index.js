@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import history from '../history';
+import history from '../../history';
 // import './style.css'
 // import { Route } from 'react-router-dom';
 // import CourierNotifications from '../containers/CourierNotificationsContainer';
