@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Profile from '../components/CourierProfile.js';
+import Profile from '../components/CourierProfile';
 import { showCourierSuccess } from '../actions/CourierActions.js';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import { courierProfileApi } from '../apiConfig';

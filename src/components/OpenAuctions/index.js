@@ -1,32 +1,50 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 // import './style.css'
 import { Link } from 'react-router-dom';
-import { getOpenAuctions } from '../actions/AuctionsActions';
-import FilteredOpenAuctions from '../containers/FilteredOpenAuctions'
-// import {openAuctionsApi} from '../../apiConfig';
+// import { getOpenAuctions } from '../actions/AuctionsActions';
+import FilteredOpenAuctions from '../components/FilteredOpenAuctions'
+import {filteredOpenAuctionsApi} from '../apiConfig';
 
 export default class OpenAuctions extends Component{
 	constructor(props){
-    super(props);
-    this.state={
-			category:"",
-			weight:0,
-			// pickup_address:{area:""},
-			// drop_off_address:{area:""}
-			pickup_area:"",
-			drop_off_area:""
-		}
-  }
+		super(props);
+		this.state={
+			auction_cards_details:[],
+			filters:{
+				category:"",
+				weight:0,
+				pickup_area:"",
+				drop_off_area:""
+			}
+		},
+		this._handleChange = this._handleChange.bind(this),
+		this._handleSubmit = this._handleSubmit.bind(this)
+	}
+
 
   _handleChange(e){
-    this.setState({...this.state, [e.target.name]:e.target.value})
+    this.setState({...this.state, filters:{...this.state.filters, [e.target.name]: e.target.value }})
 	}
+
+  _handleSubmit(e){
+	e.preventDefault();
+	Axios.post(filteredOpenAuctionsApi, this.state.filters).then((response)=>{
+		this.setState({...this.state, auction_cards_details: response.payload.data.auction_cards_details })
+	})
+  }
+  
+
 	
+
 	render(){
 	  return(
 			<div>
 				<div>
-					<form onSubmit={e.preventDefault(); this.props.getOpenAuctions(this.state)}>
+				
+     
+
+					<form onSubmit={this._handleSubmit}>
 						<p>Filter by:</p>
 						<div>
 							<label htmlFor="category">Category</label>

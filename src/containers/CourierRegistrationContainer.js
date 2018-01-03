@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Form from '../components/CourierRegistrationForm.js';
+import Form from '../components/CourierRegistrationForm';
 import { addCourierLoading, addCourier, addCourierSuccess, addCourierFailure } from '../actions/CourierRegistrationsActions.js';
 import history from '../history'
 

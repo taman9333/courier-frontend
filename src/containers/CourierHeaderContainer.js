@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Header from '../components/CourierHeader.js';
+import Header from '../components/CourierHeader';
 import { showCourierSuccess, showCourier, courierLogout } from '../actions/CourierActions.js';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 // import history from '../history'

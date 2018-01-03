@@ -6,7 +6,6 @@ import requireAuth from './utils/requireAuth'
 import CourierRegistration from './pages/CourierRegistrations';
 import CourierLogin from './pages/CourierLogins';
 import CourierPage from './pages/CourierPage';
-// import CourierProfile from './containers/CourierProfileContainer';
 // import ForgotPassword from './pages/ForgotPassword';
 
 import HomePage from './pages/HomePage'

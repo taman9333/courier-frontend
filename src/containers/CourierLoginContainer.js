@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Form from '../components/CourierLoginForm.js';
+import Form from '../components/CourierLoginForm';
 import { courierLoginLoading, courierLogin, courierLoginSuccess, courierLoginFailure } from '../actions/CourierLoginActions';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import history from '../history'

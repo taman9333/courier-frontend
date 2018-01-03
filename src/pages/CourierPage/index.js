@@ -6,13 +6,13 @@ import CourierProfile from '../../containers/CourierProfileContainer';
 // import UpdateCourierProfile from '../../containers/UpdateCourierProfileContainer';
 // import ResetPassword from '../../containers/ResetPasswordContainer';
 // import CourierReviews from '../../components/CourierReviews';
-import OpenAuctions from '../../containers/OpenAuctionsContainer';
-import AuctionDetails from '../../containers/AuctionDetailsContainer';
+import OpenAuctions from '../../components/OpenAuctions';
+// import AuctionDetails from '../../component/CourierAuctionDetails';
 // import CourierBids from '../../components/CourierBids';
 // import CourierDeliveries from '../../components/CourierDeliveries';
 // import CourierNotifications from '../../containers/CourierNotificationsContainer';
 
-export default class CouriePage extends Component {
+export default class CourierPage extends Component {
 
 	render (){
 		return (
@@ -31,7 +31,7 @@ export default class CouriePage extends Component {
 					{/* <Route path="/courier/resetpassword" exact component={ResetPassword} /> */}
 					{/* <Route path="/courier/reviews" exact component={CourierReviews} /> */}
 					<Route path="/courier/openauctions" exact component={OpenAuctions} />
-					<Route path="/courier/auction" exact component={AuctionDetails} />
+					{/* <Route path="/courier/auction" exact component={AuctionDetails} /> */}
 					{/* <Route path="/courier/bids" exact component={CourierBids} /> */}
 					{/* <Route path="/courier/deliveries" exact component={CourierDeliveries} /> */}
 					{/* <Route path="/courier/notifications" exact component={CourierNotifications} /> */}
