@@ -23,9 +23,10 @@ const mapDispatchToProps = function(dispatch){
         if (response.payload.status < 400) {
           const token = response.payload.data.auth_token;
           localStorage.setItem('jwtToken', token);
+          localStorage.setItem('clientAuth', true)
           dispatch(loginClientSuccess(response))
           setAuthorizationToken(token);
-          history.push('/clientprofile')
+          history.push('/client/profile')
         }else{
           dispatch(loginClientFailure(response))
         }

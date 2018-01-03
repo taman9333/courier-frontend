@@ -5,8 +5,8 @@ import history from '../history'
 export default function(ComposedComponent){
   class Authenticate extends Component{
     componentWillMount(){
-      if(localStorage.getItem('clientAuth') !== "true"){
-        history.push('/')
+      if(localStorage.getItem('courierAuth') !== "true"){
+        history.push('/login/courier')
       }
     }
 

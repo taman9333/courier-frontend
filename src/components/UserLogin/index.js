@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './style.css'
+import {Link} from 'react-router-dom'
 
 export default class UserLogin extends Component{
   constructor(){
@@ -44,6 +45,7 @@ export default class UserLogin extends Component{
           </div>
           <button>Submit</button>
         </form>
+        <Link to="/login/courier">Login as courier</Link>
         </div>
       )
     }
