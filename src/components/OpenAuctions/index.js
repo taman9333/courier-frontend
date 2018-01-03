@@ -3,7 +3,7 @@ import Axios from 'axios';
 // import './style.css'
 import { Link } from 'react-router-dom';
 // import { getOpenAuctions } from '../actions/AuctionsActions';
-import FilteredOpenAuctions from '../../components/FilteredOpenAuctions'
+// import FilteredOpenAuctions from '../../components/FilteredOpenAuctions'
 import {filteredOpenAuctionsApi} from '../../apiConfig';
 
 export default class OpenAuctions extends Component{
@@ -124,7 +124,14 @@ export default class OpenAuctions extends Component{
 					</form>
 				</div>
 				<div>
-					<FilteredOpenAuctions />
+					{
+						this.state.auction_cards_details.map(function(item){
+							return <div class="Auction-Card">
+								<p>Category: {item.category}, Bid Deadline: {item.auction.bid_deadline}, Delivery Date: {item.delivery_date} </p>
+								<Link to="/courier/auction">show details</Link>
+							</div>
+						})
+					}
 				</div>
 			</div>
 	  )

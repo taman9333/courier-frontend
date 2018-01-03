@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default class CourierSideBar extends Component{
     render(){
       return(
-        <div>
+        <div id="sidebar">
           <nav>
             <ul>
               <li><Link to="/courier/notifications">Notifications</Link></li>
