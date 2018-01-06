@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import history from '../../history';
 import {Link, Route} from 'react-router-dom';
-
+import './style.css'
 
 export default class ClientProfile extends Component{
 
@@ -19,13 +19,15 @@ export default class ClientProfile extends Component{
 
   render(){
     return(
-      <div>
-        <h1>Welcome {this.props.client.username}</h1>
-        <p>Email: {this.props.client.email}</p>
-        <p>Phone: {this.props.client.phone}</p>
+      <div className="client-header">
+
+        <p><Link to="/client/profile">{this.props.client.username}</Link></p>
+        <p><Link to="/">home</Link></p>
         <button onClick={this._logout.bind(this)}>Logout</button>
-        <Link to={{pathname:`/client/createorder`, query:this.props.client}}>Create Order</Link>
+
       </div>
     )
   }
 }
+
+// <Link to={{pathname:`/client/createorder`, query:this.props.client}}>Create Order</Link>

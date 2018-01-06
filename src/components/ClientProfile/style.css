@@ -1,0 +1,23 @@
+.client-header{
+  background-color:#DEE2D6;
+  margin-top:-10px;
+  height:42px;
+  line-height:42px;
+}
+
+.client-header p{
+  margin:0;
+  display:inline-block;
+  margin-right:5px;
+}
+
+.client-header a{
+  color:steelblue;
+}
+
+.client-header button{
+  background:#F58A07;
+  border:0;
+  border-radius:10px;
+  font-size:15px;
+}

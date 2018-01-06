@@ -18,7 +18,10 @@ const mapDispatchToProps = function(dispatch){
       dispatch(createOrder(client)).then(function(response){
         if(response.payload.status < 400){
           dispatch(createOrderSuccess(response))
-          history.push('/orderdetails')
+          history.push({
+            pathname: `/orderdetails/${response.payload.data.order_id}`,
+            id:response.payload.data.order_id
+          })
         }else{
           dispatch(createOrderFailure(response))
         }

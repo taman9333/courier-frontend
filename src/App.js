@@ -14,10 +14,11 @@ import HomePage from './pages/HomePage'
 import UserLogin from './containers/ClientLoginContainer';
 import ClientProfile from './containers/ClientProfileContainer';
 import CreateOrder from './containers/CreateOrderContainer';
-import OrderDetails from './containers/OrderDetailsContainer';
+import OrderDetails from './pages/OrderDetails';
 import LoadingBar from 'react-redux-loading-bar'
 import './App.css'
 
+import AuctionDetails from './pages/AuctionDetails'
 
 class App extends Component {
   render() {
@@ -27,8 +28,6 @@ class App extends Component {
         <LoadingBar className="loading"/>
 
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="HAT">Welcome to HAT</h1>
         </header>
         <div className="App-container">
 
@@ -38,17 +37,16 @@ class App extends Component {
           {/* <Route path="/forgotpassword" exact component={ForgotPassword} /> */}
         </div>
 
-        {
-          localStorage.getItem('clientAuth') !== "true"?
-          <Link to="/register/client">Register</Link>
-          : <Link to="/client/profile">Your profile</Link>
-        }
-        <Link to="/">Home</Link>
+
+
         <Route path='/' exact component={UserLogin}/>
         <Route path='/client/profile' component={requireAuth(ClientProfile)}/>
         <Route path='/register/client' component={HomePage}/>
         <Route path='/client/createorder' exact component={requireAuth(CreateOrder)}/>
-        <Route path='/orderdetails' exact component={requireAuth(OrderDetails)}/>
+        <Route path='/orderdetails/:id' exact component={requireAuth(OrderDetails)}/>
+
+        <Route path='/courier/auctiondetails/:id' component={requireCourierAuth(AuctionDetails)} />
+
         <footer><p>&copy; 2018 HAT.com</p></footer>
       </div>
     );
@@ -56,3 +54,12 @@ class App extends Component {
 }
 
 export default App;
+
+
+// {
+//   localStorage.getItem('clientAuth') !== "true"?
+//   <Link to="/register/client">Register</Link>
+//   : <Link to="/client/profile">Your profile</Link>
+// }
+
+// <Link to="/">Home</Link>

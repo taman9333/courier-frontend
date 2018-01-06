@@ -24,7 +24,9 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(courierLogin(courier)).then(response => {
 				if(response.payload.status < 400){
 					const token = response.payload.data.auth_token;
+					const id = response.payload.data.courier.id
 					localStorage.setItem('jwtToken', token);
+					localStorage.setItem('courierId', id)
 					localStorage.setItem('courierAuth', true)
 					dispatch(courierLoginSuccess(response))
 					setAuthorizationToken(token);

@@ -1,0 +1,17 @@
+.flash-message-success{
+  background:#66cc99;
+  font-size:20px;
+  color:#fff;
+  text-align:center;
+  width:80%;
+  margin:0 auto;
+  height:50px;
+  line-height:50px;
+  border-radius:10px;
+}
+
+#order-details{
+  margin:10px;
+  padding:10px;
+  border:2px solid red;
+}
