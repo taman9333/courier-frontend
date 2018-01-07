@@ -20,7 +20,7 @@ export const courierSessionsApi = `${courierApi}/login`;
 export const filteredOpenAuctionsApi = `${rootApi}/filtered_open_auctoins`;
 // maybe we should edit this to get the index from orders controller instead of auctions
 
-export const  auctionApi = `${rootApi}/auctoin`;
+export const  auctionApi = `${rootApi}/courier/auction`;
 // clients
 
 export const newClientApi = `${rootApi}/clients_registrations`
