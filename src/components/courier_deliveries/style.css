@@ -1,0 +1,23 @@
+.courier-deliveries{
+  width:80%;
+  border:2px solid steelblue;
+  margin:10px auto;
+  clear:both;
+  content:"";
+  display:table;
+}
+
+.courier-deliveries p{
+  display:inline-block;
+}
+
+.courier-deliveries p:nth-of-type(1){
+  float:left;
+  margin-right:30px;
+}
+
+
+
+.courier-deliveries a{
+  float:right
+}

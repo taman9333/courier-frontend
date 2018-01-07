@@ -8,16 +8,19 @@
 .client-header p{
   margin:0;
   display:inline-block;
-  margin-right:5px;
+  margin-right:20px;
 }
 
 .client-header a{
   color:steelblue;
 }
 
-.client-header button{
+/*.client-header button{
   background:#F58A07;
   border:0;
   border-radius:10px;
-  font-size:15px;
+}*/
+
+.float-right{
+  margin-right:20px;
 }

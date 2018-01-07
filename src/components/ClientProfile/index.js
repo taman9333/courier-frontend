@@ -20,11 +20,12 @@ export default class ClientProfile extends Component{
   render(){
     return(
       <div className="client-header">
-
-        <p><Link to="/client/profile">{this.props.client.username}</Link></p>
-        <p><Link to="/">home</Link></p>
-        <button onClick={this._logout.bind(this)}>Logout</button>
-
+        <div className="float-right">
+          <p><Link to="/client/profile">{this.props.client.username}</Link></p>
+          <p><Link to="/">home</Link></p>
+          <button className="btn btn-sm btn-primary" onClick={this._logout.bind(this)}>Logout</button>
+        </div>
+      <br/>
       </div>
     )
   }

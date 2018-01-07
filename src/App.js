@@ -9,14 +9,16 @@ import CourierPage from './pages/CourierPage';
 // import CourierProfile from './containers/CourierProfileContainer';
 // import ForgotPassword from './pages/ForgotPassword';
 import requireCourierAuth from './utils/requireCourierAuth'
-
-import HomePage from './pages/HomePage'
+import HomePage from './pages/HomePage';
 import UserLogin from './containers/ClientLoginContainer';
 import ClientProfile from './containers/ClientProfileContainer';
 import CreateOrder from './containers/CreateOrderContainer';
+import CourierDelivery from './components/courier_deliveries';
 import OrderDetails from './pages/OrderDetails';
 import LoadingBar from 'react-redux-loading-bar'
 import './App.css'
+
+import CourierDeliveryDetails from './components/courier_delivery_details'
 
 import AuctionDetails from './pages/AuctionDetails'
 
@@ -38,7 +40,6 @@ class App extends Component {
         </div>
 
 
-
         <Route path='/' exact component={UserLogin}/>
         <Route path='/client/profile' component={requireAuth(ClientProfile)}/>
         <Route path='/register/client' component={HomePage}/>
@@ -46,6 +47,11 @@ class App extends Component {
         <Route path='/orderdetails/:id' exact component={requireAuth(OrderDetails)}/>
 
         <Route path='/courier/auctiondetails/:id' component={requireCourierAuth(AuctionDetails)} />
+
+
+        <Route path="/courier/deliveries" exact component={CourierDelivery} />
+        <Route path="/courier/deliveries/:id" component={CourierDeliveryDetails} />
+
 
         <footer><p>&copy; 2018 HAT.com</p></footer>
       </div>

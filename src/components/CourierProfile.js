@@ -10,7 +10,7 @@ export default class CourierProfile extends Component{
   //   }
   // }
   render(){
-    
+
     // const courier = this.state.courier
     return(
       <div>
@@ -22,7 +22,7 @@ export default class CourierProfile extends Component{
           Phone number: {this.props.courier.phone}
         </p>
         <Link to="/courier/updateprofile">Update Profile</Link>
-        <Link to="/courier/resetpassword">Change Password</Link> 
+        <Link to="/courier/resetpassword">Change Password</Link>
       </div>
     )
   }

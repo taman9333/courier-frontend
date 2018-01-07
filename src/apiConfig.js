@@ -35,3 +35,6 @@ export const createOrderApi = `${rootApi}/clients/orders`
 
 export const getClientAddressesApi = `${rootApi}/client/addresses`
 
+// courier deliveries
+
+export const getCourierDeliveriesApi = `${rootApi}/courier/deliveries/index`

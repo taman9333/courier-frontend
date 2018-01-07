@@ -13,7 +13,7 @@ import CourierProfile from '../../containers/CourierProfileContainer';
 // import CourierDeliveries from '../../components/CourierDeliveries';
 // import CourierNotifications from '../../containers/CourierNotificationsContainer';
 
-export default class CouriePage extends Component {
+export default class CourierPage extends Component {
 
 	render (){
 		return (
@@ -33,7 +33,7 @@ export default class CouriePage extends Component {
 					{/* <Route path="/courier/resetpassword" exact component={ResetPassword} /> */}
 					{/* <Route path="/courier/reviews" exact component={CourierReviews} /> */}
 
-					
+
 
 					{/* <Route path="/courier/bids" exact component={CourierBids} /> */}
 					{/* <Route path="/courier/deliveries" exact component={CourierDeliveries} /> */}
