@@ -3,8 +3,8 @@ import { Link, Route } from 'react-router-dom';
 import Header from '../../containers/CourierHeaderContainer';
 import SideBar from '../../components/CourierSideBar';
 import CourierProfile from '../../containers/CourierProfileContainer';
-// import UpdateCourierProfile from '../../containers/UpdateCourierProfileContainer';
-// import ResetPassword from '../../containers/ResetPasswordContainer';
+import UpdateCourierProfile from '../../components/UpdateCourierProfileForm';
+import ResetPassword from '../../components/ResetPassword';
 // import CourierReviews from '../../components/CourierReviews';
 import OpenAuctions from '../../components/OpenAuctions';
 // import AuctionDetails from '../../component/CourierAuctionDetails';
@@ -27,8 +27,8 @@ export default class CourierPage extends Component {
 					}
 					
 					<Route path="/courier/profile" exact component={CourierProfile} />
-					{/* <Route path="/courier/updateprofile" exact component={UpdateCourierProfile} /> */}
-					{/* <Route path="/courier/resetpassword" exact component={ResetPassword} /> */}
+					<Route path="/courier/updateprofile" exact component={UpdateCourierProfile} />
+					<Route path="/courier/resetpassword" exact component={ResetPassword} />
 					{/* <Route path="/courier/reviews" exact component={CourierReviews} /> */}
 					<Route path="/courier/openauctions" exact component={OpenAuctions} />
 					{/* <Route path="/courier/auction" exact component={AuctionDetails} /> */}

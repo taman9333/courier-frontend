@@ -2,21 +2,17 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 // import './style.css'
 import { Link } from 'react-router-dom';
-// import { getOpenAuctions } from '../actions/AuctionsActions';
-// import FilteredOpenAuctions from '../../components/FilteredOpenAuctions'
 import {filteredOpenAuctionsApi} from '../../apiConfig';
 
 export default class OpenAuctions extends Component{
 	constructor(props){
 		super(props);
 		this.state={
-			auction_cards_details:[],
-			filters:{
-				category:"",
-				weight:0,
-				pickup_area:"",
-				drop_off_area:""
-			}
+			filtered_open_auctions:[],
+			category:"",
+			weight: null,
+			pickup_area:"",
+			drop_off_area:""
 		},
 		this._handleChange = this._handleChange.bind(this),
 		this._handleSubmit = this._handleSubmit.bind(this)
@@ -24,13 +20,13 @@ export default class OpenAuctions extends Component{
 
 
   _handleChange(e){
-    this.setState({...this.state, filters:{...this.state.filters, [e.target.name]: e.target.value }})
+    this.setState({...this.state, [e.target.name]: e.target.value })
 	}
 
   _handleSubmit(e){
 	e.preventDefault();
-	Axios.post(filteredOpenAuctionsApi, this.state.filters).then((response)=>{
-		this.setState({...this.state, auction_cards_details: response.payload.data.auction_cards_details })
+	Axios.post(filteredOpenAuctionsApi, this.state).then((response)=>{
+		this.setState({...this.state, filtered_open_auctions: response.payload.data.filtered_open_auctions })
 	})
   }
   
@@ -41,9 +37,6 @@ export default class OpenAuctions extends Component{
 	  return(
 			<div>
 				<div>
-				
-     
-
 					<form onSubmit={this._handleSubmit}>
 						<p>Filter by:</p>
 						<div>
@@ -125,11 +118,14 @@ export default class OpenAuctions extends Component{
 				</div>
 				<div>
 					{
-						this.state.auction_cards_details.map(function(item){
-							return <div class="Auction-Card">
-								<p>Category: {item.category}, Bid Deadline: {item.auction.bid_deadline}, Delivery Date: {item.delivery_date} </p>
-								<Link to="/courier/auction">show details</Link>
-							</div>
+						this.state.filtered_open_auctions.map(function(item){
+							return ( 
+								<div class="open_auction">
+								{/* did we send the bid deadline in the backend */}
+									<p>Category: {item.category}, Bid Deadline: {item.auction.bid_deadline}, Delivery Date: {item.delivery_date} </p>
+									<Link to="/courier/auction">show details</Link>
+								</div>
+							)
 						})
 					}
 				</div>

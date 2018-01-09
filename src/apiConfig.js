@@ -6,6 +6,8 @@ export const courierApi = `${rootApi}/courier`;
 
 // // Courier_Profile
 export const courierProfileApi = `${courierApi}/profile`;
+export const  updateCourierProfileApi = `${courierApi}/update_profile`;
+export const  resetCourierPasswordApi = `${courierApi}/reset_password`;
 
 // Courier_Registrations
 export const courierRegistrationsApi = `${courierApi}/register`;
@@ -14,13 +16,12 @@ export const courierRegistrationsApi = `${courierApi}/register`;
 export const courierSessionsApi = `${courierApi}/login`;
 
 
-// patch 'update_profile', to: 'profile#update'
 
 // open_auctions
-export const filteredOpenAuctionsApi = `${rootApi}/filtered_open_auctoins`;
+export const filteredOpenAuctionsApi = `${rootApi}/courer/filtered_open_auctoins`;
 // maybe we should edit this to get the index from orders controller instead of auctions
 
-export const  auctionApi = `${rootApi}/courier/auction`;
+// export const  auctionApi = `${rootApi}/courier/auction`;
 // clients
 
 export const newClientApi = `${rootApi}/clients_registrations`
