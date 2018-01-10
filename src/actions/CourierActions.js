@@ -42,11 +42,11 @@ export const updateCourier = (courier) => {
     }
 }
 
-export const updateCourierSuccess = (response) => {
+export const updateCourierSuccess = (courier) => {
     return {
         type: UPDATE_COURIER_SUCCESS,
         // courier
-        message:response.payload.data
+        courier
     }
 }
 

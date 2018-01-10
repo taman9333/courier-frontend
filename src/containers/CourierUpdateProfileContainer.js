@@ -24,7 +24,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(updateCourierLoading());
             dispatch(updateCourier(courier)).then(response => { 
                 if(response.payload.status < 400){
-                    dispatch(updateCourierSuccess(response));
+                    const courier = response.payload.data.courier;
+                    dispatch(updateCourierSuccess(courier));
                     history.push('/courier/profile')
                 }else{
                     dispatch(updateCourierFailure(response));

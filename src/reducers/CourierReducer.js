@@ -20,7 +20,7 @@ export default function(currentState = INITIAL_STATE, action) {
 		case UPDATE_COURIER_LOADING:
 			return {...currentState, updating: true};
 		case UPDATE_COURIER_SUCCESS:
-			return {...currentState, updating: false, updateFlashMessage:action.message, courier: {...this.state.courier, username:action.username, email:action.email, phone:action.phone, img:action.img }};		
+			return {...currentState, updating: false, updateFlashMessage:action.message, courier: {...currentState.courier, username:action.courier.username, email:action.courier.email, phone:action.courier.phone, img:action.courier.img }};		
 		case UPDATE_COURIER_FAILURE:
 			return {...currentState, updating: false, updateFlashMessage:action.error};
 			case COURIER_LOGOUT:
