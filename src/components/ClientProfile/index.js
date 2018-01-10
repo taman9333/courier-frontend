@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import history from '../../history';
 import {Link, Route} from 'react-router-dom';
 import './style.css'
+import Notifications from '../notifications'
 
 export default class ClientProfile extends Component{
 
@@ -21,6 +22,7 @@ export default class ClientProfile extends Component{
     return(
       <div className="client-header">
         <div className="float-right">
+          <Notifications />
           <p><Link to="/client/profile">{this.props.client.username}</Link></p>
           <p><Link to="/">home</Link></p>
           <button className="btn btn-sm btn-primary" onClick={this._logout.bind(this)}>Logout</button>

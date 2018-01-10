@@ -11,8 +11,22 @@
   margin-right:20px;
 }
 
+.notifications{
+  display:inline-block;
+  margin-right:0;
+}
+
 .client-header a{
   color:steelblue;
+}
+
+.float-right{
+  margin-right:50px;
+  width:250px;
+}
+
+.float-right button{
+  margin-left:15px;
 }
 
 /*.client-header button{
@@ -20,7 +34,3 @@
   border:0;
   border-radius:10px;
 }*/
-
-.float-right{
-  margin-right:20px;
-}

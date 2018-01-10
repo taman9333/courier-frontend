@@ -38,3 +38,5 @@ export const getClientAddressesApi = `${rootApi}/client/addresses`
 // courier deliveries
 
 export const getCourierDeliveriesApi = `${rootApi}/courier/deliveries/index`
+
+export const getClientDeliveriesApi = `${rootApi}/clients/deliveries`

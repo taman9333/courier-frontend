@@ -23,7 +23,7 @@ class OrderDetailsPage extends Component{
   }
 
   componentWillMount(){
-    const id = Number(this.props.location.pathname.split("/")[2])
+    const id = Number(this.props.location.pathname.split("/")[3])
     Axios.get(`http://localhost:3000/clients/orders/${id}`).then((response)=>{
         this.setState({...this.state, order:response.data.order, pickup:response.data.pickup_address, drop_off:response.data.drop_off_address, auction:response.data.auction, last_bid:response.data.last_bid, winning_courier:response.data.winning_courier, warning:response.data.warning})
     })

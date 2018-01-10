@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "action-cable-react": "^0.1.1",
+    "actioncable": "^5.1.4",
+    "antd": "^3.1.1",
     "axios": "^0.17.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.0",
@@ -11,6 +14,7 @@
     "react-redux-loading-bar": "^3.1.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "^1.0.17",
+    "react-star-rating-component": "^1.3.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3"

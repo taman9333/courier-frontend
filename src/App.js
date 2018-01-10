@@ -20,9 +20,20 @@ import './App.css'
 
 import CourierDeliveryDetails from './components/courier_delivery_details'
 
+import ClientDeliveries from './components/client_deliveries'
+import ClientDeliveriesDetails from './components/client_deliveries_details'
+
 import AuctionDetails from './pages/AuctionDetails'
 
+import OpenAuctions from './components/open_auctions'
+
+
+
+
 class App extends Component {
+
+
+
   render() {
     return (
       <div className="App">
@@ -44,14 +55,17 @@ class App extends Component {
         <Route path='/client/profile' component={requireAuth(ClientProfile)}/>
         <Route path='/register/client' component={HomePage}/>
         <Route path='/client/createorder' exact component={requireAuth(CreateOrder)}/>
-        <Route path='/orderdetails/:id' exact component={requireAuth(OrderDetails)}/>
+        <Route path='/client/orderdetails/:id' exact component={requireAuth(OrderDetails)}/>
 
         <Route path='/courier/auctiondetails/:id' component={requireCourierAuth(AuctionDetails)} />
 
+        <Route path='/client/deliveries' exact component={ClientDeliveries} />
+        <Route path='/client/deliveries/:id'  component={ClientDeliveriesDetails} />
 
         <Route path="/courier/deliveries" exact component={CourierDelivery} />
         <Route path="/courier/deliveries/:id" component={CourierDeliveryDetails} />
 
+        <Route path="/courier/auctions" component={OpenAuctions} />
 
         <footer><p>&copy; 2018 HAT.com</p></footer>
       </div>

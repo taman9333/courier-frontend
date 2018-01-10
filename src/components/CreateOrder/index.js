@@ -129,9 +129,11 @@ export default class CreateOrder extends Component{
   }
 
   render(){
+
     return(
       <div>
         {
+          this.props.flashMessage != undefined?
           this.props.flashMessage.constructor.name !== 'Array'?
           null
           :
@@ -142,6 +144,7 @@ export default class CreateOrder extends Component{
             })
           }
           </div>
+          :null
         }
         <form onSubmit={this._handleOrder}>
           <div>

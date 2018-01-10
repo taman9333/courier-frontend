@@ -11,14 +11,27 @@ export default class CourierDeliveryDetails extends Component{
       pickup:{},
       drop_off:{},
       bid:{},
-      client:{}
+      client:{},
+      status:""
     }
+    this._handleStatusChange = this._handleStatusChange.bind(this)
+  }
+
+  _handleStatusChange(e){
+    e.preventDefault()
+    const id = this.props.location.pathname.split("/")[3]
+    const value = document.getElementsByTagName("select")[0].value
+    Axios.post(`http://localhost:3000/courier/deliveries/${id}/update`, {status:value}).then((response)=>{
+      if (response.status < 400) {
+        this.setState({...this.state, status:response.data.delivery_status})
+      }
+    })
   }
 
   componentWillMount(){
     const id = this.props.location.pathname.split("/")[3]
     Axios.get(`http://localhost:3000/courier/deliveries/${id}`).then((response)=>{
-      this.setState({...this.state, ...response.data})
+      this.setState({...this.state, ...response.data, status:response.data.delivery.status})
     })
   }
 
@@ -26,9 +39,20 @@ export default class CourierDeliveryDetails extends Component{
     const {delivery, order, pickup, drop_off, bid, client} = this.state
     return(
       <div>
-        <select>
-          <option value="">enroute</option>
-        </select>
+        { this.state.status === "delivered" || this.state.status === ""?
+          null
+          :<div className="update-delivery-status">
+            <form onSubmit={this._handleStatusChange}>
+              <select>
+                <option></option>
+                {this.state.status === "enroute"?null:<option value="enroute">Enroute</option>}
+                <option value="delivered">Delivered</option>
+              </select>
+              <button>Submit</button>
+            </form>
+          </div>
+        }
+        <p>Delivery Status: {this.state.status == "waiting_pickup"? "Waiting Pickup":this.state.status}</p>
         <div className="order">
           <p>Category: {order.category}</p>
           <p>Weight in Kg: {order.weight}</p>
