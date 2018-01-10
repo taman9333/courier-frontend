@@ -2,16 +2,14 @@
 import {combineReducers} from 'redux';
 import CourierRegistrations from './CourierRegistrationsReducer';
 import CourierLogins from './CourierLoginsReducer';
-import CourierProfile from './CourierProfileReducer';
-import CourierHeader from './CourierHeaderReducer';
+import Courier from './CourierReducer';
 import clientReducer from './client';
 import orderReducer from './order';
 
 const rootReducer = combineReducers({
     CourierRegistrations,
     CourierLogins,
-    CourierProfile,
-    CourierHeader,
+    Courier,
     client:clientReducer,
     order:orderReducer
 })

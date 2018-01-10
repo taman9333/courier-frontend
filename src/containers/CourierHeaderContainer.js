@@ -10,7 +10,7 @@ import { courierProfileApi } from '../apiConfig';
 
 const mapStateToProps = (state) => {
     return {
-        courier: state.CourierHeader.courier
+        courier: state.Courier.courier
     }
 }
 

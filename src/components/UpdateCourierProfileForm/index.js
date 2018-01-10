@@ -1,54 +1,46 @@
 import React, { Component } from 'react';
-import {updateCourierProfileApi} from '../../apiConfig';
-import Axios from 'axios';
-import history from '../../history'
+// import {updateCourierProfileApi} from '../../apiConfig';
+// import Axios from 'axios';
+// import history from '../../history'
 // import './style.css'
 
 export default class UpdateCourierProfile extends Component{
-	constructor(){
-		super()
-		this.state = {
-			// username:'',
-			// email:'',
-			// phone:'',
-			// img:''
-		}
-        this._handleChange = this._handleChange.bind(this),
-        this._updateCourier = this._updateCourier.bind(this)
+	constructor(props) {
+		super(props);
+		this._updateCourier = this._updateCourier.bind(this);
 	}
-	
-	_handleChange(e){
-		this.setState({...this.state, [e.target.name]:e.target.value})
-    }
     
     _updateCourier(e){
-        e.preventDefault();
-		Axios.post(updateCourierProfileApi, this.state);
-		// use the returned courier
-		history.push('/courier/profile')
+		e.preventDefault();
+		var newCourier = document.getElementById('newCourier');
+		var courier = new FormData(newCourier);
+		this.props.updateCourier(courier);
+		// history.push('/courier/profile');
     }
 
 	render(){
-		const courier = this.state.courier
+		const {courier} = this.props
 		return(
 			<div>
-				<form onSubmit={this._updateCourier}>
+				<form id="newCourier" name="newCourier" onSubmit={this._updateCourier}>
 					<div className="courier-form">
 						<label>Username</label>
-						<input type="text" name="username" onChange={this._handleChange} />
+						<input type="text" name="username" placeholder={this.props.courier.username} id="username"  />
 					</div>
 					<div className="courier-form">
 						<label>Email</label>
-						<input type="email" name="email"  onChange={this._handleChange} />
+						<input type="email" name="email" id="email"  placeholder={this.props.courier.email}/>
 					</div>
 					<div className="courier-form">
 						<label>image</label>
-						<input type="text" name="img" onChange={this._handleChange}/>
+						{/* <img alt="" src={`http://localhost:3000/${this.props.courier.img.url}`}/> */}
+						<input type="file" name="img" id="img" />
 					</div>
 					<div className="courier-form">
 						<label>phone</label>
-						<input type="text" name="phone" onChange={this._handleChange}/>
+						<input type="text" name="phone" id="phone" placeholder={this.props.courier.phone}/>
 					</div>
+					{/* <input type="hidden" name="_method" value="patch" /> */}
 					<button>Save</button>
 				</form>
 			</div>

@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import Header from '../../containers/CourierHeaderContainer';
 import SideBar from '../../components/CourierSideBar';
 import CourierProfile from '../../containers/CourierProfileContainer';
-import UpdateCourierProfile from '../../components/UpdateCourierProfileForm';
+import UpdateCourierProfile from '../../containers/CourierUpdateProfileContainer';
 import ResetPassword from '../../components/ResetPassword';
 // import CourierReviews from '../../components/CourierReviews';
 import OpenAuctions from '../../components/OpenAuctions';

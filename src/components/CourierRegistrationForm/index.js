@@ -1,66 +1,60 @@
 import React, { Component } from 'react';
 // import './style.css'
-
+import history from '../../history';
 export default class CourierRegistrationForm extends Component{
-  constructor(){
-    super()
-    this.state = {
-      username:'',
-      email:'',
-      password:'',
-      password_confirmation:'',
-      phone:'',
-      img:''
-    }
-    this._handleChange = this._handleChange.bind(this)
+  handleSubmit(event) {
+    event.preventDefault();
+    var newCourier = document.getElementById('newCourier');
+    var courier = new FormData(newCourier);
+    this.props.addCourier(courier);
   }
 
-  _handleChange(e){
-    this.setState({...this.state, [e.target.name]:e.target.value})
+
+  componentWillMount(){
+    if (localStorage.getItem('jwtToken') !== null) {
+      history.push('/login/courier')
+    }
   }
 
   render(){
-    const courier = {}
-    courier["courier"] = this.state
     return(
+      // {
+      //   Object.keys(this.props.flashMessage).length === 0?
+      //     null
+      //   :
+      //   <div id="flash-message-error">
+      //     {
+      //       this.props.flashMessage.map((item, i)=>
+      //         <p key={i} className="flash-message-error"><span>&#10005;</span>{item}</p>
+      //       )
+      //     }
+      //   </div>
+      // }
       <div>
-        {
-          this.props.registerFlashMessage.constructor.name !== 'Array'?
-            null
-          :
-          <div id="flash-message-error">
-            {
-              this.props.registerFlashMessage.map((item, i)=>
-                <p key={i} className="flash-message-error"><span>&#10005;</span>{item}</p>
-              )
-            }
-          </div>
-
-        }
-        <form onSubmit={(e)=>{e.preventDefault() ;this.props.addCourier(courier)}}>
+        <form name="newCourier" id="newCourier" onSubmit={(e)=> this.handleSubmit(e)}>
         <div className="courier-form">
           <label>Username</label>
-          <input type="text" name="username" onChange={this._handleChange} />
+          <input type="text" name="username" id="username" />
         </div>
         <div className="courier-form">
           <label>Email</label>
-          <input type="email" name="email" onChange={this._handleChange} />
+          <input type="email" name="email" id="email"  />
         </div>
         <div className="courier-form">
           <label>image</label>
-          <input type="text" name="img" onChange={this._handleChange}/>
+          <input type="file" name="img" id="img" />
         </div>
         <div className="courier-form">
           <label>phone</label>
-          <input type="text" name="phone" onChange={this._handleChange}/>
+          <input type="text" name="phone" id="phone" />
         </div>
         <div className="courier-form">
           <label>password</label>
-          <input type="password" name="password" onChange={this._handleChange}/>
+          <input type="password" name="password" id="password" />
         </div>
         <div className="courier-form">
           <label>password confirmation</label>
-          <input type="password" name="password_confirmation" onChange={this._handleChange}/>
+          <input type="password" name="password_confirmation" id="password_confirmation" />
         </div>
         <button>Register</button>
         </form>
