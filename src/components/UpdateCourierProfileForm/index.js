@@ -38,7 +38,7 @@ export default class UpdateCourierProfile extends Component{
 		var newCourier = document.getElementById('newCourier');
 		var courier = new FormData(newCourier);
 		this.props.updateCourier(courier);
-		// history.push('/courier/profile');
+		// history.push('/courier');
     }
 
 	render(){

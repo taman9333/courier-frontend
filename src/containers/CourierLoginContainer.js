@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => {
 					localStorage.setItem('courierAuth', true)
 					dispatch(courierLoginSuccess(response))
 					setAuthorizationToken(token);
-					history.push('/courier/profile')
+					history.push('/courier')
 				}else{
 					dispatch(courierLoginFailure(response));
 				}

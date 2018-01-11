@@ -41,7 +41,7 @@ export default class OrderDetailsPage extends Component{
       this.setState({...this.state, order:response.data.order, pickup:response.data.pickup_address, drop_off:response.data.drop_off_address, auction:response.data.auction, last_bid:response.data.last_bid})
     })
     .catch((error)=>{
-      history.push('/courier/profile')
+      history.push('/courier')
     })
 
   }

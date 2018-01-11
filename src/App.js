@@ -36,7 +36,7 @@ class App extends Component {
           <Route path='/client/deliveries/:id'  component={ClientDeliveriesDetails} />
           <Route path="/register/courier" exact component={CourierRegistration} />
           <Route path="/login/courier" exact component={CourierLogin} />
-          <Route path="/courier/profile"  component={requireCourierAuth(CourierPage)} />
+          <Route path="/courier" component={requireCourierAuth(CourierPage)} />
           {/* <Route path="/forgotpassword" exact component={ForgotPassword} /> */}
         </div>
         <footer><p>&copy; 2018 HAT.com</p></footer>
