@@ -39,7 +39,7 @@ class App extends Component {
           <Route path="/courier" component={requireCourierAuth(CourierPage)} />
           <Route path="/forgotpassword" exact component={ForgotPassword} />
         </div>
-        <footer><p>&copy; 2018 HAT.com</p></footer>
+        {/* <footer><p>&copy; 2018 HAT.com</p></footer> */}
       </div>
     );
   }

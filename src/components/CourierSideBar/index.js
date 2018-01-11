@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import './style.css'
+import './style.css'
 import { Link } from 'react-router-dom';
 
 export default class CourierSideBar extends Component{
     render(){
       return(
-        <div id="sidebar">
+        <div id="sidebar" className="float-left">
           <nav>
             <ul>
               <li><Link to="/courier/notifications">Notifications</Link></li>

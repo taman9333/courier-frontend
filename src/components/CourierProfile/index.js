@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './style.css'
+import './style.css'
 // import history from '../../history';
 import { Link } from 'react-router-dom';
 
@@ -16,14 +16,15 @@ export default class CourierProfile extends Component{
         if (Object.keys(courier).length > 0) {
           return (
             <div>
-              <img alt="" src={`http://localhost:3000/${this.props.courier.img.url}`}/>
-              {/* rating */ }
+              <div className="float-left">
+                <img alt="" src={`http://localhost:3000/${this.props.courier.img.url}`}/>
+              </div>
               
-              <h1>Welcome {this.props.courier.username}</h1>
+              <p>Name: {this.props.courier.username}</p>
               <p>Email: {this.props.courier.email}</p>
               <p>Phone number: {this.props.courier.phone}</p>
-              <Link to="/courier/updateprofile">Update Profile</Link>
-              <Link to="/courier/resetpassword">Reset Password</Link> 
+              <Link className="link" to="/courier/updateprofile">Update Profile</Link>
+              <Link className="link" to="/courier/resetpassword">Reset Password</Link> 
             </div>
           )
         } else {
