@@ -28,8 +28,8 @@ export function createOrderLoading(){
   }
 }
 
-export function createOrder(id, order){
-  const payload = Axios.post(createOrderApi(id), order)
+export function createOrder(order){
+  const payload = Axios.post(createOrderApi, order)
   return{
     type:CREATE_ORDER,
     payload

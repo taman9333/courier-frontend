@@ -28,6 +28,8 @@ const mapDispatchToProps = (dispatch) => {
         },
         courierLogout: () => {
             localStorage.removeItem('jwtToken');
+            localStorage.removeItem('courierId');
+            localStorage.removeItem('courierAuth');
             setAuthorizationToken(false);
             dispatch(courierLogout())
         }

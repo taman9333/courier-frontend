@@ -10,7 +10,8 @@ const mapStateToProps = function(state){
   return{
     loading:state.client.loading,
     error:state.client.error,
-    flashMessage:state.client.loginFlashMessage
+    // flashMessage:state.client.loginFlashMessage
+    flashMessage:state.flashMessage.flashMessage
   }
 }
 
@@ -22,6 +23,7 @@ const mapDispatchToProps = function(dispatch){
         if (response.payload.status < 400) {
           const token = response.payload.data.auth_token;
           localStorage.setItem('jwtToken', token);
+          localStorage.setItem('clientAuth', true)
           dispatch(loginClientSuccess(response))
           setAuthorizationToken(token);
           history.push('/client/profile')

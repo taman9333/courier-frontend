@@ -18,7 +18,7 @@ export const courierSessionsApi = `${courierApi}/login`;
 
 
 // open_auctions
-export const filteredOpenAuctionsApi = `${rootApi}/courer/filtered_open_auctoins`;
+// export const filteredOpenAuctionsApi = `${rootApi}/courer/filtered_open_auctoins`;
 // maybe we should edit this to get the index from orders controller instead of auctions
 
 // export const  auctionApi = `${rootApi}/courier/auction`;
@@ -31,9 +31,14 @@ export const loginClientApi = `${rootApi}/client/sessions`
 
 //orders
 
-export const createOrderApi = (id)=>{return`${rootApi}/clients/orders`}
+export const createOrderApi = `${rootApi}/clients/orders`
 
 // get client addresses
 
 export const getClientAddressesApi = `${rootApi}/client/addresses`
 
+// courier deliveries
+
+export const getCourierDeliveriesApi = `${rootApi}/courier/deliveries/index`
+
+export const getClientDeliveriesApi = `${rootApi}/clients/deliveries`

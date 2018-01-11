@@ -1,4 +1,3 @@
-
 import Axios from 'axios';
 
 export default function setAuthorizationToken(token) {
@@ -8,7 +7,3 @@ export default function setAuthorizationToken(token) {
         delete Axios.defaults.headers.common['Authorization'];
     }
 }
-
-
-
-

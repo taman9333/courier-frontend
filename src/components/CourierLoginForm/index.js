@@ -11,11 +11,11 @@ export default class CourierLoginForm extends Component{
       }
       this._handleChange = this._handleChange.bind(this)
     }
-  
+
     _handleChange(e){
       this.setState({...this.state, [e.target.name]:e.target.value})
     }
-  
+
     render(){
       // const courier = {}
       // courier["courier"] = this.state
@@ -33,7 +33,7 @@ export default class CourierLoginForm extends Component{
           </div>
           <button>Login</button>
           </form>
-          <Link to="/courier/register">Don't have an account? Register</Link>
+          <Link to="/register/courier">Don't have an account? Register</Link>
           <Link to="/courier/forgotpassword">Forgot Password</Link>
           <Link to="/">Client?</Link>
 

@@ -1,0 +1,36 @@
+.client-header{
+  background-color:#DEE2D6;
+  margin-top:-10px;
+  height:42px;
+  line-height:42px;
+}
+
+.client-header p{
+  margin:0;
+  display:inline-block;
+  margin-right:20px;
+}
+
+.notifications{
+  display:inline-block;
+  margin-right:0;
+}
+
+.client-header a{
+  color:steelblue;
+}
+
+.float-right{
+  margin-right:50px;
+  width:250px;
+}
+
+.float-right button{
+  margin-left:15px;
+}
+
+/*.client-header button{
+  background:#F58A07;
+  border:0;
+  border-radius:10px;
+}*/

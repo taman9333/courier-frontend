@@ -26,6 +26,7 @@ const mapDispatchToProps = function(dispatch){
 
     logoutClient:function(){
       localStorage.removeItem('jwtToken');
+      localStorage.removeItem('clientAuth');
       setAuthorizationToken(false)
       dispatch(logoutClient())
     }

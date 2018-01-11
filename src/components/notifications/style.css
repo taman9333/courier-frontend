@@ -1,0 +1,27 @@
+.notifications{
+  display:inline-block;
+}
+
+.fa-flag span{
+  margin-left:5px;
+}
+
+
+
+.show-hide{
+  position:fixed;
+  bottom:35px;
+  left:40px;
+  size:25px;
+  background:#eee;
+  padding:5px 10px;
+}
+
+
+.checked{
+  background:rgba(228, 233, 241, 0.8);
+}
+
+.notification-style{
+  border:1px solid rgba(200, 200, 200, 0.5);
+}

@@ -28,7 +28,7 @@ export const courierLoginSuccess = (response) => {
         courier:response.payload.data.courier
     }
 }
-export const courierLoginFailure = (error) => {
+export const courierLoginFailure = (error) => { 
     return {
         type: COURIER_LOGIN_FAILURE,
         error:error.payload.response.data
@@ -41,4 +41,3 @@ export const courierLoginFailure = (error) => {
 //         email
 //     }
 // }
-
