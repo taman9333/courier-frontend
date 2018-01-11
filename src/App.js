@@ -7,7 +7,7 @@ import requireCourierAuth from './utils/requireCourierAuth';
 import CourierRegistration from './pages/CourierRegistrations';
 import CourierLogin from './pages/CourierLogins';
 import CourierPage from './pages/CourierPage';
-// import ForgotPassword from './pages/ForgotPassword';
+import ForgotPassword from './components/ForgotPassword';
 import HomePage from './pages/HomePage';
 import UserLogin from './containers/ClientLoginContainer';
 import ClientProfile from './containers/ClientProfileContainer';
@@ -32,12 +32,12 @@ class App extends Component {
           <Route path='/register/client' component={HomePage}/>
           <Route path='/client/createorder' exact component={requireAuth(CreateOrder)}/>
           <Route path='/client/orderdetails/:id' exact component={requireAuth(OrderDetails)}/>
-          <Route path='/client/deliveries' exact component={ClientDeliveries} />
-          <Route path='/client/deliveries/:id'  component={ClientDeliveriesDetails} />
+          <Route path='/client/deliveries' exact component={requireAuth(ClientDeliveries)} />
+          <Route path='/client/deliveries/:id'  component={requireAuth(ClientDeliveriesDetails)} />
           <Route path="/register/courier" exact component={CourierRegistration} />
           <Route path="/login/courier" exact component={CourierLogin} />
           <Route path="/courier" component={requireCourierAuth(CourierPage)} />
-          {/* <Route path="/forgotpassword" exact component={ForgotPassword} /> */}
+          <Route path="/forgotpassword" exact component={ForgotPassword} />
         </div>
         <footer><p>&copy; 2018 HAT.com</p></footer>
       </div>
