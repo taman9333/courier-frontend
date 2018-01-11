@@ -4,7 +4,7 @@
     /* width:250px; */
   }
 
-.link {
+.link + .link{
     margin-left:50px;  
     /* display: inline-block; */
 }

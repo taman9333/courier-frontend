@@ -19,12 +19,13 @@ export default class CourierProfile extends Component{
               <div className="float-left">
                 <img alt="" src={`http://localhost:3000/${this.props.courier.img.url}`}/>
               </div>
-              
-              <p>Name: {this.props.courier.username}</p>
-              <p>Email: {this.props.courier.email}</p>
-              <p>Phone number: {this.props.courier.phone}</p>
-              <Link className="link" to="/courier/updateprofile">Update Profile</Link>
-              <Link className="link" to="/courier/resetpassword">Reset Password</Link> 
+              <div>
+                <p>Name: {this.props.courier.username}</p>
+                <p>Email: {this.props.courier.email}</p>
+                <p>Phone number: {this.props.courier.phone}</p>
+                <Link className="link" to="/courier/updateprofile">Update Profile</Link>
+                <Link className="link" to="/courier/resetpassword">Reset Password</Link> 
+              </div>
             </div>
           )
         } else {
