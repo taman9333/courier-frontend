@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import './style.css'
 import Axios from 'axios'
 import history from '../../history'
+import ClientNav from '../../containers/ClientProfileContainer'
+
 
 class OrderDetailsPage extends Component{
 
@@ -50,6 +52,7 @@ class OrderDetailsPage extends Component{
     const {order, pickup, drop_off, auction, last_bid, winning_courier, warning} = this.state
     return(
       <div>
+        <ClientNav />
       {
         Object.keys(this.props.flashMessage).length === 0?
         null
@@ -61,8 +64,8 @@ class OrderDetailsPage extends Component{
           <p>Status: {auction.status}</p>
           <p>Bid Deadline: {auction.bid_deadline}</p>
           {
-            warning != null?
-            <p style={{color:"red"}}>This is the last bid offered, your order will be outdated if you reject this bid</p>
+            warning != null && auction.status != "closed"?
+            <p className="last-bid">This is the last bid offered, your order will be outdated if you reject this bid</p>
             :null
           }
           <p>Winning Courier: {winning_courier == null? `ــــــــ` :winning_courier }</p>

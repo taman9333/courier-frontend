@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './style.css'
+
 export default class OrderDetails extends Component{
   render(){
     const checkBilling = function(){
