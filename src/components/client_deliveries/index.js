@@ -22,19 +22,20 @@ export default class ClientDeliveries extends Component {
   render(){
     const {deliveries} = this.state
     return(
-      <div>
+      <div className="client-deliveries-container jumbotron">
+        <h1>Deliveries</h1>
         {
           deliveries.map((delivery)=>{
-            var x = Date(delivery.delivery_date)
+            var x = `${new Date(delivery.delivery_date)}`
             x = x.split(" ").slice(0, 4)
             x = x.join(" ")
             return(
               <div key={delivery.id} className="client-deliveries">
-                <p>Category: {delivery.category} </p>
-                <p>Delivery Date: {x} </p>
-                <p>Courier: {delivery.courier}</p>
-                <p>Price: ${delivery.price}</p>
-                <Link to={`/client/deliveries/${delivery.id}`}>More Details</Link>
+                <p><span className="delivery-key-width">Category</span>{delivery.category} </p>
+                <p><span className="delivery-key-width">Delivery Date</span>{x}</p>
+                <p><span className="delivery-key-width">Courier</span>{delivery.courier}</p>
+                <p><span className="delivery-key-width">Price</span>${delivery.price}</p>
+                <Link to={`/client/deliveries/${delivery.id}`}>More Details...</Link>
               </div>
             )
 

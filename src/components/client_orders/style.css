@@ -1,0 +1,48 @@
+.client-orders-container{
+  float:right;
+  width:75%;
+  margin-top:12vh;
+  margin-right:60px;
+}
+
+.client-orders-container h1{
+  text-align:center;
+}
+
+.order-key-width{
+  font-weight:700;
+  width:110px;
+  display:inline-block;
+}
+
+.client-orders{
+  width:95%;
+  padding:20px;
+  border:2px solid steelblue;
+  border-radius:5px;
+  margin:20px auto;
+  clear:both;
+  content:"";
+  display:table;
+  padding-top:29px;
+}
+
+.client-orders p{
+  display:inline-block;
+  width:40%;
+}
+
+.client-orders a{
+  float:right
+}
+
+.client-orders:last-child{
+  margin-bottom:0;
+}
+
+.client-orders::before,
+.client-orders::after{
+  clear:both;
+  display:table;
+  content:""
+}

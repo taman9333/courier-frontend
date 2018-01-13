@@ -28,10 +28,10 @@ export default class Notifications extends Component{
         connected: () => {},
         received: (data) => {
           console.log(data);
-          this.setState({...this.state, notifications:[{body:data.notification.body, check:data.notification.check, order_id:data.order_id}, ...this.state.notifications], message:{notification:data.notification, order_id:data.order_id}});
-          // setTimeout(()=>{
-          //   this.setState({...this.state, message:""})
-          // },8000)
+          this.setState({...this.state, notifications:[{body:data.notification.body, check:data.notification.check, id:data.notification.id, order_id:data.order_id}, ...this.state.notifications], message:{notification:data.notification, order_id:data.order_id}});
+          setTimeout(()=>{
+            this.setState({...this.state, message:""})
+          },9000)
         }
       });
     }
@@ -62,11 +62,13 @@ export default class Notifications extends Component{
 
 
   _check(e, id, check){
+    debugger
     if(!check) {
       Axios.patch("http://localhost:3000/client/notification/check",{id:id}).then((response)=>{
         this.setState({...this.state, notifications:response.data})
       })
     }
+    debugger
   }
 
   render() {
@@ -101,7 +103,7 @@ export default class Notifications extends Component{
         <a className="ant-dropdown-link" href="#">
           { Object.keys(this.state.message).length == 0?
             null
-            :<p className="show-hide">{this.state.message.notification.body}</p>
+            :<p className="show-hide"><i class="fa fa-exclamation" aria-hidden="true"></i>{this.state.message.notification.body}</p>
           }
         <i className="fa fa-flag" aria-hidden="true"><span>{notCheck}</span></i>
         </a>

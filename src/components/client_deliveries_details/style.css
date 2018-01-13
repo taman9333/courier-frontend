@@ -1,3 +1,38 @@
-.star-rating{
-  font-size:30px;
+.star-rating *{
+  font-size:25px;
+}
+
+.client-delivery-details-container{
+  float:right;
+  width:75%;
+  margin-top:12vh;
+  margin-right:60px;
+}
+
+.client-delivery-details-container h1{
+  text-align:center;
+}
+
+.rating-review h4{
+  margin-left:20px;
+}
+
+.rating-review h5{
+  margin-left:40px;
+}
+
+.rating-review > h4 ~ p{
+  margin-left:70px;
+}
+
+.set-review, .view-review .star-rating, .view-review h5 ~ p{
+  margin-left:70px;
+}
+
+.review-text-area{
+  width:90%;
+}
+
+.set-review h5{
+  margin-left:-30px;
 }

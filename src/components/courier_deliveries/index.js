@@ -25,7 +25,7 @@ export default class CourierDeliveries extends Component{
       <div>
         {
           deliveries.map((delivery)=>{
-            var x = Date(delivery.delivery_date)
+            var x = `${new Date(delivery.delivery_date)}`
             x = x.split(" ").slice(0, 4)
             x = x.join(" ")
             return(

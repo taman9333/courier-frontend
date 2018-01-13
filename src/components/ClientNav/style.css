@@ -1,8 +1,10 @@
 .client-header{
   background-color:#DEE2D6;
-  margin-top:-10px;
-  height:42px;
-  line-height:42px;
+  height:7vh;
+  line-height:7vh;
+  position:fixed;
+  width:100vw;
+  z-index:1;
 }
 
 .client-header p{

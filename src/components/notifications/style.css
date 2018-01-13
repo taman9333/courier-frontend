@@ -11,10 +11,13 @@
 .show-hide{
   position:fixed;
   bottom:35px;
-  left:40px;
+  left:20px;
   size:25px;
-  background:#eee;
+  background-color:#e1e6ee;
   padding:5px 10px;
+  color:#293540;
+  border:2px solid #999;
+  border-radius:10px;
 }
 
 
@@ -24,4 +27,8 @@
 
 .notification-style{
   border:1px solid rgba(200, 200, 200, 0.5);
+}
+
+.ant-dropdown-link p i{
+  margin-right:8px;
 }

@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import './style.css';
 import Axios from 'axios';
 import {getClientAddressesApi} from '../../apiConfig';
+import { DatePicker } from 'antd';
+import moment from 'moment';
 
 export default class CreateOrder extends Component{
   constructor(props){
@@ -42,10 +44,16 @@ export default class CreateOrder extends Component{
     this._handleDropoffSaved = this._handleDropoffSaved.bind(this)
     this._newAddressHandle = this._newAddressHandle.bind(this)
     this._getAddressHandle = this._getAddressHandle.bind(this)
+    this._handleDate = this._handleDate.bind(this)
   }
 
   _handleChange(e){
     this.setState({...this.state, [e.target.name]:e.target.value})
+  }
+
+  _handleDate(e, x){
+    const date = `${e._d.getUTCFullYear()}/${e._d.getUTCMonth() + 1}/${e._d.getUTCDate()}`
+    this.setState({...this.state, [x]:date})
   }
 
   _handleDimensions(e){
@@ -128,10 +136,13 @@ export default class CreateOrder extends Component{
     })
   }
 
-  render(){
 
+
+  render(){
+    const dateFormat = 'YYYY/MM/DD';
     return(
-      <div>
+      <div className="create-order-container jumbotron">
+        <h1>Create Order</h1>
         {
           this.props.flashMessage != undefined?
           this.props.flashMessage.constructor.name !== 'Array'?
@@ -147,9 +158,9 @@ export default class CreateOrder extends Component{
           :null
         }
         <form onSubmit={this._handleOrder}>
-          <div>
+          <div className="form-group" className="border-bottom-all">
             <label htmlFor="category">Category</label>
-            <select id="category" name="category" onChange={this._handleChange}>
+            <select id="category" name="category" className="form-control" onChange={this._handleChange}>
               <option></option>
               <option value="electronics">electronics</option>
               <option value="food">food</option>
@@ -159,164 +170,199 @@ export default class CreateOrder extends Component{
               <option value="outdoors">outdoors</option>
             </select>
           </div>
-          <div >
+          <div className="form-group" className="border-bottom-all">
             <label htmlFor="weight">Weight in Kg.</label>
-            <input id="weight" step="any" min="0.1" type="number" name="weight" onChange={this._handleChange}/>
+            <input id="weight" step="any" className="form-control" min="0.1" type="number" name="weight" onChange={this._handleChange}/>
           </div>
-          <div >
-            <label>Dimensions</label>
-            <input id="length" type="number" step="any" min="0.01" placeholder="length" name="length" onChange = {this._handleDimensions}/>
-            <input id="width" type="number" step="any" min="0.01" placeholder="width" name="width" onChange = {this._handleDimensions}/>
-            <input id="height" type="number" step="any" min="0.01" placeholder="height" name="height" onChange = {this._handleDimensions}/>
-            inches
+          <div className="form-group">
+            <label>Dimensions in  inches</label>
+            <div className="row">
+            <div className="col">
+              <input id="length" type="number" className="form-control" step="any" min="0.01" placeholder="length" name="length" onChange = {this._handleDimensions}/>
+            </div>
+            <div className="col">
+              <input id="width" type="number" className="form-control" step="any" min="0.01" placeholder="width" name="width" onChange = {this._handleDimensions}/>
+            </div>
+            <div className="col">
+              <input id="height" type="number" className="form-control" step="any" min="0.01" placeholder="height" name="height" onChange = {this._handleDimensions}/>
+            </div>
           </div>
-          <div >
-            <label htmlFor="delivery_date">Delivery Date</label>
-            <input id="delivery_date" type="date" name="delivery_date" onChange={this._handleChange}/>
+        </div>
+          <div className="form-group row">
+            <label className="col-sm-3 col-form-label" htmlFor="delivery_date">Delivery Date</label>
+            <div>
+              <DatePicker className="form-control" onChange={(e)=>{this._handleDate(e, "delivery_date")}} />
+            </div>
           </div>
           <div >
             <p>Billing Address</p>
-            <label htmlFor="pickup">pick up</label>
             <input id="pickup" type="radio" name="billing_address" value="1" onChange={this._handleChange} required/>
-            <label htmlFor="dropoff">drop off</label>
-            <input id="billing_address" type="radio" name="billing_address" value="2" onChange={this._handleChange} required/>
+            <p><label htmlFor="pickup">Pick Up</label></p>
+            <input id="dropoff" type="radio" name="billing_address" value="2" onChange={this._handleChange} required/>
+            <p><label htmlFor="dropoff">Drop Off</label></p>
           </div>
-          <div id="bid_deadline">
-            <label>bid deadline</label>
-            <input type="date" name="bid_deadline" onChange = {this._handleChange}/>
+          <div className="form-group row" id="bid_deadline">
+            <label className="col-sm-3 col-form-label">Bid Deadline</label>
+            <div >
+              <DatePicker className="form-control" onChange={(e)=>{this._handleDate(e, "bid_deadline")}} />
+            </div>
           </div>
-          <h3>Pickup Address</h3>
-          <button type="button" onClick={()=>{this._newAddressHandle(document.getElementById("create-pickup"), document.getElementById("pickup-drop-menu"))}}>Enter new address</button>
-          <button type="button" onClick={()=>{this._getAddressHandle(document.getElementById("pickup-drop-menu"), document.getElementById("create-pickup"))}}>choose from saved address</button>
-          <div id="pickup-drop-menu">
-            { this.state.addresses.length === 0?
-            <p>You don't have any saved addresses</p>
-            :<select name="pickup_address_id" onChange={this._handleChange}>
-              <option></option>
-              {
-                this.state.addresses.map(function(item){
-                  return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>
-                })
+          <div className="pickup-address">
+            <h3>Pickup Address</h3>
+            <button type="button" className="btn btn-info" onClick={()=>{this._newAddressHandle(document.getElementById("create-pickup"), document.getElementById("pickup-drop-menu"))}}>Enter new address</button>
+            <button type="button" className="btn btn-dark" onClick={()=>{this._getAddressHandle(document.getElementById("pickup-drop-menu"), document.getElementById("create-pickup"))}}>choose from saved address</button>
+            <div id="pickup-drop-menu">
+              { this.state.addresses.length === 0?
+              <p>You don't have any saved addresses</p>
+              :
+              <div className="form-group">
+              <select name="pickup_address_id" className="fetchAddress form-control" onChange={this._handleChange}>
+                <option></option>
+                {
+                  this.state.addresses.map(function(item){
+                    return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>
+                  })
+                }
+              </select>
+              </div>
               }
-
-            </select>
+            </div>
+            <div id="create-pickup">
+              <div className="form-group row">
+                <label htmlFor="apartment_number" className="col-sm-3 col-form-label" >Apartment number</label>
+                <div className="col-sm-9">
+                  <input id="apartment_number" className="form-control" type="number" name="apartment_number" onChange={this._handlePickup}/>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label htmlFor="building_number" className="col-sm-3 col-form-label">Building number</label>
+                <div className="col-sm-9">
+                  <input id="building_number" type="number" className="form-control" name="building_number" onChange={this._handlePickup}/>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label htmlFor="street" className="col-sm-3 col-form-label">Street</label>
+                <div className="col-sm-9">
+                  <input id="street" type="text" className="form-control" name="street" onChange={this._handlePickup}/>
+                </div>
+              </div>
+              <div className="form-group row">
+              <label htmlFor="pickup-area" className="col-sm-3 col-form-label">Area</label>
+              <div className="col-sm-9">
+                <select id="pickup-area" className="form-control" name="area" onChange={this._handlePickup}>
+                  <option></option>
+                  <option value="abbasiya">Abbasiya</option>
+                  <option value="agouza">Agouza</option>
+                  <option value="ainShams">Ain Shams</option>
+                  <option value="dokki">Dokki</option>
+                  <option value="downtown">Downtown</option>
+                  <option value="ghamra">Ghamra</option>
+                  <option value="haram">Haram</option>
+                  <option value="hdayekElKobba">Hdayek El Kobba</option>
+                  <option value="heliopolis">Heliopolis</option>
+                  <option value="helwan">Helwan</option>
+                  <option value="katameya">Katameya</option>
+                  <option value="maadi">Maadi</option>
+                  <option value="manial">Manial</option>
+                  <option value="mohandseen">Mohandseen</option>
+                  <option value="mokatam">Mokatam</option>
+                  <option value="nasrCity">Nasr City</option>
+                  <option value="rehab">Rehab</option>
+                  <option value="shobra">Shobra</option>
+                  <option value="shorouk">Shorouk</option>
+                  <option value="tagammoaElKhames">Tagammoa El Khames</option>
+                  <option value="zamalek">Zamalek</option>
+                </select>
+              </div>
+              </div>
+              <div >
+                <p>Do you want to save this address</p>
+                <input id="pickup-saved-true" type="radio" name="saved" value="true" onChange={this._handlePickup} />
+                <p><label htmlFor="pickup-saved-true">Yes</label></p>
+                <input id="pickup-saved-false" type="radio" name="saved" value="false" onChange={this._handlePickup} />
+                <p><label htmlFor="pickup-saved-false">No</label></p>
+              </div>
+            </div>
+          </div>
+          <div className="dropoff-address">
+            <h3>Dropoff Address</h3>
+            <button type="button" className="btn btn-info" onClick={()=>{this._newAddressHandle(document.getElementById("create-dropoff"), document.getElementById("dropoff-drop-menu"))}}>Enter new address</button>
+            <button type="button" className="btn btn-dark" onClick={()=>{this._getAddressHandle(document.getElementById("dropoff-drop-menu"), document.getElementById("create-dropoff"))}}>choose from saved address</button>
+            <div id="dropoff-drop-menu">
+              { this.state.addresses.length === 0?
+              <p>You don't have any saved addresses</p>
+              :<div className="form-group">
+              <select name="drop_off_address_id" className="fetchAddress form-control" onChange={this._handleChange}>
+                <option></option>
+                {
+                  this.state.addresses.map(function(item){
+                    return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>
+                  })
+                }
+              </select>
+              </div>
             }
-          </div>
-          <div id="create-pickup">
-            <div>
-              <label htmlFor="apartment_number">Apartment number</label>
-              <input id="apartment_number" type="number" name="apartment_number" onChange={this._handlePickup}/>
             </div>
-            <div>
-              <label htmlFor="building_number">Building number</label>
-              <input id="building_number" type="number" name="building_number" onChange={this._handlePickup}/>
-            </div>
-            <div>
-              <label htmlFor="street">Street</label>
-              <input id="street" type="text" name="street" onChange={this._handlePickup}/>
-            </div>
-            <div>
-            <label htmlFor="pickup-area">Area</label>
-              <select id="pickup-area" name="area" onChange={this._handlePickup}>
-                <option></option>
-                <option value="abbasiya">Abbasiya</option>
-                <option value="agouza">Agouza</option>
-                <option value="ainShams">Ain Shams</option>
-                <option value="dokki">Dokki</option>
-                <option value="downtown">Downtown</option>
-                <option value="ghamra">Ghamra</option>
-                <option value="haram">Haram</option>
-                <option value="hdayekElKobba">Hdayek El Kobba</option>
-                <option value="heliopolis">Heliopolis</option>
-                <option value="helwan">Helwan</option>
-                <option value="katameya">Katameya</option>
-                <option value="maadi">Maadi</option>
-                <option value="manial">Manial</option>
-                <option value="mohandseen">Mohandseen</option>
-                <option value="mokatam">Mokatam</option>
-                <option value="nasrCity">Nasr City</option>
-                <option value="rehab">Rehab</option>
-                <option value="shobra">Shobra</option>
-                <option value="shorouk">Shorouk</option>
-                <option value="tagammoaElKhames">Tagammoa El Khames</option>
-                <option value="zamalek">Zamalek</option>
-              </select>
-            </div>
-            <div >
-              <p>Do you want to save this address</p>
-              <label htmlFor="pickup-saved-true">Yes</label>
-              <input id="pickup-saved-true" type="radio" name="saved" value="true" onChange={this._handlePickup} />
-              <label htmlFor="pickup-saved-false">No</label>
-              <input id="pickup-saved-false" type="radio" name="saved" value="false" onChange={this._handlePickup} />
-            </div>
-          </div>
-          <h3>dropoff Address</h3>
-          <button type="button" onClick={()=>{this._newAddressHandle(document.getElementById("create-dropoff"), document.getElementById("dropoff-drop-menu"))}}>Enter new address</button>
-          <button type="button" onClick={()=>{this._getAddressHandle(document.getElementById("dropoff-drop-menu"), document.getElementById("create-dropoff"))}}>choose from saved address</button>
-          <div id="dropoff-drop-menu">
-            { this.state.addresses.length === 0?
-            <p>You don't have any saved addresses</p>
-            :<select name="drop_off_address_id" onChange={this._handleChange}>
-              <option></option>
-              {
-                this.state.addresses.map(function(item){
-                  return <option key={item.id} value={item.id}>{item.building_number} - {item.street} St. - {item.area}</option>
-                })
-              }
-            </select>
-          }
-          </div>
-          <div id="create-dropoff">
-            <div>
-              <label htmlFor="apartment_number">Apartment number</label>
-              <input id="apartment_number" type="number" name="apartment_number" onChange={this._handleDropoff}/>
-            </div>
-            <div>
-              <label htmlFor="building_number">Building number</label>
-              <input id="building_number" type="number" name="building_number" onChange={this._handleDropoff}/>
-            </div>
-            <div>
-              <label htmlFor="street">Street</label>
-              <input id="street" type="text" name="street" onChange={this._handleDropoff}/>
-            </div>
-            <div>
-              <label htmlFor="dropoff-area">Area</label>
-              <select id="dropoff-area" name="area" onChange={this._handleDropoff}>
-                <option></option>
-                <option value="abbasiya">Abbasiya</option>
-                <option value="agouza">Agouza</option>
-                <option value="ainShams">Ain Shams</option>
-                <option value="dokki">Dokki</option>
-                <option value="downtown">Downtown</option>
-                <option value="ghamra">Ghamra</option>
-                <option value="haram">Haram</option>
-                <option value="hdayekElKobba">Hdayek El Kobba</option>
-                <option value="heliopolis">Heliopolis</option>
-                <option value="helwan">Helwan</option>
-                <option value="katameya">Katameya</option>
-                <option value="maadi">Maadi</option>
-                <option value="manial">Manial</option>
-                <option value="mohandseen">Mohandseen</option>
-                <option value="mokatam">Mokatam</option>
-                <option value="nasrCity">Nasr City</option>
-                <option value="rehab">Rehab</option>
-                <option value="shobra">Shobra</option>
-                <option value="shorouk">Shorouk</option>
-                <option value="tagammoaElKhames">Tagammoa El Khames</option>
-                <option value="zamalek">Zamalek</option>
-              </select>
-            </div>
-            <div >
-              <p>Do you want to save this address</p>
-              <label htmlFor="dropoff-saved-true">Yes</label>
-              <input id="dropoff-saved-true" type="radio" name="dropoff-saved" value="true" onChange={this._handleDropoffSaved} />
-              <label htmlFor="dropoff-saved-false">No</label>
-              <input id="dropoff-saved-false" type="radio" name="dropoff-saved" value="false" onChange={this._handleDropoffSaved} />
+            <div id="create-dropoff">
+              <div className="form-group row">
+                <label htmlFor="apartment_number" className="col-sm-3 col-form-label">Apartment number</label>
+                <div className="col-sm-9">
+                  <input id="apartment_number" type="number" className="form-control" name="apartment_number" onChange={this._handleDropoff}/>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label htmlFor="building_number" className="col-sm-3 col-form-label">Building number</label>
+                <div className="col-sm-9">
+                  <input id="building_number" type="number" className="form-control" name="building_number" onChange={this._handleDropoff}/>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label htmlFor="street" className="col-sm-3 col-form-label" >Street</label>
+                <div className="col-sm-9">
+                  <input id="street" type="text" className="form-control" name="street" onChange={this._handleDropoff}/>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label htmlFor="dropoff-area" className="col-sm-3 col-form-label">Area</label>
+                <div className="col-sm-9">
+                  <select id="dropoff-area" name="area" className="form-control" onChange={this._handleDropoff}>
+                  <option></option>
+                  <option value="abbasiya">Abbasiya</option>
+                  <option value="agouza">Agouza</option>
+                  <option value="ainShams">Ain Shams</option>
+                  <option value="dokki">Dokki</option>
+                  <option value="downtown">Downtown</option>
+                  <option value="ghamra">Ghamra</option>
+                  <option value="haram">Haram</option>
+                  <option value="hdayekElKobba">Hdayek El Kobba</option>
+                  <option value="heliopolis">Heliopolis</option>
+                  <option value="helwan">Helwan</option>
+                  <option value="katameya">Katameya</option>
+                  <option value="maadi">Maadi</option>
+                  <option value="manial">Manial</option>
+                  <option value="mohandseen">Mohandseen</option>
+                  <option value="mokatam">Mokatam</option>
+                  <option value="nasrCity">Nasr City</option>
+                  <option value="rehab">Rehab</option>
+                  <option value="shobra">Shobra</option>
+                  <option value="shorouk">Shorouk</option>
+                  <option value="tagammoaElKhames">Tagammoa El Khames</option>
+                  <option value="zamalek">Zamalek</option>
+                </select>
+              </div>
+              </div>
+              <div >
+                <p>Do you want to save this address</p>
+                <input id="dropoff-saved-true" type="radio" name="dropoff-saved" value="true" onChange={this._handleDropoffSaved} />
+                <p><label htmlFor="dropoff-saved-true">Yes</label></p>
+                <input id="dropoff-saved-false" type="radio" name="dropoff-saved" value="false" onChange={this._handleDropoffSaved} />
+                <p><label htmlFor="dropoff-saved-false">No</label></p>
+              </div>
             </div>
           </div>
 
           <p>
-            <button>Submit</button>
+            <button className="btn btn-success">Submit</button>
           </p>
         </form>
       </div>

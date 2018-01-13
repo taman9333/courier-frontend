@@ -1,4 +1,4 @@
-import ClientProfile from '../components/ClientProfile';
+import ClientNav from '../components/ClientNav';
 import Axios from 'axios';
 import {connect} from 'react-redux';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
@@ -35,4 +35,4 @@ const mapDispatchToProps = function(dispatch){
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClientProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(ClientNav)
