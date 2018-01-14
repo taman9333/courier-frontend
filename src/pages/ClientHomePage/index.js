@@ -40,8 +40,8 @@ export default class ClientHomePage extends Component{
           :null
         }
         <div className="vertical-menu">
-        <Link className="sidebarLinks" to="/client" onClick={this._addActiveClass} >View Profile</Link>
-        <Link className="sidebarLinks" to="/client/createorder" onClick={this._addActiveClass} >Create Order</Link>
+        <Link className="sidebarLinks" to="/client"  >View Profile</Link>
+        <Link className="sidebarLinks" to="/client/createorder" >Create Order</Link>
         <Link className="sidebarLinks" to="/client/orders">My Orders</Link>
         <Link className="sidebarLinks" to="/client/deliveries">Deliveries</Link>
         </div>

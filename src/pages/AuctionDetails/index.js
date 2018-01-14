@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './style.css'
 import OrderDetails from '../../components/OrderDetails'
 import Axios from 'axios'
-import CourierHeader from '../../containers/CourierHeaderContainer'
+
 import history from '../../history'
 
 export default class OrderDetailsPage extends Component{
@@ -56,23 +56,30 @@ export default class OrderDetailsPage extends Component{
 
     const makeForm = ()=>{
       return(
-        <form onSubmit={this._handleSubmit}>
-          <label>Make a lower Bid</label>
-          <input name="price"  min="0" type="number" step="any" onChange={this._handleChange}/>
-          <button >Submit</button>
+        <form className="form-inline make-bid" onSubmit={this._handleSubmit}>
+          <div className="form-group mb-2">
+            <label>Make a lower Bid?</label>
+            <input className="form-control" name="price"  min="0" type="number" step="any" onChange={this._handleChange}/>
+          </div>
+          <button className="btn-sm btn-success">Submit</button>
         </form>
       )
     }
 
     const {order, pickup, drop_off, auction, last_bid, winning_courier} = this.state
+
+    var x = `${new Date(order.delivery_date)}`
+    x = x.split(" ").slice(0, 4)
+    x = x.join(" ")
     return(
-      <div>
-        <CourierHeader />
-        <h1>Order details page</h1>
+      <div className="auction-details-container jumbotron">
+        <h1>Auction Details</h1>
         <OrderDetails order = {order} pickup={pickup} drop_off={drop_off}/>
+        <hr className="my-4" />
         <div id="auction-details">
-          <p>Bid Deadline: {auction.bid_deadline}</p>
-          <p>Last Bid Price: $ {last_bid == null? 0 :last_bid.price}</p>
+          <h4>Auction Info</h4>
+          <p><span className="key-width">Bid Deadline</span>{x}</p>
+          <p><span className="key-width">Last Bid Price</span> $ {last_bid == null? 0 :last_bid.price}</p>
           {
             this.state.last_bid == null?
               makeForm()

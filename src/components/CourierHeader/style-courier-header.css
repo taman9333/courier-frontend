@@ -1,3 +1,32 @@
-.courier-header-details{
-  display:inline-block
+.courier-header{
+  background-color:#DEE2D6;
+  height:7vh;
+  line-height:7vh;
+  position:fixed;
+  width:100vw;
+  z-index:1;
+}
+
+.courier-header p{
+  margin:0;
+  display:inline-block;
+  margin-right:20px;
+}
+
+.notifications{
+  display:inline-block;
+  margin-right:0;
+}
+
+.courier-header a{
+  color:steelblue;
+}
+
+.float-right{
+  margin-right:50px;
+  width:250px;
+}
+
+.float-right button{
+  margin-left:15px;
 }

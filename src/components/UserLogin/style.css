@@ -23,9 +23,10 @@ span{
   font-size:20px;
   color:#fff;
   text-align:center;
-  width:80%;
+  width:65%;
   margin:0 auto;
   height:50px;
   line-height:50px;
   border-radius:10px;
+  box-shadow: 7px 7px 3px grey;
 }

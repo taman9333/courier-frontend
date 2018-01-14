@@ -18,12 +18,12 @@ export default class CourierProfile extends Component{
             <div>
               <img alt="" src={`http://localhost:3000/${this.props.courier.img.url}`}/>
               {/* rating */ }
-              
+
               <h1>Welcome {this.props.courier.username}</h1>
               <p>Email: {this.props.courier.email}</p>
               <p>Phone number: {this.props.courier.phone}</p>
               <Link to="/courier/updateprofile">Update Profile</Link>
-              <Link to="/courier/resetpassword">Reset Password</Link> 
+              <Link to="/courier/resetpassword">Reset Password</Link>
             </div>
           )
         } else {

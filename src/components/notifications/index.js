@@ -62,13 +62,11 @@ export default class Notifications extends Component{
 
 
   _check(e, id, check){
-    debugger
     if(!check) {
       Axios.patch("http://localhost:3000/client/notification/check",{id:id}).then((response)=>{
         this.setState({...this.state, notifications:response.data})
       })
     }
-    debugger
   }
 
   render() {
@@ -92,7 +90,7 @@ export default class Notifications extends Component{
               }else{
               return(
                 <Menu.Item key={notification.id}>
-                  <a onClick={(e) => this._check(e, notification.id)} className="notification-style" href={`http://localhost:3001/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
+                  <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`http://localhost:3001/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
                 </Menu.Item>
               )
             }
@@ -103,7 +101,7 @@ export default class Notifications extends Component{
         <a className="ant-dropdown-link" href="#">
           { Object.keys(this.state.message).length == 0?
             null
-            :<p className="show-hide"><i class="fa fa-exclamation" aria-hidden="true"></i>{this.state.message.notification.body}</p>
+            :<p className="show-hide"><i className="fa fa-exclamation" aria-hidden="true"></i>{this.state.message.notification.body}</p>
           }
         <i className="fa fa-flag" aria-hidden="true"><span>{notCheck}</span></i>
         </a>

@@ -13,6 +13,7 @@ export const SHOW_COURIER = 'SHOW_COURIER'
 
 
 export const showCourier = () => {
+    
     const payload = Axios.get(courierProfileApi);
     return{
         type:SHOW_COURIER,
@@ -56,13 +57,13 @@ export const updateCourierFailure = (error) => {
         error:error.payload.response.data.errors
     }
 }
-  
+
 export function courierLogout(){
     return{
         type:COURIER_LOGOUT
     }
 }
-  
+
 // export function resetCourierPassword(event){
 //     return{
 //         type:RESET_PASSWORD,

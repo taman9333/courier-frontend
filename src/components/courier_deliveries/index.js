@@ -22,7 +22,8 @@ export default class CourierDeliveries extends Component{
   render(){
     const {deliveries} = this.state
     return(
-      <div>
+      <div className="courier-deliveries-container jumbotron">
+        <h1>Deliveries</h1>
         {
           deliveries.map((delivery)=>{
             var x = `${new Date(delivery.delivery_date)}`
@@ -30,8 +31,8 @@ export default class CourierDeliveries extends Component{
             x = x.join(" ")
             return(
               <div key={delivery.id} className="courier-deliveries">
-                <p>Category: {delivery.category} </p>
-                <p>Delivery Date: {x} </p>
+                <p><span className="key-width">Category</span>{delivery.category} </p>
+                <p><span className="key-width">Delivery Date</span>{x} </p>
                 <Link to={`/courier/deliveries/${delivery.id}`}>More Details</Link>
               </div>
             )

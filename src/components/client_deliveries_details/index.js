@@ -68,6 +68,8 @@ export default class ClientDeliveriesDetails extends Component{
           <h5>Review</h5>
           <p>{delivery.review == ""? "ـــــــــــــــــــــــــــــــــــــــــــــــــــ":delivery.review}</p>
           </div>
+          :delivery.status != "delivered"?
+          null
           :<div className="set-review">
               <form onSubmit={this._handleSubmit}>
                 <div className="form-group">
@@ -85,6 +87,7 @@ export default class ClientDeliveriesDetails extends Component{
                  <button className="btn btn-success">Submit</button>
                </form>
            </div>
+
            }
         </div>
 

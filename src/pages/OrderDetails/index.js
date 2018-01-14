@@ -49,6 +49,9 @@ class OrderDetailsPage extends Component{
 
   render(){
     const {order, pickup, drop_off, auction, last_bid, winning_courier, warning} = this.state
+    var x = `${new Date(auction.bid_deadline)}`
+    x = x.split(" ").slice(0, 4)
+    x = x.join(" ")
     return(
       <div className="jumbotron order-details-container">
         <h1 className="display-5">Order Details</h1>
@@ -62,7 +65,7 @@ class OrderDetailsPage extends Component{
         <div id="auction-details">
           <h4>Auction Details</h4>
           <p><span className="key-width">Status</span>{auction.status}</p>
-          <p><span className="key-width">Bid Deadline</span>{auction.bid_deadline}</p>
+          <p><span className="key-width">Bid Deadline</span>{x}</p>
           {
             warning != null && auction.status != "closed"?
             <p className="last-bid">This is the last bid offered, your order will be outdated if you reject this bid</p>
