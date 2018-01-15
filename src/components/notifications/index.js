@@ -5,6 +5,7 @@ import { Menu, Dropdown, Icon } from 'antd';
 import 'antd/dist/antd.css';
 import Axios from 'axios'
 import {actionCableApi, mainClientApi, frontUrl} from '../../apiConfig'
+import {Link} from 'react-router-dom';
 
 
 export default class Notifications extends Component{
@@ -82,14 +83,15 @@ export default class Notifications extends Component{
                 {notCheck += 1}
                 return(
                   <Menu.Item key={notification.id}>
-                    <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`${frontUrl}/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
-
+                    // <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`${frontUrl}/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
+                    <Link onClick={(e) => this._check(e, notification.id, notification.check)} to={`/client/orderdetails/${notification.order_id}`} className="checked notification-style">{notification.body}</Link>
                   </Menu.Item>
               )
               }else{
               return(
                 <Menu.Item key={notification.id}>
-                  <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`${frontUrl}/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
+                  // <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`${frontUrl}/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
+                  <Link onClick={(e) => this._check(e, notification.id, notification.check)} to={`/client/orderdetails/${notification.order_id}`} className="notification-style">{notification.body}</Link>
                 </Menu.Item>
               )
             }
