@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './style.css'
+import './style.css'
 // import history from '../../history';
 import { Link } from 'react-router-dom';
 
@@ -13,24 +13,24 @@ export default class ClientDetails extends Component{
   render(){
     const {client} = this.props;
       {
-        // if (Object.keys(client).length > 0) {
+        if (Object.keys(client).length > 0) {
           return (
             <div>
-              {/* <div className="float-left">
+              <div className="float-left">
                 <img alt="" src={`http://localhost:3000/${this.props.client.img.url}`}/>
-              </div> */}
+              </div>
               <div>
-                {/* <p>Name: {this.props.client.username}</p>
+                <p>Name: {this.props.client.username}</p>
                 <p>Email: {this.props.client.email}</p>
-                <p>Phone number: {this.props.client.phone}</p> */}
+                <p>Phone number: {this.props.client.phone}</p>
                 {/* <Link className="link" to="/client/updateprofile">Update Profile</Link>
                 <Link className="link" to="/client/resetpassword">Reset Password</Link>  */}
               </div>
             </div>
           )
-    //     } else {
-    //       return <div>Loading</div>
-    //     }
+        } else {
+          return <div>Loading</div>
+        }
       }
 
   }

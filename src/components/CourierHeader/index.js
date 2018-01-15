@@ -31,7 +31,7 @@ export default class CourierHeader extends Component{
         <div className="float-right">
           <CourierNotifications />
           <p><Link to="/courier">{this.props.courier.username}</Link></p>
-          <p><Link to="/">home</Link></p>
+          {/* <p><Link to="/">home</Link></p> */}
           <button className="btn btn-sm btn-primary" onClick={this._logout.bind(this)}>Logout</button>
         </div>
         <br/>

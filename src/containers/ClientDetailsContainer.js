@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Profile from '../components/ClientProfile';
+import Profile from '../components/client_details';
 // import { showClientSuccess } from '../actions/ClientActions.js';
 // import setAuthorizationToken from '../utils/setAuthorizationToken';
 // import { clientProfileApi } from '../apiConfig';
