@@ -47,21 +47,22 @@ export default class UpdateCourierProfile extends Component{
 			<div className="float-left">
 				<form id="newCourier" name="newCourier" onSubmit={this._updateCourier}>
 					<div className="courier-form">
-						<label>Username</label>
-						<input type="text" name="username" value={this.state.username} id="username" onChange={this._handleChange} />
+						<label className="link" >Username</label>
+						<input className="link" type="text" name="username" value={this.state.username} id="username" onChange={this._handleChange} />
 					</div>
 					<div className="courier-form">
-						<label>Email</label>
-						<input type="email" name="email" id="email"  value={this.state.email} onChange={this._handleChange}/>
+						<label className="link">Email</label>
+						<input className="link" type="email" name="email" id="email"  value={this.state.email} onChange={this._handleChange}/>
 					</div>
 					<div className="courier-form">
-						<label>image</label>
-						{/* <img alt="" src={`http://localhost:3000/${this.state.img.url}`}/> */}
-						<input type="file" name="img" id="img" onChange={this._handleChange} />
+						<label className="link">image</label>
+						<img className="link" alt="" src={`http://localhost:3000/${this.state.img.url}`}/>
+						<br />
+						<input className="link" type="file" name="img" id="img" onChange={this._handleChange} />
 					</div>
 					<div className="courier-form">
-						<label>phone</label>
-						<input type="text" name="phone" id="phone" value={this.state.phone} onChange={this._handleChange}/>
+						<label className="link">phone</label>
+						<input className="link" type="text" name="phone" id="phone" value={this.state.phone} onChange={this._handleChange}/>
 					</div>
 					{/* <input type="hidden" name="_method" value="patch" /> */}
 					<button>Save</button>
