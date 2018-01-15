@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import {updateCourierProfileApi} from '../../apiConfig';
 // import Axios from 'axios';
 // import history from '../../history'
-// import './style.css'
+import './style.css'
 
 export default class UpdateCourierProfile extends Component{
 	constructor(props) {
@@ -44,7 +44,7 @@ export default class UpdateCourierProfile extends Component{
 	render(){
 		const {courier} = this.props;
 		return(
-			<div>
+			<div className="float-left">
 				<form id="newCourier" name="newCourier" onSubmit={this._updateCourier}>
 					<div className="courier-form">
 						<label>Username</label>

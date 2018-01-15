@@ -34,7 +34,7 @@ export default class ResetPassword extends Component{
   render(){
 	return(
 		<div>
-		<form onSubmit={this._resetPassword}>
+		<form className="float-left" onSubmit={this._resetPassword}>
 		<div className="reset-password">
 		  {/* <label>Current Password</label> */}
 		  {/* <input type="password" name="password" /> */}
