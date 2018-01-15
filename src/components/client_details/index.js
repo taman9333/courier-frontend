@@ -17,7 +17,11 @@ export default class ClientDetails extends Component{
           return (
             <div>
               <div className="float-left">
-                <img alt="" src={`http://localhost:3000/${this.props.client.img.url}`}/>
+              { 
+               this.props.client.img === undefined?
+                null
+                : <img alt="" src={`http://localhost:3000/${this.props.client.img.url}`}/>
+              }
               </div>
               <div>
                 <p>Name: {this.props.client.username}</p>
