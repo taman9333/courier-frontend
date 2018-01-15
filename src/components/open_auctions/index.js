@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Axios from 'axios'
 import './style.css'
+import {mainCourierApi} from '../../apiConfig'
 
 export default class OpenAuctions extends Component{
 
@@ -24,19 +25,19 @@ export default class OpenAuctions extends Component{
   _handleSubmit(e){
     e.preventDefault();
     const search = {category:this.state.category, pickup:this.state.pickup, weight:this.state.weight}
-    Axios.post("http://localhost:3000/courier/search", search).then((response)=>{
+    Axios.post(`${mainCourierApi}/search`, search).then((response)=>{
       this.setState({...this.state, auctions:response.data})
     })
   }
 
   _getAll(){
-    Axios.get('http://localhost:3000/courier/auctions').then((response)=>{
+    Axios.get(`${mainCourierApi}/auctions`).then((response)=>{
       this.setState({...this.state, auctions:response.data})
     })
   }
 
   componentWillMount(){
-    Axios.get('http://localhost:3000/courier/auctions').then((response)=>{
+    Axios.get(`${mainCourierApi}/auctions`).then((response)=>{
       this.setState({...this.state, auctions:response.data})
     })
   }

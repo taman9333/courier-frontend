@@ -3,6 +3,7 @@ import Axios from 'axios';
 import {connect} from 'react-redux';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import {showClientSuccess, logoutClient} from '../actions/client';
+import {rootApi} from '../apiConfig'
 
 const mapStateToProps = function(state){
   return{
@@ -15,7 +16,7 @@ const mapStateToProps = function(state){
 const mapDispatchToProps = function(dispatch){
   return{
     showClient:function(){
-      Axios.get(`http://localhost:3000/clients`).then(function(response){
+      Axios.get(`${rootApi}/clients`).then(function(response){
         dispatch(showClientSuccess(response))
       })
       .catch(function(error){

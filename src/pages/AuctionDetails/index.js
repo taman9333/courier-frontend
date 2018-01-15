@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import './style.css'
 import OrderDetails from '../../components/OrderDetails'
 import Axios from 'axios'
-
 import history from '../../history'
+import {rootApi} from '../../apiConfig'
 
 export default class OrderDetailsPage extends Component{
 
@@ -28,7 +28,7 @@ export default class OrderDetailsPage extends Component{
     e.preventDefault();
     let bid = {}
     bid["bid"] = {price:this.state.price, auction_id:this.state.auction.id}
-    Axios.post('http://localhost:3000/bid/create', bid).then((response)=>{
+    Axios.post(`${rootApi}/bid/create`, bid).then((response)=>{
       this.setState({...this.state, last_bid:response.data.bid})
     })
     document.getElementsByTagName("input")[0].value = ""
@@ -37,7 +37,7 @@ export default class OrderDetailsPage extends Component{
 
   componentWillMount(){
     const id = Number(this.props.location.pathname.split("/")[3])
-    Axios.get(`http://localhost:3000/clients/orders/${id}`).then((response)=>{
+    Axios.get(`${rootApi}/clients/orders/${id}`).then((response)=>{
       this.setState({...this.state, order:response.data.order, pickup:response.data.pickup_address, drop_off:response.data.drop_off_address, auction:response.data.auction, last_bid:response.data.last_bid})
     })
     .catch((error)=>{

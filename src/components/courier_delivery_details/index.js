@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Axios from 'axios';
 import './style.css'
+import {courierDeliveries} from '../../apiConfig';
 
 export default class CourierDeliveryDetails extends Component{
 
@@ -23,7 +24,7 @@ export default class CourierDeliveryDetails extends Component{
     e.preventDefault()
     const id = this.props.location.pathname.split("/")[3]
     const value = document.getElementsByTagName("select")[0].value
-    Axios.post(`http://localhost:3000/courier/deliveries/${id}/update`, {status:value}).then((response)=>{
+    Axios.post(`${courierDeliveries}/${id}/update`, {status:value}).then((response)=>{
       if (response.status < 400) {
         this.setState({...this.state, status:response.data.delivery_status})
       }
@@ -32,7 +33,7 @@ export default class CourierDeliveryDetails extends Component{
 
   componentWillMount(){
     const id = this.props.location.pathname.split("/")[3]
-    Axios.get(`http://localhost:3000/courier/deliveries/${id}`).then((response)=>{
+    Axios.get(`${courierDeliveries}/${id}`).then((response)=>{
       this.setState({...this.state, ...response.data, status:response.data.delivery.status})
     })
   }

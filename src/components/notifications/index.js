@@ -4,8 +4,7 @@ import './style.css'
 import { Menu, Dropdown, Icon } from 'antd';
 import 'antd/dist/antd.css';
 import Axios from 'axios'
-
-
+import {actionCableApi, mainClientApi, frontUrl} from '../../apiConfig'
 
 
 export default class Notifications extends Component{
@@ -21,7 +20,7 @@ export default class Notifications extends Component{
 
   createSocket() {
     if (localStorage.clientAuth == "true") {
-      let cable = Cable.createConsumer(`ws://localhost:3000/cable?token=${localStorage.jwtToken}`);
+      let cable = Cable.createConsumer(`${actionCableApi}/cable?token=${localStorage.jwtToken}`);
       this.chats = cable.subscriptions.create({
         channel: 'NotificationsChannel'
       }, {
@@ -36,7 +35,7 @@ export default class Notifications extends Component{
       });
     }
     else if (localStorage.courierAuth == "true") {
-      let cable = Cable.createConsumer(`ws://localhost:3000/cable?token=${localStorage.jwtToken}`);
+      let cable = Cable.createConsumer(`${actionCableApi}/cable?token=${localStorage.jwtToken}`);
       this.chats = cable.subscriptions.create({
         channel: 'CourierNotificationsChannel'
       }, {
@@ -54,7 +53,7 @@ export default class Notifications extends Component{
     if (localStorage.courierAuth == "true" || localStorage.clientAuth == "true") {
       this.createSocket()
     }
-    Axios.get('http://localhost:3000/client/notifications').then((response)=>{
+    Axios.get(`${mainClientApi}/notifications`).then((response)=>{
 
       this.setState({...this.state, notifications:response.data})
     })
@@ -63,7 +62,7 @@ export default class Notifications extends Component{
 
   _check(e, id, check){
     if(!check) {
-      Axios.patch("http://localhost:3000/client/notification/check",{id:id}).then((response)=>{
+      Axios.patch(`${mainClientApi}/notification/check`,{id:id}).then((response)=>{
         this.setState({...this.state, notifications:response.data})
       })
     }
@@ -83,14 +82,14 @@ export default class Notifications extends Component{
                 {notCheck += 1}
                 return(
                   <Menu.Item key={notification.id}>
-                    <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`http://localhost:3001/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
+                    <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`${frontUrl}/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
 
                   </Menu.Item>
               )
               }else{
               return(
                 <Menu.Item key={notification.id}>
-                  <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`http://localhost:3001/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
+                  <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`${frontUrl}/client/orderdetails/${notification.order_id}`}>{notification.body}</a>
                 </Menu.Item>
               )
             }
@@ -111,7 +110,7 @@ export default class Notifications extends Component{
 
 }
 
-// <a href={`http://localhost:3001/client/orderdetails/${this.state.message.auction_id}`}>
+//
 
 // <Menu.Item key="0">
 //   <a href="http://www.alipay.com/">1st menu item</a>

@@ -23,7 +23,7 @@ export default class UpdateCourierProfile extends Component{
 			this.setState({
 				username,
 				email,
-				phone, 
+				phone,
 				img
 			});
 		}
@@ -32,7 +32,7 @@ export default class UpdateCourierProfile extends Component{
 	_handleChange(e){
 		this.setState({...this.state, [e.target.name]:e.target.value})
 	}
-    
+
     _updateCourier(e){
 		e.preventDefault();
 		var newCourier = document.getElementById('newCourier');
@@ -56,7 +56,7 @@ export default class UpdateCourierProfile extends Component{
 					</div>
 					<div className="courier-form">
 						<label>image</label>
-						{/* <img alt="" src={`http://localhost:3000/${this.state.img.url}`}/> */}
+
 						<input type="file" name="img" id="img" onChange={this._handleChange} />
 					</div>
 					<div className="courier-form">
@@ -70,3 +70,5 @@ export default class UpdateCourierProfile extends Component{
 		)
 	}
 }
+
+// {<img alt="" src={`http://localhost:3000/${this.state.img.url}`}/> }

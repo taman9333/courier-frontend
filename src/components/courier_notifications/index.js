@@ -4,8 +4,7 @@ import './style.css'
 import { Menu, Dropdown, Icon } from 'antd';
 import 'antd/dist/antd.css';
 import Axios from 'axios'
-
-
+import {actionCableApi, mainCourierApi, frontUrl} from '../../apiConfig'
 
 
 export default class Notifications extends Component{
@@ -20,22 +19,7 @@ export default class Notifications extends Component{
   }
 
   createSocket() {
-    // if (localStorage.clientAuth == "true") {
-    //   let cable = Cable.createConsumer(`ws://localhost:3000/cable?token=${localStorage.jwtToken}`);
-    //   this.chats = cable.subscriptions.create({
-    //     channel: 'NotificationsChannel'
-    //   }, {
-    //     connected: () => {},
-    //     received: (data) => {
-    //       console.log(data);
-    //       this.setState({...this.state, notifications:[{body:data.notification.body, check:data.notification.check, id:data.notification.id, order_id:data.order_id}, ...this.state.notifications], message:{notification:data.notification, order_id:data.order_id}});
-    //       setTimeout(()=>{
-    //         this.setState({...this.state, message:""})
-    //       },9000)
-    //     }
-    //   });
-    // }
-      let cable = Cable.createConsumer(`ws://localhost:3000/cable?token=${localStorage.jwtToken}`);
+      let cable = Cable.createConsumer(`${actionCableApi}/cable?token=${localStorage.jwtToken}`);
       this.chats = cable.subscriptions.create({
         channel: 'CourierNotificationsChannel'
       }, {
@@ -66,7 +50,7 @@ export default class Notifications extends Component{
     if (localStorage.courierAuth == "true") {
       this.createSocket()
     }
-    Axios.get('http://localhost:3000/courier/notifications').then((response)=>{
+    Axios.get(`${mainCourierApi}/notifications`).then((response)=>{
 
       this.setState({...this.state, notifications:response.data})
     })
@@ -75,7 +59,7 @@ export default class Notifications extends Component{
 
   _check(e, id, check){
     if(!check) {
-      Axios.patch("http://localhost:3000/courier/notification/check",{id:id}).then((response)=>{
+      Axios.patch(`${mainCourierApi}/notification/check`,{id:id}).then((response)=>{
         this.setState({...this.state, notifications:response.data})
       })
     }
@@ -96,13 +80,13 @@ export default class Notifications extends Component{
                 if (notification.hasOwnProperty('order_id')) {
                   return(
                     <Menu.Item key={notification.id}>
-                      <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`http://localhost:3001/courier/auctiondetails/${notification.order_id}`}>{notification.body}</a>
+                      <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`${frontUrl}/courier/auctiondetails/${notification.order_id}`}>{notification.body}</a>
                     </Menu.Item>
                   )
                 }else{
                 return(
                   <Menu.Item key={notification.id}>
-                    <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`http://localhost:3001/courier/deliveries/${notification.delivery_id}`}>{notification.body}</a>
+                    <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`${frontUrl}/courier/deliveries/${notification.delivery_id}`}>{notification.body}</a>
                   </Menu.Item>
                 )
                 }
@@ -110,13 +94,13 @@ export default class Notifications extends Component{
                 if (notification.hasOwnProperty('order_id')) {
                   return(
                     <Menu.Item key={notification.id}>
-                      <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`http://localhost:3001/courier/auctiondetails/${notification.order_id}`}>{notification.body}</a>
+                      <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`${frontUrl}/courier/auctiondetails/${notification.order_id}`}>{notification.body}</a>
                     </Menu.Item>
                   )
                 }else{
                   return(
                     <Menu.Item key={notification.id}>
-                      <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`http://localhost:3001/courier/deliveries/${notification.delivery_id}`}>{notification.body}</a>
+                      <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`${frontUrl}/courier/deliveries/${notification.delivery_id}`}>{notification.body}</a>
                     </Menu.Item>
                   )
                 }

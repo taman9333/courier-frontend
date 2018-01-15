@@ -3,6 +3,7 @@ import OrderDetails from '../OrderDetails'
 import Axios from 'axios'
 import StarRatingComponent from 'react-star-rating-component';
 import './style.css'
+import {clientDeliveryDetails} from '../../apiConfig'
 
 export default class ClientDeliveriesDetails extends Component{
 
@@ -22,7 +23,7 @@ export default class ClientDeliveriesDetails extends Component{
 
   componentWillMount(){
     const id = this.props.location.pathname.split("/")[3]
-    Axios.get(`http://localhost:3000/clients/deliveries/${id}`).then((response)=>{
+    Axios.get(`${clientDeliveryDetails}/${id}`).then((response)=>{
       this.setState({...this.state, ...response.data, rating:response.data.delivery.rating})
     })
   }
@@ -35,7 +36,7 @@ export default class ClientDeliveriesDetails extends Component{
       e.preventDefault();
       const id = this.props.location.pathname.split("/")[3]
       const review = document.querySelector("textarea").value
-      Axios.patch(`http://localhost:3000/clients/deliveries/${id}`, {rating:this.state.rating, review:review}).then((response)=>{
+      Axios.patch(`${clientDeliveryDetails}/${id}`, {rating:this.state.rating, review:review}).then((response)=>{
         this.setState({...this.state, rating:response.data.delivery.rating, delivery:response.data.delivery})
       })
     }

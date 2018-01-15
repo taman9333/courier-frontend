@@ -5,7 +5,7 @@ import './style.css'
 import Axios from 'axios'
 import history from '../../history'
 import ClientNav from '../../containers/ClientNavContainer'
-
+import {rootApi} from '../../apiConfig'
 
 class OrderDetailsPage extends Component{
 
@@ -26,7 +26,7 @@ class OrderDetailsPage extends Component{
 
   componentWillMount(){
     const id = Number(this.props.location.pathname.split("/")[3])
-    Axios.get(`http://localhost:3000/clients/orders/${id}`).then((response)=>{
+    Axios.get(`${rootApi}/clients/orders/${id}`).then((response)=>{
         this.setState({...this.state, order:response.data.order, pickup:response.data.pickup_address, drop_off:response.data.drop_off_address, auction:response.data.auction, last_bid:response.data.last_bid, winning_courier:response.data.winning_courier, warning:response.data.warning})
     })
     .catch(function(error){
@@ -36,13 +36,13 @@ class OrderDetailsPage extends Component{
 
   _acceptBid(){
     const bid = {"client":{bid_id:this.state.last_bid.id, order_id:this.state.order.id}}
-    Axios.post('http://localhost:3000/clients/deliveries', bid).then((response)=> {
+    Axios.post(`${rootApi}/clients/deliveries`, bid).then((response)=> {
       this.setState({...this.state, auction:{...this.state.auction, status:response.data.orderStatus}})
     })
   }
 
   _rejectBid(){
-    Axios.post('http://localhost:3000/bid/reject', {bid_id:this.state.last_bid.id}).then((response)=>{
+    Axios.post(`${rootApi}/bid/reject`, {bid_id:this.state.last_bid.id}).then((response)=>{
       this.setState({...this.state, last_bid:response.data.bid, warning:response.data.warning, winning_courier:response.data.winning_courier, auction:{...this.state.auction, status:response.data.auction_status}})
     })
   }

@@ -16,7 +16,7 @@ export default class CourierProfile extends Component{
         if (Object.keys(courier).length > 0) {
           return (
             <div>
-              <img alt="" src={`http://localhost:3000/${this.props.courier.img.url}`}/>
+
               {/* rating */ }
 
               <h1>Welcome {this.props.courier.username}</h1>
@@ -33,3 +33,5 @@ export default class CourierProfile extends Component{
 
   }
 }
+
+// <img alt="" src={`http://localhost:3000/${this.props.courier.img.url}`}/>

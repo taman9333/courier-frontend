@@ -1,5 +1,8 @@
 
-export const rootApi = `http://localhost:3000`;
+export const rootApi = process.env.NODE_ENV === 'production' ? `https://wassaly-backend.herokuapp.com` : `http://localhost:3000`;
+export const actionCableApi = process.env.NODE_ENV === 'production' ? `wss://wassaly-backend.herokuapp.com` : `ws://localhost:3000`;
+
+export const frontUrl = process.env.NODE_ENV === 'production' ? `https://wassaly.herokuapp.com` : `http://localhost:3001`;
 
 export const courierApi = `${rootApi}/courier`;
 // `http://localhost:3000/clients/${id}`
@@ -42,3 +45,13 @@ export const getClientAddressesApi = `${rootApi}/client/addresses`
 export const getCourierDeliveriesApi = `${rootApi}/courier/deliveries/index`
 
 export const getClientDeliveriesApi = `${rootApi}/clients/deliveries`
+
+///////////////////////////////////////////
+
+export const clientDeliveryDetails = `${rootApi}/clients/deliveries`
+
+export const courierDeliveries = `${rootApi}/courier/deliveries`
+
+export const mainCourierApi = `${rootApi}/courier`
+
+export const mainClientApi = `${rootApi}/client`

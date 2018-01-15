@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './style.css';
 import Axios from 'axios';
 import {Link} from 'react-router-dom'
+import {createOrderApi} from '../../apiConfig'
 
 export default class ClientOrders extends Component{
 
@@ -13,7 +14,7 @@ export default class ClientOrders extends Component{
   }
 
   componentWillMount(){
-    Axios.get('http://localhost:3000/clients/orders').then((response)=>{
+    Axios.get(createOrderApi).then((response)=>{
       this.setState({...this.state, orders:response.data})
     })
   }
