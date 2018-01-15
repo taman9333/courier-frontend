@@ -1,0 +1,36 @@
+.flash-message-success{
+  background:#66cc99;
+  font-size:20px;
+  color:#fff;
+  text-align:center;
+  width:80%;
+  margin:0 auto;
+  height:50px;
+  line-height:50px;
+  border-radius:10px;
+  
+}
+
+
+
+hr{
+  width:80%;
+}
+
+/*.span-details{
+  padding-left:100px;
+}*/
+
+.key-width{
+  font-weight:700;
+  width:200px;
+  display:inline-block;
+}
+
+
+.order-details-margin-left > h4 ~ p{
+  margin-left:70px;
+}
+.order-details-margin-left h4{
+  margin-left:20px;
+}

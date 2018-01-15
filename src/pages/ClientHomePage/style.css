@@ -1,0 +1,28 @@
+.vertical-menu {
+    display:inline-block;
+    width: 15%;
+    height:93vh;
+    background:#e9ecef;
+    position:fixed;
+    margin-top:7vh;
+    padding-top:10px;
+    text-align:center;
+}
+
+
+.vertical-menu a {
+    background-color:#e9ecef;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+
+.vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+}
