@@ -1,0 +1,25 @@
+.auction-details-container{
+  float:right;
+  width:75%;
+  margin-top:12vh;
+  margin-right:60px;
+}
+
+.auction-details-container h1{
+  text-align:center
+}
+
+.make-bid{
+  margin-left:70px;
+}
+
+.make-bid label{
+  margin-right:10px;
+  font-weight:bold;
+}
+
+.make-bid .btn-success{
+  margin-left:15px;
+  margin-top:-9px;
+  box-shadow:3px 3px 4px grey;
+}

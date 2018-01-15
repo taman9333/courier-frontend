@@ -1,0 +1,42 @@
+.courier-delivery-details-container{
+  float:right;
+  width:75%;
+  margin-top:12vh;
+  margin-right:60px;
+}
+
+.courier-delivery-details-container h1{
+  text-align:center;
+}
+
+.courier-delivery-details-container h4{
+  margin-left:20px;
+}
+
+.courier-delivery-details-container h4 ~ p{
+  margin-left:70px;
+}
+
+.update-delivery-status{
+  margin-left:20px;
+}
+
+.update-delivery-status label{
+  font-weight:bold;
+  margin-right:20px;
+}
+
+.update-delivery-status .btn-success{
+  margin-top:-9px;
+  margin-left:20px;
+  box-shadow: 3px 3px 3px grey;
+}
+
+.view-status{
+  margin:15px 10px 10px 20px;
+}
+
+.view-status span{
+  margin-right:85px;
+  font-weight:bold;
+}

@@ -1,0 +1,48 @@
+.courier-deliveries-container{
+  float:right;
+  width:75%;
+  margin-top:12vh;
+  margin-right:60px;
+}
+
+.courier-deliveries-container h1{
+  text-align:center;
+}
+
+.courier-deliveries{
+  width:95%;
+  padding:20px;
+  border:2px solid steelblue;
+  border-radius:5px;
+  margin:20px auto;
+  clear:both;
+  content:"";
+  display:table;
+  padding-top:29px;
+}
+
+.courier-deliveries p{
+  display:inline-block;
+  width:40%;
+}
+
+.courier-deliveries a{
+  float:right
+}
+
+.courier-deliveries:last-child{
+  margin-bottom:0;
+}
+
+.key-width{
+  font-weight:700;
+  width:110px;
+  display:inline-block;
+}
+
+.courier-deliveries::before,
+.courier-deliveries::after{
+  clear:both;
+  display:table;
+  content:""
+}

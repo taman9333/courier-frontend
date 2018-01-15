@@ -1,0 +1,84 @@
+.flash-message-success{
+  background:#66cc99;
+  font-size:20px;
+  color:#fff;
+  text-align:center;
+  width:80%;
+  margin:0 auto;
+  height:50px;
+  line-height:50px;
+  border-radius:10px;
+  margin-bottom:30px;
+  margin-top:-20px;
+}
+
+h1{
+  margin-top:-20px;
+  margin-bottom:50px;
+  color:white;
+  background-color:#293540;
+  border:2px solid #eee;
+  border-radius:10px;
+  box-shadow: 5px 5px 2px grey;
+}
+
+
+
+.last-bid{
+  color:red;
+}
+
+.order-details-container{
+  float:right;
+  width:75%;
+  margin-top:12vh;
+  margin-right:60px;
+}
+
+.order-details-container h1{
+  text-align:center;
+}
+
+.order-details-container hr{
+  width:80%;
+}
+
+#auction-details h4{
+  margin-left:20px;
+}
+
+.key-width{
+  font-weight:700;
+  width:200px;
+  display:inline-block;
+}
+
+#auction-details > h4 ~ p{
+  margin-left:70px;
+}
+
+.accept-reject{
+  margin-left:70px;
+  margin-top:25px;
+}
+
+.btn-danger{
+
+}
+
+.accept-reject .btn-success{
+  margin-right:20px;
+}
+
+.accept-reject .btn-success, .accept-reject .btn-danger{
+  box-shadow:4px 4px 3px grey;
+}
+
+#auction-details .flash-message-failure{
+  width:80%;
+  background-color:#ffcc66;
+  box-shadow:4px 4px 3px grey;
+  font-size:16px;
+  font-weight:bold;
+  color:rgba(0, 0, 0, 0.65)
+}
