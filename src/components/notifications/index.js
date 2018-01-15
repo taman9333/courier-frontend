@@ -62,6 +62,7 @@ export default class Notifications extends Component{
 
 
   _check(e, id, check){
+    e.preventDefault();
     if(!check) {
       Axios.patch(`${mainClientApi}/notification/check`,{id:id}).then((response)=>{
         this.setState({...this.state, notifications:response.data})
