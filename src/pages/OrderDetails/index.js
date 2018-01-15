@@ -66,18 +66,18 @@ class OrderDetailsPage extends Component{
           <h4>Auction Details</h4>
           <p><span className="key-width">Status</span>{auction.status}</p>
           <p><span className="key-width">Bid Deadline</span>{x}</p>
-          {
-            warning != null && auction.status != "closed"?
-            <p className="last-bid">This is the last bid offered, your order will be outdated if you reject this bid</p>
-            :null
-          }
           <p><span className="key-width">Winning Courier</span>{winning_courier == null? `ــــــــــــــ` :winning_courier }</p>
           <p><span className="key-width">Price</span>${last_bid == null? `ــــــــــــ` :last_bid.price}</p>
+          {
+            warning != null && auction.status != "closed"?
+            <p className="flash-message-failure">This is the last bid offered, your order will be outdated if you reject this bid</p>
+            :null
+          }
         </div>
         {auction.status == "pending_acceptance" ?
-          <div>
-            <button onClick={this._acceptBid}>Accept this courier</button>
-            <button onClick={this._rejectBid}>reject this courier</button>
+          <div className="accept-reject">
+            <button className="btn-sm btn-success" onClick={this._acceptBid}>Accept this courier</button>
+            <button className="btn-sm btn-danger" onClick={this._rejectBid}>Reject, see next bid</button>
           </div>
           :null
         }

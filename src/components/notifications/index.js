@@ -11,8 +11,8 @@ import Axios from 'axios'
 export default class Notifications extends Component{
 
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       notifications:[],
       message:{}

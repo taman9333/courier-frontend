@@ -56,3 +56,29 @@ h1{
 #auction-details > h4 ~ p{
   margin-left:70px;
 }
+
+.accept-reject{
+  margin-left:70px;
+  margin-top:25px;
+}
+
+.btn-danger{
+
+}
+
+.accept-reject .btn-success{
+  margin-right:20px;
+}
+
+.accept-reject .btn-success, .accept-reject .btn-danger{
+  box-shadow:4px 4px 3px grey;
+}
+
+#auction-details .flash-message-failure{
+  width:80%;
+  background-color:#ffcc66;
+  box-shadow:4px 4px 3px grey;
+  font-size:16px;
+  font-weight:bold;
+  color:rgba(0, 0, 0, 0.65)
+}

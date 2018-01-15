@@ -21,6 +21,7 @@ export default class ClientNav extends Component{
   render(){
     return(
       <div className="client-header">
+        <i className="fa fa-truck" aria-hidden="true"></i>
         <div className="float-right">
           <Notifications />
           <p><Link to="/client/profile">{this.props.client.username}</Link></p>
