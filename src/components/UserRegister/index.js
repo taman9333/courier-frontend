@@ -4,23 +4,29 @@ import './style.css'
 import history from '../../history'
 
 export default class UserRegister extends Component{
-  constructor(){
-    super()
-    this.state = {
-      username:'',
-      email:'',
-      password:'',
-      password_confirmation:'',
-      phone:'',
-      img:''
-    }
-    this._handleChange = this._handleChange.bind(this)
-  }
+  // constructor(){
+  //   super()
+  //   this.state = {
+  //     username:'',
+  //     email:'',
+  //     password:'',
+  //     password_confirmation:'',
+  //     phone:'',
+  //     img:''
+  //   }
+  //   this._handleChange = this._handleChange.bind(this)
+  // }
 
-  _handleChange(e){
-    this.setState({...this.state, [e.target.name]:e.target.value})
-  }
+  // _handleChange(e){
+  //   this.setState({...this.state, [e.target.name]:e.target.value})
+  // }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    var newClient = document.getElementById('newClient');
+    var client = new FormData(newClient);
+    this.props.createClient(client);
+  }
 
   componentWillMount(){
     if (localStorage.getItem('jwtToken') !== null) {
@@ -30,11 +36,11 @@ export default class UserRegister extends Component{
 
 
   render(){
-    const client = {}
-    client["client"] = this.state
+    // const client = {}
+    // client["client"] = this.state
     return(
       <div>
-        {
+        {/* {
           this.props.flashMessage.constructor.name === 'Array'?
             <div id="flash-message-error">
               {
@@ -46,31 +52,31 @@ export default class UserRegister extends Component{
           :null
 
 
-        }
-        <form onSubmit={(e)=>{e.preventDefault() ;this.props.createClient(client)}}>
+        } */}
+        <form name="newClient" id="newClient" onSubmit={(e)=> this.handleSubmit(e)}>
         <div className="user-form">
           <label>Username</label>
-          <input type="text" name="username" onChange={this._handleChange} />
+          <input type="text" name="username" />
         </div>
         <div className="user-form">
           <label>Email</label>
-          <input type="email" name="email" onChange={this._handleChange} />
+          <input type="email" name="email" />
         </div>
         <div className="user-form">
           <label>image</label>
-          <input type="text" name="img" onChange={this._handleChange}/>
+          <input type="file" name="img" />
         </div>
         <div className="user-form">
           <label>phone</label>
-          <input type="text" name="phone" onChange={this._handleChange}/>
+          <input type="text" name="phone" />
         </div>
         <div className="user-form">
           <label>password</label>
-          <input type="password" name="password" onChange={this._handleChange}/>
+          <input type="password" name="password" />
         </div>
         <div className="user-form">
           <label>password confirmation</label>
-          <input type="password" name="password_confirmation" onChange={this._handleChange}/>
+          <input type="password" name="password_confirmation" />
         </div>
         <button>Submit</button>
         </form>

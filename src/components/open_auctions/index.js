@@ -14,7 +14,7 @@ export default class OpenAuctions extends Component{
     }
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
-    this._getAll = this._findAll.bind(this)
+    this._getAll = this._getAll.bind(this)
   }
 
   _handleChange(e){
@@ -22,15 +22,14 @@ export default class OpenAuctions extends Component{
   }
 
   _handleSubmit(e){
-    const search = {category:this.state.category, pickup:this.state.pickup, weight:this.state.weight}
-    
     e.preventDefault();
+    const search = {category:this.state.category, pickup:this.state.pickup, weight:this.state.weight}
     Axios.post("http://localhost:3000/courier/search", search).then((response)=>{
       this.setState({...this.state, auctions:response.data})
     })
   }
 
-  _findAll(){
+  _getAll(){
     Axios.get('http://localhost:3000/courier/auctions').then((response)=>{
       this.setState({...this.state, auctions:response.data})
     })
@@ -45,12 +44,13 @@ export default class OpenAuctions extends Component{
   render(){
     const {category, pickup, weight, auctions} = this.state
     return(
-      <div>
+      <div className="open-auctions-container jumbotron">
+        <h1>Open Auctions</h1>
         <form onSubmit={this._handleSubmit}>
-          <div>
-            <label htmlFor="pickup">Area</label>
-            <select id="pickup" name="pickup"  onChange={this._handleChange}>
-            <option></option>
+          <div className="row">
+          <div className="col">
+            <select id="pickup-search" className="form-control" name="pickup"  onChange={this._handleChange}>
+            <option value="">Area</option>
             <option value="abbasiya">Abbasiya</option>
             <option value="agouza">Agouza</option>
             <option value="ainShams">Ain Shams</option>
@@ -74,10 +74,9 @@ export default class OpenAuctions extends Component{
             <option value="zamalek">Zamalek</option>
             </select>
           </div>
-          <div>
-            <label htmlFor="category">Category</label>
-            <select id="category" name="category"  onChange={this._handleChange}>
-            <option></option>
+          <div className="col">
+            <select id="category" className="form-control" name="category"  onChange={this._handleChange}>
+            <option value="">Category</option>
             <option value="electronics">electronics</option>
             <option value="food">food</option>
             <option value="beauty">beauty</option>
@@ -86,10 +85,9 @@ export default class OpenAuctions extends Component{
             <option value="outdoors">outdoors</option>
             </select>
           </div>
-          <div>
-            <label htmlFor="weight">Weight</label>
-            <select id="weight" name="weight"  onChange={this._handleChange}>
-              <option></option>
+          <div className="col">
+            <select id="weight" className="form-control" name="weight"  onChange={this._handleChange}>
+              <option value="">Weight</option>
               <option value="0-5">0-5</option>
               <option value="5-10">5-10</option>
               <option value="10-20">10-20</option>
@@ -97,20 +95,25 @@ export default class OpenAuctions extends Component{
               <option value="30-max">30-max</option>
             </select>
           </div>
-          <button>Filter</button>
+          <button className="btn btn-info"><i className="fa fa-filter" aria-hidden="true"></i>Filter</button>
+          </div>
         </form>
-        <button onClick={this._getAll}>Find All</button>
+        <div className="search-button"><button className="btn btn-success" onClick={this._getAll}><i className="fa fa-search" aria-hidden="true"></i>Find All</button></div>
         {
           auctions != null?
           auctions.length == 0?
-          <p style={{color:"red"}}>No auctions found</p>
+          <div className="flash-message-failure">No Auctions found</div>
           :auctions.map((auction)=>{
+            var x = `${new Date(auction.bid_deadline)}`
+            x = x.split(" ").slice(0, 4)
+            x = x.join(" ")
             return(
-              <div key={auction.id} className="auction-courier">
-                <p>{auction.bid_deadline}</p>
-                <p>{auction.category}</p>
-                <p>{auction.area}</p>
-                <a href="/courier/auctiondetails/{auction.id}">More Details</a>
+              <div key={auction.id} className="courier-auctions">
+                <p><span className="auction-key-width">Category</span>{auction.category}</p>
+                <p><span className="auction-key-width">Bid Deadline</span>{x}</p>
+                <p><span className="auction-key-width">Area</span>{auction.area}</p>
+                <p><span className="auction-key-width">Weight</span>{auction.weight}</p>
+                <a href={`/courier/auctiondetails/${auction.order_id}`}>More Details</a>
               </div>
             )
           })

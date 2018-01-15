@@ -23,3 +23,69 @@
 #create-dropoff{
   display:none;
 }
+
+.create-order-container{
+  float:right;
+  width:75%;
+  margin-top:12vh;
+  margin-right:60px;
+}
+
+.create-order-container h1{
+  text-align:center;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+#dropoff, #pickup, #pickup-saved-true, #pickup-saved-false, #dropoff-saved-true, #dropoff-saved-false{
+  display:none;
+}
+
+#dropoff + p, #pickup + p, #pickup-saved-true + p, #pickup-saved-false + p, #dropoff-saved-true + p, #dropoff-saved-false + p{
+  display:inline-block;
+  width:50%;
+  margin:0 0 20px 0;
+  text-align:center;
+}
+
+#pickup + p label, #dropoff + p label, #pickup-saved-true + p label, #pickup-saved-false + p label, #dropoff-saved-true + p label, #dropoff-saved-false + p label{
+  background-color:#cdd2d6;
+  display:inline-block;
+  padding:5px 20px;
+  width:140px;
+  border:1px solid #eee;
+  border-radius:10px;
+}
+
+#pickup:checked + p label, #dropoff:checked + p label, #pickup-saved-true:checked + p label, #pickup-saved-false:checked + p label, #dropoff-saved-true:checked + p label, #dropoff-saved-false:checked + p label{
+  background:#293540;
+  color:white;
+  display:inline-block;
+  padding:5px 20px;
+  width:140px;
+  border:1px solid #eee;
+  border-radius:10px;
+  box-shadow: 5px 5px 2px grey;
+}
+
+.btn-info{
+  margin-right:20px;
+}
+
+#create-pickup, #create-dropoff, .fetchAddress{
+  margin:20px 50px;
+}
+
+.fetchAddress{
+  width:80%
+}
+
+.dropoff-address, .pickup-address{
+  margin:20px 0;
+}

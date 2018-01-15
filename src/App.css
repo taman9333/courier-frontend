@@ -1,6 +1,14 @@
-.App {
-  /*text-align: center;*/
+/*.App {
+  text-align: center;
   margin-top:10px
+}*/
+
+html, body{
+  margin:0;
+}
+
+*{
+  font-size:16px;
 }
 
 /*.App-logo {

@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import './style.css'
 import Axios from 'axios'
 import history from '../../history'
-import ClientNav from '../../containers/ClientProfileContainer'
+import ClientNav from '../../containers/ClientNavContainer'
 
 
 class OrderDetailsPage extends Component{
@@ -48,28 +48,31 @@ class OrderDetailsPage extends Component{
   }
 
   render(){
-
     const {order, pickup, drop_off, auction, last_bid, winning_courier, warning} = this.state
+    var x = `${new Date(auction.bid_deadline)}`
+    x = x.split(" ").slice(0, 4)
+    x = x.join(" ")
     return(
-      <div>
-        <ClientNav />
+      <div className="jumbotron order-details-container">
+        <h1 className="display-5">Order Details</h1>
       {
         Object.keys(this.props.flashMessage).length === 0?
         null
         :<p className="flash-message-success">{this.props.flashMessage}</p>
       }
-        <h1>Order details page</h1>
         <OrderDetails order = {order} pickup={pickup} drop_off={drop_off}/>
-        <div id="order-details">
-          <p>Status: {auction.status}</p>
-          <p>Bid Deadline: {auction.bid_deadline}</p>
+        <hr className="my-4" />
+        <div id="auction-details">
+          <h4>Auction Details</h4>
+          <p><span className="key-width">Status</span>{auction.status}</p>
+          <p><span className="key-width">Bid Deadline</span>{x}</p>
           {
             warning != null && auction.status != "closed"?
             <p className="last-bid">This is the last bid offered, your order will be outdated if you reject this bid</p>
             :null
           }
-          <p>Winning Courier: {winning_courier == null? `ــــــــ` :winning_courier }</p>
-          <p>Price: $ {last_bid == null? `ــــــــ` :last_bid.price}</p>
+          <p><span className="key-width">Winning Courier</span>{winning_courier == null? `ــــــــــــــ` :winning_courier }</p>
+          <p><span className="key-width">Price</span>${last_bid == null? `ــــــــــــ` :last_bid.price}</p>
         </div>
         {auction.status == "pending_acceptance" ?
           <div>

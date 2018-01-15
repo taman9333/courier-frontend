@@ -43,17 +43,20 @@ export default class ClientDeliveriesDetails extends Component{
   render(){
     const {order, pickup, drop_off, delivery, courier, price, rating} = this.state
     return(
-      <div>
-        <div className="delivery-details">
+      <div className="client-delivery-details-container jumbotron">
+        <h1>Delivery Details</h1>
+        <div>
         <OrderDetails order={order} pickup={pickup} drop_off={drop_off} />
         </div>
+        <hr className="my-4" />
         <div className="rating-review">
-          <p>status: {delivery.status === "waiting_pickup"?"Waiting Pickup":delivery.status}</p>
-          <p>Courier: {courier}</p>
-          <p>Price: ${price}</p>
+          <h4>Delivery info</h4>
+          <p><span className="key-width">status</span>{delivery.status === "waiting_pickup"?"Waiting Pickup":delivery.status}</p>
+          <p><span className="key-width">Courier</span>{courier}</p>
+          <p><span className="key-width">Price</span>${price}</p>
           {delivery.rating != null?
-          <div >
-            <h3>Rating</h3>
+          <div className="view-review">
+            <h5>Rating</h5>
             <StarRatingComponent
                 className="star-rating"
                 name="final"
@@ -62,12 +65,15 @@ export default class ClientDeliveriesDetails extends Component{
                 editing={false}
 
             />
-          <h3>Review</h3>
+          <h5>Review</h5>
           <p>{delivery.review == ""? "ـــــــــــــــــــــــــــــــــــــــــــــــــــ":delivery.review}</p>
           </div>
-          :<div>
+          :delivery.status != "delivered"?
+          null
+          :<div className="set-review">
               <form onSubmit={this._handleSubmit}>
-                 <h2>Rating from : {rating}</h2>
+                <div className="form-group">
+                 <h5>Rating from : {rating}</h5>
                  <div className="star-rating">
                    <StarRatingComponent
                        name="rate1"
@@ -76,10 +82,12 @@ export default class ClientDeliveriesDetails extends Component{
                        onStarClick={this.onStarClick.bind(this)}
                    />
                  </div>
-                 <textarea rows="5" cols="60" name="review"></textarea>
-                 <p><button>Submit</button></p>
+                 <textarea className="form-control review-text-area" rows="4" name="review"></textarea>
+                 </div>
+                 <button className="btn btn-success">Submit</button>
                </form>
            </div>
+
            }
         </div>
 

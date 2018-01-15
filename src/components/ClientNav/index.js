@@ -4,7 +4,7 @@ import {Link, Route} from 'react-router-dom';
 import './style.css'
 import Notifications from '../notifications'
 
-export default class ClientProfile extends Component{
+export default class ClientNav extends Component{
 
   componentWillMount(){
     if(localStorage.getItem('jwtToken') !== null && Object.keys(this.props.client).length === 0){

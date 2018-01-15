@@ -1,4 +1,82 @@
-.auction-courier{
+/*.auction-courier{
   border:2px solid steelblue;
   margin:10px;
+}*/
+
+.open-auctions-container{
+  float:right;
+  width:75%;
+  margin-top:12vh;
+  margin-right:60px;
+}
+
+.open-auctions-container h1{
+  text-align:center;
+}
+
+
+.courier-auctions{
+  width:95%;
+  padding:20px;
+  border:2px solid steelblue;
+  border-radius:5px;
+  margin:20px auto;
+  clear:both;
+  content:"";
+  display:table;
+  padding-top:29px;
+}
+
+.auction-key-width{
+  font-weight:700;
+  width:120px;
+  display:inline-block;
+}
+
+.courier-auctions p{
+  margin-right:10px;
+}
+
+.courier-auctions::before,
+.courier-auctions::after{
+  clear:both;
+  content:"";
+  display:table;
+}
+
+.courier-auctions p{
+  display:inline-block;
+}
+
+.courier-auctions p:nth-of-type(1){
+  width:40%;
+}
+
+.courier-auctions p:nth-of-type(2){
+  width:50%
+}
+
+.courier-auctions p:nth-of-type(3){
+  width:40%;
+}
+
+.courier-auctions a{
+  float:right
+}
+
+.courier-auctions:last-child{
+  margin-bottom:0;
+}
+
+.fa-filter{
+  margin-right:10px;
+}
+
+.fa-search{
+  margin-right:10px;
+}
+
+.search-button{
+  text-align:right;
+  margin:15px 5px 10px 0;
 }

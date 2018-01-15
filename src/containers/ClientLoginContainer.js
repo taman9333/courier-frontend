@@ -26,7 +26,7 @@ const mapDispatchToProps = function(dispatch){
           localStorage.setItem('clientAuth', true)
           dispatch(loginClientSuccess(response))
           setAuthorizationToken(token);
-          history.push('/client/profile')
+          history.push('/client')
         }else{
           dispatch(loginClientFailure(response))
         }

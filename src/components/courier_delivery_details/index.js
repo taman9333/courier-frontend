@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Axios from 'axios';
+import './style.css'
 
 export default class CourierDeliveryDetails extends Component{
 
@@ -12,6 +13,7 @@ export default class CourierDeliveryDetails extends Component{
       drop_off:{},
       bid:{},
       client:{},
+      bid_deadline:"",
       status:""
     }
     this._handleStatusChange = this._handleStatusChange.bind(this)
@@ -36,52 +38,72 @@ export default class CourierDeliveryDetails extends Component{
   }
 
   render(){
-    const {delivery, order, pickup, drop_off, bid, client} = this.state
+    const {delivery, order, pickup, drop_off, bid, client, bid_deadline} = this.state
+
+    function dateFormat(x){
+			var date = `${new Date(x)}`
+        date = date.split(" ").slice(0, 4)
+        date = date.join(" ")
+			return date
+    }
+
     return(
-      <div>
+      <div className="courier-delivery-details-container jumbotron">
+        <h1>Delivery Details</h1>
         { this.state.status === "delivered" || this.state.status === ""?
           null
           :<div className="update-delivery-status">
-            <form onSubmit={this._handleStatusChange}>
-              <select>
-                <option></option>
-                {this.state.status === "enroute"?null:<option value="enroute">Enroute</option>}
-                <option value="delivered">Delivered</option>
-              </select>
-              <button>Submit</button>
+            <form onSubmit={this._handleStatusChange} className="form-inline">
+              <div className="form-group mb-2">
+                <label htmlFor="delivery-status">Change Delivery Status</label>
+                <select className="form-control" id="delivery-status">
+                  <option></option>
+                  {this.state.status === "enroute"?null:<option value="enroute">Enroute</option>}
+                  <option value="delivered">Delivered</option>
+                </select>
+              </div>
+              <button className="btn-sm btn-success">Submit</button>
             </form>
           </div>
         }
-        <p>Delivery Status: {this.state.status == "waiting_pickup"? "Waiting Pickup":this.state.status}</p>
+        <div className="view-status"><p><span>Delivery Status</span>{this.state.status == "waiting_pickup"? "Waiting Pickup":this.state.status}</p></div>
+        <hr className="my-4" />
         <div className="order">
-          <p>Category: {order.category}</p>
-          <p>Weight in Kg: {order.weight}</p>
-          <p>Dimensions in inches: {order.dimensions}</p>
-          <p>Delivery Date: {order.delivery_date}</p>
-          <p>Billing Address: {order.billing_address == 1? "Pick Up Address": "Drop Off Address"}</p>
+          <h4>Order Details</h4>
+          <p><span className="key-width">Category</span>{order.category}</p>
+          <p><span className="key-width">Weight</span>{order.weight} k.g</p>
+          <p><span className="key-width">Dimensions</span>{order.dimensions} inches</p>
+          <p><span className="key-width">Delivery date</span>{dateFormat(order.delivery_date)}</p>
+          <p><span className="key-width">Billing address</span>{order.billing_address == 1? "Pick Up Address": "Drop Off Address"}</p>
         </div>
+        <hr className="my-4" />
         <div className="pickup">
           <h4>Pick Up Address</h4>
-          <p>Apartment Number: {pickup.apartment_number}</p>
-          <p>Building Number: {pickup.building_number}</p>
-          <p>Street: {pickup.street}</p>
-          <p>Area: {pickup.area}</p>
+          <p><span className="key-width">Area</span>{pickup.area}</p>
+          <p><span className="key-width">Street</span>{pickup.street}</p>
+          <p><span className="key-width">Building Number</span>{pickup.building_number}</p>
+          <p><span className="key-width">Apartment Number</span>{pickup.apartment_number}</p>
         </div>
+        <hr className="my-4" />
         <div className="drop-off">
           <h4>Drop Off Address</h4>
-          <p>Apartment Number: {drop_off.apartment_number}</p>
-          <p>Building Number: {drop_off.building_number}</p>
-          <p>Street: {drop_off.street}</p>
-          <p>Area: {drop_off.area}</p>
+          <p><span className="key-width">Area</span>{drop_off.area}</p>
+          <p><span className="key-width">Street</span>{drop_off.street}</p>
+          <p><span className="key-width">Building Number</span>{drop_off.building_number}</p>
+          <p><span className="key-width">Apartment Number</span>{drop_off.apartment_number}</p>
         </div>
-        <div className="bid">
-          <p>My Bid: ${bid.price}</p>
-        </div>
+        <hr className="my-4" />
         <div className="client">
-          <p>Client name: {client.username}</p>
-          <p>Contact client</p>
-          <p>Phone: {client.phone}</p>
-          <p>Email: {client.email}</p>
+          <h4>Client Info</h4>
+          <p><span className="key-width">Client name</span>{client.username}</p>
+          <p><span className="key-width">Phone</span>{client.phone}</p>
+          <p><span className="key-width">Email</span>{client.email}</p>
+        </div>
+        <hr className="my-4" />
+        <div className="bid">
+          <h4>Bid Details</h4>
+          <p><span className="key-width">Your Bid</span>${bid.price}</p>
+          <p><span className="key-width">Bid Deadline</span>{dateFormat(bid_deadline)}</p>
         </div>
 
       </div>

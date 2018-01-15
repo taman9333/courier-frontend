@@ -45,7 +45,8 @@ export default class UserLogin extends Component{
           </div>
           <button>Submit</button>
         </form>
-        <Link to="/login/courier">Login as courier</Link>
+        <Link className="link" to="/register/client">Register</Link>
+        <Link className="link" to="/login/courier">Login as courier</Link>
         </div>
       )
     }
