@@ -84,8 +84,8 @@ export default class Notifications extends Component{
               if (!notification.check) {
                 {notCheck += 1}
                 return(
-                  <Menu.Item key={notification.id}>
-                    <p onClick={(e) => this._check(e, notification.id, notification.check, notification.order_id)} className="checked notification-style">{notification.body}</p>
+                  <Menu.Item key={notification.id} className="checked">
+                    <p onClick={(e) => this._check(e, notification.id, notification.check, notification.order_id)} className=" notification-style">{notification.body}</p>
                   </Menu.Item>
               )
               }else{
