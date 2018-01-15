@@ -30,3 +30,8 @@ span{
   border-radius:10px;
   box-shadow: 7px 7px 3px grey;
 }
+
+.link + .link{
+  margin-left:50px;  
+  /* display: inline-block; */
+}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './style.css'
 import {Link} from 'react-router-dom'
-
+import Home from '../HomeContents';
 export default class UserLogin extends Component{
   constructor(){
     super();
@@ -45,7 +45,9 @@ export default class UserLogin extends Component{
           </div>
           <button>Submit</button>
         </form>
-        <Link to="/login/courier">Login as courier</Link>
+        <Link className="link" to="/register/client">Register</Link>
+        <Link className="link" to="/login/courier">Login as courier</Link>
+        <Home />
         </div>
       )
     }

@@ -34,14 +34,14 @@ export default class ResetPassword extends Component{
   render(){
 	return(
 		<div>
-		<form onSubmit={this._resetPassword}>
+		<form className="float-left" onSubmit={this._resetPassword}>
 		<div className="reset-password">
 		  {/* <label>Current Password</label> */}
 		  {/* <input type="password" name="password" /> */}
-			<label>New Password</label>
-		  <input type="password" name="new_password"  onChange={this._handleChange}/>
-			<label>New Password Confirmation</label>
-		  <input type="password" name="new_password_confirmation"  onChange={this._handleChange}/>
+			<label className="link">New Password</label>
+		  <input className="link" type="password" name="new_password"  onChange={this._handleChange}/>
+			<label className="link" >New Password Confirmation</label>
+		  <input className="link" type="password" name="new_password_confirmation"  onChange={this._handleChange}/>
 			{/* <input type="hidden" name="_method" value="patch" /> */}
 		</div>
 		<button>Reset Password</button>

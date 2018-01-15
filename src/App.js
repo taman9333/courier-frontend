@@ -7,7 +7,7 @@ import requireCourierAuth from './utils/requireCourierAuth';
 import CourierRegistration from './pages/CourierRegistrations';
 import CourierLogin from './pages/CourierLogins';
 import CourierPage from './pages/CourierPage';
-// import ForgotPassword from './pages/ForgotPassword';
+import ForgotPassword from './components/ForgotPassword';
 import HomePage from './pages/HomePage';
 import UserLogin from './containers/ClientLoginContainer';
 import ClientHomePage from './pages/ClientHomePage';
@@ -33,11 +33,12 @@ class App extends Component {
 
           <Route path='/client/orderdetails/:id' exact component={requireAuth(OrderDetails)}/>
 
+          <Route path="/forgotpassword" exact component={ForgotPassword} />
 
           <Route path="/register/courier" exact component={CourierRegistration} />
           <Route path="/login/courier" exact component={CourierLogin} />
           <Route path="/courier"  component={requireCourierAuth(CourierPage)} />
-          {/* <Route path="/forgotpassword" exact component={ForgotPassword} /> */}
+
         </div>
       </div>
     );
@@ -46,6 +47,7 @@ class App extends Component {
 
 export default App;
 
+{/* <Route path="/forgotpassword" exact component={ForgotPassword} /> */}
 
 // {
 //   localStorage.getItem('clientAuth') !== "true"?

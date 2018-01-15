@@ -24,8 +24,8 @@ export default class ClientNav extends Component{
         <i className="fa fa-truck" aria-hidden="true"></i>
         <div className="float-right">
           <Notifications />
-          <p><Link to="/client/profile">{this.props.client.username}</Link></p>
-          <p><Link to="/">home</Link></p>
+          <p><Link to="/client">{this.props.client.username}</Link></p>
+          {/* <p><Link to="/">home</Link></p> */}
           <button className="btn btn-sm btn-primary" onClick={this._logout.bind(this)}>Logout</button>
         </div>
       <br/>

@@ -1,0 +1,14 @@
+
+.float-left{
+    margin-left:300px;
+    /* width:250px; */
+  }
+
+.link + .link{
+    margin-left:50px;  
+    /* display: inline-block; */
+}
+
+.links{
+    margin-left:300px;
+}

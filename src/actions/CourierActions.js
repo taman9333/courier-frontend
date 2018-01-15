@@ -46,7 +46,6 @@ export const updateCourier = (courier) => {
 export const updateCourierSuccess = (courier) => {
     return {
         type: UPDATE_COURIER_SUCCESS,
-        // courier
         courier
     }
 }

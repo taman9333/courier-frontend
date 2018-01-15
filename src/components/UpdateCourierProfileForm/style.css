@@ -1,0 +1,16 @@
+
+.float-left{
+    margin-left:100px;
+    padding-top: 50px;
+    /* width:250px; */
+  }
+
+.link + .link{
+    margin-left:50px;  
+    /* display: inline-block; */
+}
+
+.courier-details{
+    padding-left: 10px;
+    padding-top: 75px;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './style.css'
+import './style.css'
 import history from '../../history';
 export default class CourierRegistrationForm extends Component{
   handleSubmit(event) {
@@ -18,19 +18,20 @@ export default class CourierRegistrationForm extends Component{
 
   render(){
     return(
-      // {
-      //   Object.keys(this.props.flashMessage).length === 0?
-      //     null
-      //   :
-      //   <div id="flash-message-error">
-      //     {
-      //       this.props.flashMessage.map((item, i)=>
-      //         <p key={i} className="flash-message-error"><span>&#10005;</span>{item}</p>
-      //       )
-      //     }
-      //   </div>
-      // }
       <div>
+      {/* {
+        this.props.flashMessage.constructor.name === 'Array'?
+          <div id="flash-message-error">
+            {
+              this.props.flashMessage.map((item, i)=>
+                <p key={i} className="flash-message-error"><span>&#10005;</span>{item}</p>
+              )
+            }
+          </div>
+        :null
+
+
+      } */}
         <form name="newCourier" id="newCourier" onSubmit={(e)=> this.handleSubmit(e)}>
         <div className="courier-form">
           <label>Username</label>
