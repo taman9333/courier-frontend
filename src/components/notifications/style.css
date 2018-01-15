@@ -21,7 +21,7 @@
 }
 
 
-.checked{
+.checked .ant-dropdown-menu-item{
   background:rgba(228, 233, 241, 0.8);
 }
 
@@ -31,4 +31,10 @@
 
 .ant-dropdown-link p i{
   margin-right:8px;
+}
+
+.notification-style{
+  border:0;
+  margin-bottom:0;
+  line-height:30px;
 }
