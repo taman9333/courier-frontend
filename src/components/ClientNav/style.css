@@ -19,11 +19,11 @@
 }
 
 .client-header a{
-  color:steelblue;
+  color:#DEE2D6;
 }
 
 .float-right{
-  margin-right:50px;
+
   width:300px;
 }
 
@@ -41,4 +41,11 @@
   color:steelblue;
   font-size:25px;
   margin-left:6%;
+}
+
+.nav-img{
+  height:40px;
+  margin-right:10px;
+  margin-left:10px;
+  margin-top:-2px;
 }

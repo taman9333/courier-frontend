@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
     return {
         client: state.client.client,
         loading:state.client.loading,
-		error:state.client.error
+	      error:state.client.error
     }
 }
 

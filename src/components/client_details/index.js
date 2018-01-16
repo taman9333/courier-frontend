@@ -15,17 +15,16 @@ export default class ClientDetails extends Component{
       {
         if (Object.keys(client).length > 0) {
           return (
-            <div>
-              <div className="float-left">
-              <img alt="" src={this.props.client.img.url}/>
+            <div className="client-profile-container jumbotron">
+              <div className="img-container">
+                <img alt="" src={client.img.url == null? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAjO1-yy10xV5ylPfYoPrnpgC8w5TlaUmF9B_BTol5VGia5rp' :`http://localhost:3000/${this.props.client.img.url}`}/>
               </div>
-              <div>
-                <p>Name: {this.props.client.username}</p>
-                <p>Email: {this.props.client.email}</p>
-                <p>Phone number: {this.props.client.phone}</p>
-                {/* <Link className="link" to="/client/updateprofile">Update Profile</Link>
-                <Link className="link" to="/client/resetpassword">Reset Password</Link>  */}
+              <div >
+                <p><span className="key-width">Name</span>{this.props.client.username}</p>
+                <p><span className="key-width">Email</span>{this.props.client.email}</p>
+                <p><span className="key-width">Phone number</span>{this.props.client.phone}</p>
               </div>
+
             </div>
           )
         } else {

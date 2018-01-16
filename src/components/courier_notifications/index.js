@@ -5,7 +5,7 @@ import { Menu, Dropdown, Icon } from 'antd';
 import 'antd/dist/antd.css';
 import Axios from 'axios'
 import {actionCableApi, mainCourierApi, frontUrl} from '../../apiConfig'
-
+import history from '../../history'
 
 export default class Notifications extends Component{
 
@@ -57,12 +57,14 @@ export default class Notifications extends Component{
   }
 
 
-  _check(e, id, check){
-    e.preventDefault();
+  _check(e, id, check, url){
     if(!check) {
       Axios.patch(`${mainCourierApi}/notification/check`,{id:id}).then((response)=>{
         this.setState({...this.state, notifications:response.data})
+        history.push(url)
       })
+    }else{
+      history.push(url)
     }
   }
 
@@ -80,14 +82,16 @@ export default class Notifications extends Component{
                 {notCheck += 1}
                 if (notification.hasOwnProperty('order_id')) {
                   return(
-                    <Menu.Item key={notification.id}>
-                      <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`${frontUrl}/courier/auctiondetails/${notification.order_id}`}>{notification.body}</a>
+                    <Menu.Item key={notification.id} className="checked">
+
+                      <p onClick={(e) => this._check(e, notification.id, notification.check, `/courier/auctiondetails/${notification.order_id}`)} className=" notification-style">{notification.body}</p>
                     </Menu.Item>
                   )
                 }else{
                 return(
-                  <Menu.Item key={notification.id}>
-                    <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`${frontUrl}/courier/deliveries/${notification.delivery_id}`}>{notification.body}</a>
+                  <Menu.Item key={notification.id} className="checked">
+
+                    <p onClick={(e) => this._check(e, notification.id, notification.check, `/courier/deliveries/${notification.delivery_id}`)} className=" notification-style">{notification.body}</p>
                   </Menu.Item>
                 )
                 }
@@ -95,13 +99,15 @@ export default class Notifications extends Component{
                 if (notification.hasOwnProperty('order_id')) {
                   return(
                     <Menu.Item key={notification.id}>
-                      <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`${frontUrl}/courier/auctiondetails/${notification.order_id}`}>{notification.body}</a>
+
+                      <p onClick={(e) => this._check(e, notification.id, notification.check, `/courier/auctiondetails/${notification.order_id}`)} className="notification-style">{notification.body}</p>
                     </Menu.Item>
                   )
                 }else{
                   return(
                     <Menu.Item key={notification.id}>
-                      <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`${frontUrl}/courier/deliveries/${notification.delivery_id}`}>{notification.body}</a>
+
+                      <p onClick={(e) => this._check(e, notification.id, notification.check, `/courier/deliveries/${notification.delivery_id}`)} className="notification-style">{notification.body}</p>
                     </Menu.Item>
                   )
                 }
@@ -128,3 +134,12 @@ export default class Notifications extends Component{
 // <Menu.Item key="0">
 //   <a href="http://www.alipay.com/">1st menu item</a>
 // </Menu.Item>
+
+
+// <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`${frontUrl}/courier/auctiondetails/${notification.order_id}`}>{notification.body}</a>
+
+// <a onClick={(e) => this._check(e, notification.id, notification.check)} className="checked notification-style" href={`${frontUrl}/courier/deliveries/${notification.delivery_id}`}>{notification.body}</a>
+
+// <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`${frontUrl}/courier/auctiondetails/${notification.order_id}`}>{notification.body}</a>
+
+// <a onClick={(e) => this._check(e, notification.id, notification.check)} className="notification-style" href={`${frontUrl}/courier/deliveries/${notification.delivery_id}`}>{notification.body}</a>

@@ -15,14 +15,14 @@ export default class CourierProfile extends Component{
       {
         if (Object.keys(courier).length > 0) {
           return (
-            <div>
-              <div className="float-left">
-                <img alt="" src={`http://localhost:3000/${this.props.courier.img.url}`}/>
+            <div className="courier-profile-container jumbotron">
+              <div className="img-container">
+                <img alt="" src={courier.img.url == null? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAjO1-yy10xV5ylPfYoPrnpgC8w5TlaUmF9B_BTol5VGia5rp' :`http://localhost:3000/${this.props.courier.img.url}`}/>
               </div>
-              <div className="courier-details">
-                <p>Name: {this.props.courier.username}</p>
-                <p>Email: {this.props.courier.email}</p>
-                <p>Phone number: {this.props.courier.phone}</p>
+              <div>
+                <p><span className="key-width">Name</span>{this.props.courier.username}</p>
+                <p><span className="key-width">Email</span>{this.props.courier.email}</p>
+                <p><span className="key-width">Phone number</span>{this.props.courier.phone}</p>
               </div>
               <div className="links">
                 <Link className="link" to="/courier/updateprofile">Update Profile</Link>
@@ -37,3 +37,5 @@ export default class CourierProfile extends Component{
 
   }
 }
+
+//<img alt="" src={this.props.courier.img.url}/>

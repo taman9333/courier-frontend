@@ -1,0 +1,30 @@
+.web-logo{
+  width:40px;
+  height:40px;
+  margin-top:2px;
+}
+
+.home-container{
+  height:7vh;
+  background-color:#293540;
+}
+
+.nav-link{
+  color:#DEE2D6;
+}
+
+.home-page-nav{
+  margin-left:60px;
+  margin-right:60px;
+}
+
+.home-nav-float{
+  float:right;
+}
+
+.home-page-nav::before,
+.home-page-nav::after{
+  clear:both;
+  display:table;
+  content:""
+}

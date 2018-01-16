@@ -27,9 +27,9 @@ class App extends Component {
         <header className="App-header">
         </header>
         <div className="App-container">
-          <Route path='/' exact component={UserLogin}/>
+          <Route path='/' exact component={HomePage}/>
           <Route path='/client' component={requireAuth(ClientHomePage)}/>
-          <Route path='/register/client' component={HomePage}/>
+          {/*<Route path='/register/client' component={HomePage}/>*/} 
 
           <Route path='/client/orderdetails/:id' exact component={requireAuth(OrderDetails)}/>
 
@@ -63,3 +63,6 @@ export default App;
 
 
 // <Route path='/client/deliveries/:id'  component={ClientDeliveriesDetails} />
+
+
+//<Route path='/' exact component={UserLogin}/>
