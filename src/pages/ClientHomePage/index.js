@@ -5,9 +5,8 @@ import CreateOrder from '../../containers/CreateOrderContainer';
 import ClientDeliveries from '../../components/client_deliveries';
 import ClientDeliveriesDetails from '../../components/client_deliveries_details';
 import ClientOrders from '../../components/client_orders'
-
 import ClientDetails from '../../containers/ClientDetailsContainer'
-
+import UpdateClientProfile from '../../containers/ClientUpdateProfileContainer';
 import './style.css'
 
 import {Route, Link} from 'react-router-dom'
@@ -53,6 +52,7 @@ export default class ClientHomePage extends Component{
           <Route path='/client/deliveries/:id'  component={requireAuth(ClientDeliveriesDetails)} />
           <Route path='/client/deliveries' exact component={requireAuth(ClientDeliveries)} />
           <Route path='/client/createorder' component={requireAuth(CreateOrder)}/>
+          <Route path="/client/updateprofile" exact component={requireAuth(UpdateClientProfile)} />
         </div>
       </div>
     )
