@@ -20,23 +20,29 @@ class CourierHeader extends Component{
   _logout(e){
     e.preventDefault();
     this.props.courierLogout();
-    history.push('/login/courier')
+    history.push('/')
   }
 
   render(){
     if (Object.keys(this.props.courier).length > 0) {
     return(
       <div className="courier-header">
+        <div className="courier-header-container">
+          <Link to="/">
+            <img className="web-logo" src="../../../wassaly-logo3.png" />
+            <p>Wassaly</p>
+          </Link>
         <div className="float-right">
           <CourierNotifications />
           <p>
             <Link to="/courier">
-              <img alt="" className="rounded-circle nav-img" src={this.props.courier.img.url == null?`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAjO1-yy10xV5ylPfYoPrnpgC8w5TlaUmF9B_BTol5VGia5rp` :`http://localhost:3000/${this.props.courier.img.url}`}/>{this.props.courier.username}
+              <img alt="" className="rounded-circle nav-img" src={this.props.courier.img.url == null? '../../../default-img.jpeg' :`${this.props.courier.img.url}`}/>{this.props.courier.username}
             </Link>
           </p>
-          <button className="btn btn-sm btn-primary" onClick={this._logout.bind(this)}>Logout</button>
+          <button className="btn btn-sm logout-button" onClick={this._logout.bind(this)}>Logout</button>
         </div>
         <br/>
+        </div>
       </div>
     )
     }else{

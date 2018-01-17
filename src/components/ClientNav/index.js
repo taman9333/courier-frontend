@@ -23,18 +23,23 @@ class ClientNav extends Component{
     if (Object.keys(this.props.client).length > 0) {
     return(
       <div className="client-header">
-        <i className="fa fa-truck" aria-hidden="true"></i>
+        <div className="client-header-container">
+        <Link to="/">
+          <img className="web-logo" src="../../../wassaly-logo3.png" />
+          <p>Wassaly</p>
+        </Link>
         <div className="float-right">
           <Notifications />
           <p>
             <Link to="/client">
-              <img alt="" className="rounded-circle nav-img" src={this.props.client.img.url == null?`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAjO1-yy10xV5ylPfYoPrnpgC8w5TlaUmF9B_BTol5VGia5rp` :`http://localhost:3000/${this.props.client.img.url}`}/>{this.props.client.username}
+              <img alt="" className="rounded-circle nav-img" src={this.props.client.img.url == null?`../../../default-img.jpeg` : `${this.props.client.img.url}`}/>{this.props.client.username}
             </Link>
           </p>
           {/* <p><Link to="/">home</Link></p> */}
-          <button className="btn btn-sm btn-primary" onClick={this._logout.bind(this)}>Logout</button>
+          <button className="btn btn-sm logout-button" onClick={this._logout.bind(this)}>Logout</button>
         </div>
       <br/>
+      </div>
       </div>
     )
     }else{

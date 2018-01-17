@@ -1,5 +1,15 @@
-.courier-form{
-  margin:10px;
+#newCourier{
+  margin:20px 50px;
+  margin-top:12vh;
+}
+
+#newCourier label{
+  padding-left:80px;
+}
+
+#newCourier .btn-success{
+  margin-top:10px;
+  margin-left:324px;
 }
 
 .flash-message-error{

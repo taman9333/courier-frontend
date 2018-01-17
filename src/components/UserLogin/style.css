@@ -1,37 +1,77 @@
-.client-login-form{
-  margin:10px
+.client-login{
+  color:#DEE2D6;
+}
+
+.client-login a{
+  color:#DEE2D6;
+}
+
+.client-login *{
+  margin-top:2px;
+}
+
+.client-login-form .form-control{
+  height:28px;
+}
+
+.form-inline .login-button{
+  background-color:steelblue;
+  color:white;
+  height:25px;
+  line-height:10px;
+  margin-top:4px;
+}
+
+.links-down-login{
+  margin-top:-0.5px;
+}
+
+.links-down-login p a:nth-of-type(1){
+  margin-left:20px;
+  padding-right:10px;
+  border-right:1px solid #DEE2D6;
+}
+
+.links-down-login p a{
+  height:15px;
+  line-height:16px;
+}
+
+.links-down-login p a:nth-of-type(2){
+  padding-left:5px;
+}
+
+.links-down-login a:nth-of-type(1){
+  margin-left:62%;
+}
+
+.links-down-login a:nth-of-type(1):hover, .links-down-login p a:hover, .links-down-login p a:nth-of-type(2):hover{
+  color:steelblue;
+}
+
+.links-down-login *{
+  display:inline-block;
+  font-size:14px;
 }
 
 .flash-message-success{
-  background:#66cc99;
-  font-size:20px;
-  color:#fff;
+  position: absolute;
+  left:55%;
+  top:5vh;
+  color:#00ff22;
+  font-size:16px;
   text-align:center;
-  width:80%;
-  margin:0 auto;
-  height:50px;
-  line-height:50px;
+  width:40%;
   border-radius:10px;
-}
-
-span{
-  margin-right:15px;
 }
 
 .flash-message-failure{
-  background:#ff3333;
-  font-size:20px;
-  color:#fff;
+  position: absolute;
+  left:65%;
+  top:5vh;
+  color:#ff3300;
+  font-size:16px;
   text-align:center;
-  width:65%;
-  margin:0 auto;
-  height:50px;
-  line-height:50px;
+  width:200px;
   border-radius:10px;
-  box-shadow: 7px 7px 3px grey;
-}
-
-.link + .link{
-  margin-left:50px;  
-  /* display: inline-block; */
 }

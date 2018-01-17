@@ -1,5 +1,15 @@
-.user-form{
-  margin:10px;
+#newClient{
+  margin:20px 50px;
+  margin-top:12vh;
+}
+
+#newClient label{
+  padding-left:80px;
+}
+
+#newClient .btn-success{
+  margin-top:10px;
+  margin-left:324px;
 }
 
 .flash-message-error{

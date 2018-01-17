@@ -18,7 +18,6 @@ const mapDispatchToProps = function(dispatch){
     createClient:function(client){
       dispatch(createClientLoading());
       dispatch(showLoading())
-      setTimeout(function(){
         dispatch(createClient(client)).then(function(response){
           dispatch(hideLoading())
           if(response.payload.status <400){
@@ -28,7 +27,6 @@ const mapDispatchToProps = function(dispatch){
             dispatch(createClientFailure(response))
           }
         })
-      },5000)
 
       // .catch(function(error){
       //   dispatch(createClientFailure(error))

@@ -23,33 +23,50 @@ export default class UserLogin extends Component{
       return null
     }else {
       return(
-        <div>
-        {
-            this.props.flashMessage.message === undefined?
-          null
-          :<div className="flash-message-success"><span>&#x2714;</span>{this.props.flashMessage.message}</div>
-        }
-        {
-            this.props.flashMessage.error === undefined?
-          null
-          :<div className="flash-message-failure"><span>&#10005;</span>{this.props.flashMessage.error}</div>
-        }
-        <form onSubmit={(e)=>{e.preventDefault() ;this.props.loginClient(this.state)}}>
-          <div className="client-login-form">
+        <div className="client-login">
+          <div>
+          {
+              this.props.flashMessage.message === undefined?
+            null
+            :<div className="flash-message-success">{this.props.flashMessage.message}</div>
+          }
+          {
+              this.props.flashMessage.error === undefined?
+            null
+            :<div className="flash-message-failure">{this.props.flashMessage.error}</div>
+          }
+        <form className="form-inline" onSubmit={(e)=>{e.preventDefault() ;this.props.loginClient(this.state)}}>
+          <div className="client-login-form form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" onChange={this._handleChange} />
-          </div>
-          <div className="client-login-form">
+            <input className="form-control mx-sm-3" type="email" name="email" id="email" onChange={this._handleChange} />
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" onChange={this._handleChange} />
+            <input className="form-control mx-sm-3" type="password" name="password" id="password" onChange={this._handleChange} />
           </div>
-          <button>Submit</button>
+          <button className="btn btn-sm login-button">Log In</button>
         </form>
-        <Link className="link" to="/register/client">Register</Link>
-        <Link className="link" to="/login/courier">Login as courier</Link>
-        <Home />
+        <div className="links-down-login">
+          <p>Register as <Link to="/register/client">Client</Link> <Link to="/register/courier">Courier</Link></p>
+          <a onClick={()=>{this.props.changeLogin()}}>Courier?</a>
+        </div>
+        </div>
         </div>
       )
     }
   }
 }
+
+
+// <Link className="link" to="/register/client">Register</Link>
+// <Link className="link" to="/login/courier">Login as courier</Link>
+//<Home />
+
+// {
+//     this.props.flashMessage.message === undefined?
+//   null
+//   :<div className="flash-message-success"><span>&#x2714;</span>{this.props.flashMessage.message}</div>
+// }
+// {
+//     this.props.flashMessage.error === undefined?
+//   null
+//   :<div className="flash-message-failure"><span>&#10005;</span>{this.props.flashMessage.error}</div>
+// }

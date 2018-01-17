@@ -17,7 +17,7 @@ export default class CourierProfile extends Component{
           return (
             <div className="courier-profile-container jumbotron">
               <div className="img-container">
-                <img alt="" src={courier.img.url == null? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAjO1-yy10xV5ylPfYoPrnpgC8w5TlaUmF9B_BTol5VGia5rp' :`http://localhost:3000/${this.props.courier.img.url}`}/>
+                <img alt="" src={courier.img.url == null? '../../../default-img.jpeg' :`${this.props.courier.img.url}`}/>
               </div>
               <div>
                 <p><span className="key-width">Name</span>{this.props.courier.username}</p>

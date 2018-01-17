@@ -1,9 +1,10 @@
 .client-header{
-  background-color:#DEE2D6;
-  height:7vh;
-  line-height:7vh;
+  background-color:#293540;
+  height:8.5vh;
+  line-height:8.5vh;
   position:fixed;
-  width:100vw;
+  top:0;
+  width:100%;
   z-index:1;
 }
 
@@ -23,7 +24,7 @@
 }
 
 .float-right{
-
+  padding-left:40px;
   width:300px;
 }
 
@@ -31,21 +32,28 @@
   margin-left:15px;
 }
 
-/*.client-header button{
-  background:#F58A07;
-  border:0;
-  border-radius:10px;
-}*/
 
-.fa-truck{
-  color:steelblue;
-  font-size:25px;
-  margin-left:6%;
+.client-header-container{
+  margin-left:30px;
+  margin-right:30px;
+}
+
+.client-header a > p{
+  display:inline-block;
+  color:#DEE2D6;
+  font-weight:bold;
+  font-size:24px;
 }
 
 .nav-img{
   height:40px;
+  width:40px;
   margin-right:10px;
   margin-left:10px;
   margin-top:-2px;
+}
+
+.logout-button{
+  background:steelblue;
+  color:white;
 }
