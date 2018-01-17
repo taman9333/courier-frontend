@@ -38,7 +38,7 @@
   margin-right:30px;
 }
 
-.client-header a > p{
+.client-header-container a img + p{
   display:inline-block;
   color:#DEE2D6;
   font-weight:bold;

@@ -45,7 +45,7 @@
   margin-right:30px;
 }
 
-.courier-header a > p{
+.courier-header a img + p{
   display:inline-block;
   color:#DEE2D6;
   font-weight:bold;
