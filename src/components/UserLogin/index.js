@@ -17,8 +17,6 @@ export default class UserLogin extends Component{
   }
 
   render(){
-    // const client = {}
-    // client["client"] = this.state
     if (localStorage.getItem('jwtToken') !== null) {
       return null
     }else {
@@ -26,14 +24,18 @@ export default class UserLogin extends Component{
         <div className="client-login">
           <div>
           {
-              this.props.flashMessage.message === undefined?
-            null
-            :<div className="flash-message-success">{this.props.flashMessage.message}</div>
+            this.props.flashMessage === undefined?
+              null
+              :this.props.flashMessage.message === undefined?
+              null
+              :<div className="flash-message-success">{this.props.flashMessage.message}</div>
           }
           {
-              this.props.flashMessage.error === undefined?
-            null
-            :<div className="flash-message-failure">{this.props.flashMessage.error}</div>
+            this.props.flashMessage === undefined?
+              null
+              :this.props.flashMessage.error === undefined?
+              null
+              :<div className="flash-message-failure">{this.props.flashMessage.error}</div>
           }
         <form className="form-inline" onSubmit={(e)=>{e.preventDefault() ;this.props.loginClient(this.state)}}>
           <div className="client-login-form form-group">

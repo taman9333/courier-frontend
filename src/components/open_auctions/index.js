@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Axios from 'axios'
 import './style.css'
 import {mainCourierApi} from '../../apiConfig'
+import {Link} from 'react-router-dom'
 
 export default class OpenAuctions extends Component{
 
@@ -114,7 +115,7 @@ export default class OpenAuctions extends Component{
                 <p><span className="auction-key-width">Bid Deadline</span>{x}</p>
                 <p><span className="auction-key-width">Area</span>{auction.area}</p>
                 <p><span className="auction-key-width">Weight</span>{auction.weight}</p>
-                <a href={`/courier/auctiondetails/${auction.order_id}`}>More Details</a>
+                <Link to={`/courier/auctiondetails/${auction.order_id}`}>More Details</Link>
               </div>
             )
           })

@@ -56,12 +56,11 @@
 
 .flash-message-success{
   position: absolute;
-  left:55%;
+  right:15%;
   top:5vh;
   color:#00ff22;
   font-size:16px;
   text-align:center;
-  width:40%;
   border-radius:10px;
 }
 

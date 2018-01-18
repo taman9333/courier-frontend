@@ -24,8 +24,9 @@
 }
 
 .float-right{
+  width:450px;
+  margin-right:30px;
   padding-left:40px;
-  width:300px;
 }
 
 .float-right button{
@@ -56,4 +57,22 @@
 .logout-button{
   background:steelblue;
   color:white;
+}
+
+.client-header::before,
+.client-header::after{
+  clear:both;
+  display:table;
+  content:"";
+}
+
+.float-right::before,
+.float-right::after{
+  clear:both;
+  display:table;
+  content:"";
+}
+
+.info-float-right{
+  float:right;
 }

@@ -17,7 +17,7 @@ export default class ClientDetails extends Component{
           return (
             <div className="client-profile-container jumbotron">
               <div className="img-container">
-                <img alt="" src={client.img.url == null? '../../../default-img.jpeg' : `${this.props.client.img.url}`}/>
+                <img alt="" src={client.img.url == null? '../../../default-profile.jpeg' : `${this.props.client.img.url}`}/>
               </div>
               <div >
                 <p><span className="key-width">Name</span>{this.props.client.username}</p>
@@ -28,7 +28,7 @@ export default class ClientDetails extends Component{
             </div>
           )
         } else {
-          return <div>Loading</div>
+          return null
         }
       }
 
