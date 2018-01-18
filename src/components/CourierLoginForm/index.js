@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './style.css'
+import './style.css'
 import { Link} from 'react-router-dom';
 
 export default class CourierLoginForm extends Component{
@@ -17,27 +17,28 @@ export default class CourierLoginForm extends Component{
     }
 
     render(){
-      // const courier = {}
-      // courier["courier"] = this.state
       const courier = this.state
       return(
-        <div>
-          <form onSubmit={(e)=>{e.preventDefault(); this.props.courierLogin(courier)}}>
-          <div className="courier-form">
+        <div className="courier-login">
+          <form className="form-inline" onSubmit={(e)=>{e.preventDefault(); this.props.courierLogin(courier)}}>
+          <div className="courier-login-form form-group">
             <label>Email</label>
-            <input type="email" name="email" onChange={this._handleChange} />
+            <input className="form-control mx-sm-3" type="email" name="email" onChange={this._handleChange} />
+            <label>Password</label>
+            <input className="form-control mx-sm-3" type="password" name="password" onChange={this._handleChange}/>
           </div>
-          <div className="courier-form">
-            <label>password</label>
-            <input type="password" name="password" onChange={this._handleChange}/>
-          </div>
-          <button>Login</button>
+          <button className="btn btn-sm login-button">Log In</button>
           </form>
-          <Link to="/register/courier">Don't have an account? Register</Link>
-          <Link to="/forgotpassword">Forgot Password</Link>
-          <Link to="/">Client?</Link>
-
+          <div className="links-down-login">
+            <p>Register as <Link to="/register/courier">Courier</Link> <Link to="/register/client">Client</Link></p>
+            <a onClick={()=>{this.props.changeLogin()}}>Client?</a>
+          </div>
         </div>
       )
     }
   }
+
+
+  // <Link to="/register/courier">Don't have an account? Register</Link>
+  // <Link to="/forgotpassword">Forgot Password</Link>
+  // <Link to="/">Client?</Link>

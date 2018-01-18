@@ -4,13 +4,14 @@ import './App.css';
 import { Link , Route } from 'react-router-dom';
 import requireAuth from './utils/requireAuth';
 import requireCourierAuth from './utils/requireCourierAuth';
-import CourierRegistration from './pages/CourierRegistrations';
+import CourierRegistration from './containers/CourierRegistrationContainer';
 import CourierLogin from './pages/CourierLogins';
 import CourierPage from './pages/CourierPage';
 import ForgotPassword from './components/ForgotPassword';
 import HomePage from './pages/HomePage';
 import UserLogin from './containers/ClientLoginContainer';
 import ClientHomePage from './pages/ClientHomePage';
+import ClientRegister from './containers/ClientRegisterContainer'
 // import CreateOrder from './containers/CreateOrderContainer';
 import OrderDetails from './pages/OrderDetails';
 import LoadingBar from 'react-redux-loading-bar';
@@ -29,7 +30,9 @@ class App extends Component {
         <div className="App-container">
           <Route path='/' exact component={HomePage}/>
           <Route path='/client' component={requireAuth(ClientHomePage)}/>
-          <Route path='/register/client' component={HomePage}/> 
+
+          {/* <Route path='/register/client' component={HomePage}/>  */}
+
 
           <Route path='/client/orderdetails/:id' exact component={requireAuth(OrderDetails)}/>
 
@@ -38,6 +41,7 @@ class App extends Component {
           <Route path="/register/courier" exact component={CourierRegistration} />
           <Route path="/login/courier" exact component={CourierLogin} />
           <Route path="/courier"  component={requireCourierAuth(CourierPage)} />
+          <Route path="/register/client" component={ClientRegister} />
 
         </div>
       </div>

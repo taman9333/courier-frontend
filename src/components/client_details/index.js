@@ -17,7 +17,7 @@ export default class ClientDetails extends Component{
           return (
             <div className="client-profile-container jumbotron">
               <div className="img-container">
-                <img alt="" src={client.img.url == null? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAjO1-yy10xV5ylPfYoPrnpgC8w5TlaUmF9B_BTol5VGia5rp' :`http://localhost:3000/${this.props.client.img.url}`}/>
+                <img alt="" src={client.img.url == null? '../../../default-img.jpeg' :`${this.props.client.img.url}`}/>
               </div>
               <div >
                 <p><span className="key-width">Name</span>{this.props.client.username}</p>

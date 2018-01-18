@@ -1,0 +1,32 @@
+.main-page-container{
+  margin:10px 50px;
+}
+
+.home-img{
+  height:91.5vh;
+  width:100%;
+}
+
+.home-page{
+  position:absolute;
+}
+
+.img-info{
+  position:absolute;
+  top:350px;
+  left:200px;
+}
+
+.img-info h2{
+  color:#fff;
+  font-weight:bold;
+}
+
+.img-info h3{
+  color:#fff;
+  font-weight:bold;
+}
+
+.home-img-container{
+  margin-top:8.5vh;
+}
