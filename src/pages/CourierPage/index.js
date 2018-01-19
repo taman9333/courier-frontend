@@ -15,7 +15,7 @@ import OpenAuctions from '../../components/open_auctions';
 import AuctionDetails from '../AuctionDetails';
 // import requireCourierAuth from '../../utils/requireCourierAuth'
 // import CourierNotifications from '../../containers/CourierNotificationsContainer';
-import './style.css'
+// import './style.css'
 
 export default class CourierPage extends Component {
 

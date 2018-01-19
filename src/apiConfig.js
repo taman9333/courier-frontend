@@ -55,3 +55,5 @@ export const courierDeliveries = `${rootApi}/courier/deliveries`
 export const mainCourierApi = `${rootApi}/courier`
 
 export const mainClientApi = `${rootApi}/client`
+
+export const  updateClientProfileApi = `${rootApi}/client/update_profile`;

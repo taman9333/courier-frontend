@@ -2,14 +2,21 @@ import React, {Component} from 'react'
 import UserRegister from '../../containers/ClientRegisterContainer'
 import './style.css'
 import HomePageNav from '../../components/home_page_nav'
+
+import { Link , Route } from 'react-router-dom';
+import UserLogin from '../../containers/ClientLoginContainer';
+import CourierLogin from '../CourierLogins';
+
 import ClientNav from '../../containers/ClientNavContainer'
 import CourierNav from '../../containers/CourierHeaderContainer'
+
 
 export default class HomePage extends Component{
 
 
   render(){
     return(
+
       <div className="home-page">
         {
           localStorage.clientAuth === "true"?
