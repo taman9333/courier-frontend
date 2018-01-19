@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import {newClientApi, loginClientApi} from '../apiConfig.js'
+import {updateClientProfileApi, newClientApi, loginClientApi} from '../apiConfig.js'
 
 /**
   // Action Types
@@ -22,6 +22,13 @@ export const LOGIN_CLIENT_FAILURE = 'LOGIN_CLIENT_FAILURE';
 // client show
 
 export const SHOW_CLIENT_SUCCESS = 'SHOW_CLIENT_SUCCESS'
+
+// client update
+
+export const UPDATE_CLIENT_LOADING = 'UPDATE_CLIENT_LOADING'
+export const UPDATE_CLIENT = 'UPDATE_CLIENT'
+export const UPDATE_CLIENT_SUCCESS = 'UPDATE_CLIENT_SUCCESS'
+export const UPDATE_CLIENT_FAILURE = 'UPDATE_CLIENT_FAILURE'
 
 // client logout
 
@@ -99,6 +106,37 @@ export function showClientSuccess(response){
     data:response.data
   }
 }
+
+// client update
+
+export const updateClientLoading = () => {
+  return {
+      type: UPDATE_CLIENT_LOADING
+  }
+}
+
+export const updateClient = (client) => {
+  const payload = Axios.patch(updateClientProfileApi, client);
+  return{
+      type:UPDATE_CLIENT,
+      payload
+  }
+}
+
+export const updateClientSuccess = (client) => {
+  return {
+      type: UPDATE_CLIENT_SUCCESS,
+      client
+  }
+}
+
+export const updateClientFailure = (error) => {
+  return {
+      type: UPDATE_CLIENT_FAILURE,
+      error:error.payload.response.data.errors
+  }
+}
+
 
 // client logout
 

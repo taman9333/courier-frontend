@@ -25,3 +25,9 @@
 .img-container + div .key-width{
   width:130px;
 }
+
+
+#newClient .btn-success{
+  margin-top:10px;
+  margin-left:324px;
+}

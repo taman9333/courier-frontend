@@ -30,12 +30,14 @@ class App extends Component {
         <div className="App-container">
           <Route path='/' exact component={HomePage}/>
           <Route path='/client' component={requireAuth(ClientHomePage)}/>
-          {/*<Route path='/register/client' component={HomePage}/>*/}
+
+          {/* <Route path='/register/client' component={HomePage}/>  */}
+
 
           <Route path='/client/orderdetails/:id' exact component={requireAuth(OrderDetails)}/>
 
           <Route path="/forgotpassword" exact component={ForgotPassword} />
-
+          <Route path="/login/client" exact component={UserLogin} />
           <Route path="/register/courier" exact component={CourierRegistration} />
           <Route path="/login/courier" exact component={CourierLogin} />
           <Route path="/courier"  component={requireCourierAuth(CourierPage)} />
