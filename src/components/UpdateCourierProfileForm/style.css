@@ -1,16 +1,31 @@
 
-.float-left{
-    padding-left:100px;
-    padding-top: 50px;
-    /* width:250px; */
+
+#newClient{
+    margin:20px 50px;
+    margin-top:12vh;
   }
-
-.link + .link{
-    margin-left:50px;  
-    /* display: inline-block; */
-}
-
-.courier-details{
-    padding-left: 10px;
-    padding-top: 75px;
-}
+  
+  #newClient label{
+    padding-left:80px;
+  }
+  
+  #newClient .btn-success{
+    margin-top:10px;
+    margin-left:324px;
+  }
+  
+  .flash-message-error{
+    margin-right:15px;
+    margin-left:15px
+  }
+  
+  #flash-message-error{
+    background:#ff3333;
+    width:30%;
+    margin:20px 50px;
+    color:white;
+    border-radius:10px;
+    padding:5px;
+    font-size:16px;
+  }
+  

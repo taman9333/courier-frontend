@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-// import {updateCourierProfileApi} from '../../apiConfig';
-// import Axios from 'axios';
-// import history from '../../history'
 import './style.css'
 
 export default class UpdateCourierProfile extends Component{
@@ -45,32 +42,36 @@ export default class UpdateCourierProfile extends Component{
 	render(){
 		const {courier} = this.props;
 		return(
-			<div className="float-left">
-				<form id="newCourier" name="newCourier" onSubmit={this._updateCourier}>
-					<div className="courier-form">
-						<label className="link" >Username</label>
-						<input className="link" type="text" name="username" value={this.state.username} id="username" onChange={this._handleChange} />
+			<div>
+				<form className="jumbotron" id="newCourier" name="newCourier" onSubmit={this._updateCourier}>
+					<div className="form-group row">
+						<label className="col-sm-3 col-form-label" >Username</label>
+						<div className="col-sm-7">
+							<input className="form-control"  type="text" name="username" value={this.state.username} id="username" onChange={this._handleChange} />
+						</div>
 					</div>
-					<div className="courier-form">
-						<label className="link">Email</label>
-						<input className="link" type="email" name="email" id="email"  value={this.state.email} onChange={this._handleChange}/>
+					<div className="form-group row">
+						<label className="col-sm-3 col-form-label">Email</label>
+						<div className="col-sm-7">
+							<input className="form-control"  type="email" name="email" id="email"  value={this.state.email} onChange={this._handleChange}/>
+						</div>
 					</div>
-					<div className="courier-form">
-						<label className="link">image</label>
-						{/* <img className="link" alt="" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAjO1-yy10xV5ylPfYoPrnpgC8w5TlaUmF9B_BTol5VGia5rp' :`http://localhost:3000/${this.props.courier.img.url}`}/> */}
-						<br />
-						<input className="link" type="file" name="img" id="img" onChange={this._handleChange} />
+					<div className="form-group row">
+						<label className="col-sm-3 col-form-label">Image</label>
+						<div className="col-sm-7">
+							<input className="form-control-file" type="file" name="img" id="img" onChange={this._handleChange} />
+						</div>
 					</div>
-					<div className="courier-form">
-						<label className="link">phone</label>
-						<input className="link" type="text" name="phone" id="phone" value={this.state.phone} onChange={this._handleChange}/>
+					<div className="form-group row">
+						<label className="col-sm-3 col-form-label">Phone</label>
+						<div className="col-sm-7">
+							<input className="form-control"  type="text" name="phone" id="phone" value={this.state.phone} onChange={this._handleChange}/>
+						</div>
 					</div>
-					{/* <input type="hidden" name="_method" value="patch" /> */}
-					<button>Save</button>
+					<button className="btn btn-success">Save</button>
 				</form>
 			</div>
 		)
 	}
 }
 
-// {<img alt="" src={`http://localhost:3000/${this.state.img.url}`}/> }
