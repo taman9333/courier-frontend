@@ -69,7 +69,7 @@ class OrderDetailsPage extends Component{
           <p><span className="key-width">Winning Courier</span>{winning_courier == null? `ــــــــــــــ` :winning_courier }</p>
           <p><span className="key-width">Price</span>${last_bid == null? `ــــــــــــ` :last_bid.price}</p>
           {
-            warning != null && auction.status != "closed"?
+            warning != null && auction.status != "closed" && auction.status != "open" ?
             <p className="flash-message-failure">This is the last bid offered, your order will be outdated if you reject this bid</p>
             :null
           }
