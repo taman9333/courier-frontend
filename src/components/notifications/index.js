@@ -28,9 +28,9 @@ export default class Notifications extends Component{
         received: (data) => {
           console.log(data);
           this.setState({...this.state, notifications:[{body:data.notification.body, check:data.notification.check, id:data.notification.id, order_id:data.order_id}, ...this.state.notifications], message:{notification:data.notification, order_id:data.order_id}});
-          setTimeout(()=>{
-            this.setState({...this.state, message:""})
-          },9000)
+          // setTimeout(()=>{
+          //   this.setState({...this.state, message:""})
+          // },9000)
         }
       });
     }

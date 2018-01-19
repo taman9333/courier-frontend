@@ -18,23 +18,21 @@ const mapDispatchToProps = (dispatch) => {
         addCourier: (courier) => {
             dispatch(addCourierLoading());
             dispatch(showLoading())
-            setTimeout(function(){
                 dispatch(addCourier(courier)).then(response => {
                     if(response.payload.status < 400){
                         // dispatch(addCourierSuccess(response.payload.courier));
+                        dispatch(hideLoading())
                         dispatch(addCourierSuccess(response));
-                        dispatch(showLoading())
                         history.push({
                           pathname: '/',
                           query:2
                         })
                     }else{
                         // dispatch(addCourierFailure(response.payload.message));
+                        dispatch(hideLoading())
                         dispatch(addCourierFailure(response));
-                        dispatch(showLoading())
                     }
                 })
-            },5000)
         }
     }
 }

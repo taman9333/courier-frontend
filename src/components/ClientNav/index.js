@@ -9,7 +9,7 @@ class ClientNav extends Component{
 
   componentWillMount(){
     if(localStorage.getItem('jwtToken') !== null && Object.keys(this.props.client).length === 0){
-      this.props.showClient()
+        this.props.showClient()
     }
   }
 
@@ -29,21 +29,21 @@ class ClientNav extends Component{
           <p>Wassaly</p>
         </Link>
         <div className="float-right">
+          <div className="info-float-right">
           <Notifications />
           <p>
             <Link to="/client">
-              <img alt="" className="rounded-circle nav-img" src={this.props.client.img.url == null?`../../../default-img.jpeg` : `${this.props.client.img.url}`}/>{this.props.client.username}
+              <img alt="" className="rounded-circle nav-img" src={this.props.client.img.url == null?`../../../default-profile.jpeg` : `${this.props.client.img.url}`}/>{this.props.client.username}
             </Link>
           </p>
-          {/* <p><Link to="/">home</Link></p> */}
           <button className="btn btn-sm logout-button" onClick={this._logout.bind(this)}>Logout</button>
         </div>
-      <br/>
+        </div>
       </div>
       </div>
     )
     }else{
-      return(<div>loading</div>)
+      return(<div className="client-header"></div>)
     }
   }
 }

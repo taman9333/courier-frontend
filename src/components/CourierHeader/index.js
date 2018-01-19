@@ -33,20 +33,21 @@ class CourierHeader extends Component{
             <p>Wassaly</p>
           </Link>
         <div className="float-right">
+          <div className="info-float-right">
           <CourierNotifications />
           <p>
             <Link to="/courier">
-              <img alt="" className="rounded-circle nav-img" src={this.props.courier.img.url == null? '../../../default-img.jpeg' :`${this.props.courier.img.url}`}/>{this.props.courier.username}
+              <img alt="" className="rounded-circle nav-img" src={this.props.courier.img.url == null? '../../../default-profile.jpeg' :`${this.props.courier.img.url}`}/>{this.props.courier.username}
             </Link>
           </p>
           <button className="btn btn-sm logout-button" onClick={this._logout.bind(this)}>Logout</button>
         </div>
-        <br/>
+        </div>
         </div>
       </div>
     )
     }else{
-      return(<div>Loading</div>)
+      return(<div className="courier-header"></div>)
     }
   }
 }
