@@ -36,9 +36,9 @@ export default class Notifications extends Component{
           this.setState({...this.state,
             notifications:[x,...this.state.notifications],
             message:{notification:data.notification, [k[0]]:k[1]}});
-         // setTimeout(()=>{
-         //   this.setState({...this.state, message:""})
-         //  },9000)
+         setTimeout(()=>{
+           this.setState({...this.state, message:""})
+          },9000)
 
         }
       });

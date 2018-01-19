@@ -68,7 +68,7 @@ export default class OrderDetailsPage extends Component{
 
     const {order, pickup, drop_off, auction, last_bid, winning_courier} = this.state
 
-    var x = `${new Date(order.delivery_date)}`
+    var x = `${new Date(auction.bid_deadline)}`
     x = x.split(" ").slice(0, 4)
     x = x.join(" ")
     return(
