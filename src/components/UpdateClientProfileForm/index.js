@@ -42,7 +42,7 @@ export default class UpdateClientProfile extends Component{
 		const {client} = this.props;
 		return(
 			<div >
-				<form className="jumbotron" id="newClient" name="newClient" onSubmit={this._updateClient}>
+				<form className="client-profile-container jumbotron" id="newClient" name="newClient" onSubmit={this._updateClient}>
 					<div className="form-group row">
 						<label className="col-sm-3 col-form-label" >Username</label>
 						<div className="col-sm-7">

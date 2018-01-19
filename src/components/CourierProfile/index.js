@@ -25,7 +25,7 @@ export default class CourierProfile extends Component{
                 <p><span className="key-width">Phone number</span>{this.props.courier.phone}</p>
               </div>
               <div className="links">
-                <Link className="link" to="/courier/updateprofile">Update Profile</Link>
+                <Link className="btn btn-success" to="/courier/updateprofile">Update Profile</Link>
                 {/* <Link className="link" to="/courier/resetpassword">Reset Password</Link> */}
               </div>
             </div>

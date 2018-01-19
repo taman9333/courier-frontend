@@ -43,7 +43,7 @@ export default class UpdateCourierProfile extends Component{
 		const {courier} = this.props;
 		return(
 			<div>
-				<form className="jumbotron" id="newCourier" name="newCourier" onSubmit={this._updateCourier}>
+				<form className="courier-profile-container jumbotron" id="newCourier" name="newCourier" onSubmit={this._updateCourier}>
 					<div className="form-group row">
 						<label className="col-sm-3 col-form-label" >Username</label>
 						<div className="col-sm-7">

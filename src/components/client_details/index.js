@@ -24,7 +24,7 @@ export default class ClientDetails extends Component{
                 <p><span className="key-width">Email</span>{this.props.client.email}</p>
                 <p><span className="key-width">Phone number</span>{this.props.client.phone}</p>
               </div>
-              <Link className="link" to="/client/updateprofile">Update Profile</Link>
+              <Link className="btn btn-success" to="/client/updateprofile">Update Profile</Link>
             </div>
           )
         } else {
